@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+	<title>
+    {% block title %}Providence Maitreya Buddha Missionary Temple{% endblock %}
+  </title>
+	<meta http-equiv="Content-Language" content="en-us" />
+	
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta name="MSSmartTagsPreventParsing" content="true" />
+	
+	<meta name="description" content="Description" />
+	<meta name="keywords" content="Keywords" />
+	
+	<meta name="author" content="Edwin Jaury" />
+
+  <style type="text/css" title="currentStyle">
+    @import url("/site_media/css/style.css");
+  </style>
+
+</head>
+
+<body>
+  <div id="header">
+    <div id="top_links">Contact Us | Subscribe</div>
+    <div id="logo">
+      <a href="/">
+        <img alt="Providence Maitreya Buddha Missionary Temple"
+             src="/site_media/css/images/logo.png"/>
+      </a>
+      <div id="main_menu">HOME | ABOUT US | TEACHING | CLASSES | EVENTS | MEDIA</div>
+    </div>
+  </div>
+
+  <div id="body">
+    <div id="main_page">
+      <div id="mp_container">
+        {% block main_page_container %}
+        {% endblock %}
+      </div>
+    </div>
+    <div id="content_container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <div id="sidebar"></div>
+  </div>
+
+  <div id="footer">
+    <div id="bottom_links"></div>
+    <div id="copyright"></div>
+  </div>
+</body>
+
+</html>
