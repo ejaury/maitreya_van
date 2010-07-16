@@ -24,17 +24,26 @@
 
 <body>
   <div id="header">
-    <div id="top_links">Contact Us | Subscribe</div>
+    <div id="top_menu">Contact Us | Subscribe</div>
     <div id="logo">
       <a href="/">
         <img alt="Providence Maitreya Buddha Missionary Temple"
              src="/site_media/css/images/logo.png"/>
       </a>
-      <div id="main_menu">HOME | ABOUT US | TEACHING | CLASSES | EVENTS | MEDIA</div>
+      <div id="main_menu">
+        <a class="media_button" alt="Media" href="/"></a>
+        <a class="events_button" alt="Events" href="/"></a>
+        <a class="classes_button" alt="Classes" href="/"></a>
+        <a class="teaching_button" alt="Teaching" href="/"></a>
+        <a class="about_button" alt="About Us" href="/"></a>
+        <a class="home_button" alt="Home" href="/"></a>
+      </div>
     </div>
   </div>
 
   <div id="body">
+    {% block mp_img %}
+    {% endblock %}
     <div id="main_page">
       <div id="mp_container">
         {% block main_page_container %}
@@ -49,8 +58,23 @@
   </div>
 
   <div id="footer">
-    <div id="bottom_links"></div>
-    <div id="copyright"></div>
+    <div id="bottom_menu_container">
+      <div id="bottom_menu">
+        Home | About Us | Contact Us | Site Map
+      </div>
+    </div>
+    <div id="address_cpright">
+      <div id="copyright_container">
+        <span class="right">
+          3495 East Hastings St.<br/>
+          Vancouver, BC<br/>
+          Canada
+        </span>
+        <div id="copyright" class="left">
+          Copyright 2010 Providence Maitreya Buddha Missionary Temple
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 
