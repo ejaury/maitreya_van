@@ -4,7 +4,9 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 	<title>
-    {% block title %}Providence Maitreya Buddha Missionary Temple{% endblock %}
+    {% block title %}
+    {% endblock %}
+    Providence Maitreya Buddha Missionary Temple
   </title>
 	<meta http-equiv="Content-Language" content="en-us" />
 	
@@ -42,19 +44,32 @@
   </div>
 
   <div id="body">
-    {% block mp_img %}
+    {% block mp_container %}
     {% endblock %}
-    <div id="main_page">
-      <div id="mp_container">
-        {% block main_page_container %}
-        {% endblock %}
+
+    {% block content_base %}
+    <div id="content_container">
+      <div id="sidebar_wrapper">
+        <div id="sidebar">
+          <h2 class="side_menu_header">ABOUT US</h2>
+          <ul>
+            <li>Goal and Mission</li>
+            <li>Contact Us</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="content_wrapper">
+        <div id="content">
+          {% block content %}
+          {% endblock %}
+        </div>
       </div>
     </div>
-    <div id="content_container">
-      {% block content %}
-      {% endblock %}
-    </div>
-    <div id="sidebar"></div>
+    {% endblock %}
+
+    {% block mp_updates %}
+    {% endblock %}
   </div>
 
   <div id="footer">

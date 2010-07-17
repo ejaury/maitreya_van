@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^$', 'maitreya_van.main.views.index'),
+    (r'^about/', include('maitreya_van.about.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {
       'document_root': '/home/edwin/maitreya_van/assets/', 'show_indexes': True
