@@ -287,6 +287,22 @@ a.media_button:hover {
   background-position: -43px 0;
 }
 
+.class_gallery {
+  background-color: beige;
+  border: 1px solid #DDA;
+  margin: 30px 0;
+  padding: 10px;
+  text-align: center;
+}
+
+.class_gallery img {
+  -moz-box-shadow: 0 0 5px #CCC;
+  -webkit-box-shadow: 0 0 5px #CCC;
+  box-shadow: 0 0 5px #CCC;
+  background-color: white;
+  padding: 10px;
+}
+
 .side_menu_header {
   border-bottom: 2px dotted #FC6;
   letter-spacing: 8px;
