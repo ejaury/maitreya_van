@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    (r'^contact_us/$', 'maitreya_van.about.views.contact_us'),
+    (r'^contact-us/$', 'maitreya_van.about.views.contact_us'),
 )

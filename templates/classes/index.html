@@ -6,7 +6,7 @@ Classes -
 
 {% block content %}
 <h1>Classes</h1>
-<h3>Buddha Enlightenment Class</h3>
+<h3 id="buddha-enlightenment-class">Buddha Enlightenment Class</h3>
 <p>
   {% load webdesign %}
   {% lorem 40 w %}
@@ -29,6 +29,11 @@ Classes -
   {% load webdesign %}
   {% lorem 35 w %}
 </p>
+
+{% load tree_menu_tags %}
+{% show_menu "Main" "unordered-list" %}
+
+{{ request.path }}
 
 {% endblock %}
 
