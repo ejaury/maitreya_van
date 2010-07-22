@@ -83,6 +83,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'treemenus',
+    'maitreya_van.classes',
+    'maitreya_van.main',
     'maitreya_van.navigation',
 )
 

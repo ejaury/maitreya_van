@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Classes - 
+{% endblock %}
+
+{% block content %}
+<h1>Classes</h1>
+<h3 id="{{ class.title|slugify }}">{{ class.title }}</h3>
+<p>
+  {{ class.content }}
+</p>
+
+<div class="class_gallery">
+  <img width="150px" src="/site_media/images/sample1.jpg"/>
+  <img width="150px" src="/site_media/images/sample1.jpg"/>
+  <img width="150px" src="/site_media/images/sample1.jpg"/>
+</div>
+
+{% endblock %}

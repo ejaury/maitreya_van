@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('',
+urlpatterns = patterns('maitreya_van.classes.views',
     # Example:
     # (r'^maitreya_van/', include('maitreya_van.foo.urls')),
 
@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    (r'^$', 'maitreya_van.classes.views.index'),
+    (r'^$', 'index'),
+    (r'^(?P<class_id>\d+)/(?P<slug>[\w-]+)/$', 'view_page'),
 )
