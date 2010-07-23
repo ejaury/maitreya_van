@@ -20,3 +20,13 @@
 		{% endfor %}
 	</ol>
 {% endifequal %}
+
+{% ifequal menu_type "sidebar" %}
+  <h2 class="side_menu_header">{{ menu|submenu_caption:request.path|upper }}</h2>
+	<ul>
+		{% for menu_item in menu|submenu_children:request.path %}
+			{% show_menu_item menu_item %}
+		{% endfor %}
+	</ul>
+{% endifequal %}
+

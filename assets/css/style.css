@@ -201,7 +201,7 @@ p {
 }
 
 #sidebar {
-  padding: 20px;
+  padding: 20px 15px;
 }
 
 #sidebar ul {
@@ -210,14 +210,20 @@ p {
 }
 
 #sidebar li {
-  color: gray;
   font-size: 110%;
   padding: 5px 0;
 }
 
+#sidebar li a {
+  color: gray; 
+}
+
+#sidebar li:hover a {
+  color: #227ECC;
+}
+
 #sidebar li:hover,
 #sidebar li.selected {
-  color: #227ECC;
   font-weight: bold;
   list-style-image: url("/site_media/css/images/icons/right_arrow.png");
 }
