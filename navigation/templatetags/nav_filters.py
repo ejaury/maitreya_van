@@ -11,7 +11,6 @@ def submenu(menu, path):
 
 @register.filter(name='submenu_children')
 def submenu_children(menu, path):
-  print submenu(menu, path).children()
   return submenu(menu, path).children()
 
 @register.filter(name='submenu_caption')
