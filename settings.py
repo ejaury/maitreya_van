@@ -84,8 +84,11 @@ INSTALLED_APPS = (
     'south',
     'treemenus',
     'maitreya_van.classes',
+    'maitreya_van.events',
     'maitreya_van.main',
     'maitreya_van.navigation',
+    # django-schedule 1.0 RC-2
+    'maitreya_van.thirdparty.schedule',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
