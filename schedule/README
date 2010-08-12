@@ -1,0 +1,9 @@
+This app is extended from:
+
+django-schedule 1.0 RC-2
+========================
+* Tony Hauber
+* Bartek Gorny
+
+Revision: November 7, 2009
+http://github.com/thauber/django-schedule
