@@ -115,14 +115,23 @@ table.calendar {
 }
 
 table.calendar td {
+  font-size: 80%;
   text-align:left;
 	margin: 2px;
 	padding: 1px;
+  height: 70px;
+  max-width: 90px;
+}
+
+table.calendar td.header {
+  height: auto;
+  text-align: center;
 }
 
 table.calendar td.daynumber {
-	font-size: 8pt;
-	vertical-align: top
+	font-size: 60%;
+	vertical-align: top;
+  white-space: nowrap;
 }
 
 table.calendar td.noday {
@@ -153,7 +162,7 @@ td.daynumber div.header {
 }
 
 td.daynumber div.header a {
-  padding:1px 5px 1px 90px;
+  padding:1px 5px 1px 75px;
 }
 
 td.small div.header a {
@@ -161,17 +170,19 @@ td.small div.header a {
 }
 
 td.daynumber div.eventcell {
+    /*
     background:#f0f0f0;
     border:1px dotted grey;
+    margin:0 1px 3px 1px;
+    */
     clear:both;
     cursor:pointer;
-    margin:0 1px 3px 1px;
     overflow:auto;
 }
 
 td.daynumber div.starttime {
     float:left;
-    width:40px;
+    /* width:40px; */
 }
 
 td.daynumber div.eventdesc {

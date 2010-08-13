@@ -37,9 +37,9 @@ class Event(models.Model):
     # extra fields
     # TODO: many-to-many relation with Category model
     #category = models.CharField(max_length=30)
-    location = models.CharField(max_length=50)
+    location = models.CharField(max_length=50, blank=True)
     # TODO: in view, use address to automatically populate Google Map URL
-    address = models.CharField(max_length=100)
+    address = models.CharField(max_length=100, blank=True)
 
     class Meta:
         verbose_name = _('event')
@@ -361,8 +361,8 @@ class Occurrence(models.Model):
     original_end = models.DateTimeField(_("original end"))
 
     # extra fields
-    location = models.CharField(max_length=50)
-    address = models.CharField(max_length=100)
+    location = models.CharField(max_length=50, blank=True)
+    address = models.CharField(max_length=100, blank=True)
 
     class Meta:
         verbose_name = _("occurrence")
