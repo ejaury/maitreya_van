@@ -15,6 +15,10 @@ from schedule.models import *
 from schedule.periods import weekday_names
 from schedule.utils import check_event_permissions, coerce_date_dict
 
+def index(request):
+    return render_to_response("events/calendar_month.html",
+                              context_instance=RequestContext(request))
+
 def calendar(request, calendar_slug, template='schedule/calendar.html'):
     """
     This view returns a calendar.  This view should be used if you are
@@ -83,6 +87,7 @@ def calendar_by_periods(request, calendar_slug, periods=None,
             'calendar': calendar,
             'weekday_names': weekday_names,
             'here':quote(request.get_full_path()),
+            'today': datetime.date.today(),
         },context_instance=RequestContext(request),)
 
 def event(request, event_id, template_name="schedule/event.html"):

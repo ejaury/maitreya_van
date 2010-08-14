@@ -27,7 +27,7 @@
 (function($) {
     $(document).ready(function($) {
         $("tr input.action-select").actions();
-        /*$('#calendar').load('/events/calendar/month/temple');*/
+        $('#calendar').load('/events/calendar/month/temple/');
     });
 })(django.jQuery);
 </script>
@@ -73,7 +73,10 @@
         </p>
         {{ cl.formset.non_form_errors }}
     {% endif %}
-    <div id="calendar"></div>
+    <div id="calendar" style="text-align: center;">
+      <!--iframe width="710px" height="600px" frameborder="0"
+      src="/events/calendar/month/temple/"></iframe-->
+    </div>
     <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
       {% block search %}{% search_form cl %}{% endblock %}
       {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}

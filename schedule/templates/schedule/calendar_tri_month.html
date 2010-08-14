@@ -1,6 +1,6 @@
 {% extends "schedule/base.html" %}
 {% load scheduletags %}
-{% block content %}
+{% block body %}
 <div class="tablewrapper">
   <div class="calendarname">{{ calendar.name }}</div>
   {% prevnext "tri_month_calendar" calendar.slug periods.month "F Y"%}

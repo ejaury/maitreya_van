@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+
+{% block extra_head %}
+  <script type="text/javascript">
+    $(document).ready(function($) {
+        $('#calendar').load('/events/calendar/month/temple/');
+    });
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div id="calendar">
+  </div>
+{% endblock %}

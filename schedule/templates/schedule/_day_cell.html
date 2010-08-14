@@ -1,11 +1,12 @@
 {% load scheduletags %}
+
 {% ifnotequal day.start.month month.start.month %}
   <td class="{{size}} daynumber noday"></td>
 {% else %}
   {% if day.has_occurrences %}
-    <td class="{{size}} daynumber busy">
+    <td class="{{size}} daynumber busy {% ifequal today.day day.start.day %} today {% endifequal %}">
   {% else %}
-    <td class="{{size}} daynumber free">
+    <td class="{{size}} daynumber free {% ifequal today.day day.start.day %} today {% endifequal %}">
 {% endif %}
     <div class="header">
         <a href="{% url day_calendar calendar.slug %}{% querystring_for_date day.start 3 %}">

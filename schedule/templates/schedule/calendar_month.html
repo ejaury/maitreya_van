@@ -1,7 +1,7 @@
 {% extends "schedule/base.html" %}
 {% load scheduletags %}
 
- {% block content %}
+ {% block body %}
 {% include "schedule/_dialogs.html" %}
 <div class="tablewrapper">
   <!--div class="calendarname">{{ calendar.name }}</div-->
@@ -13,12 +13,12 @@
   </div>
   {% month_table calendar periods.month "regular" %}
 </div>
-<div class="navigation">
+<!--div class="navigation">
   <a href="{% url tri_month_calendar calendar.slug %}{% querystring_for_date periods.month.start 2 %}">
     Three Month Calendar
   </a>
   <a href="{% url year_calendar calendar.slug %}{% querystring_for_date periods.month.start 1%}">
     Full Year Calendar
   </a>
-</div>
+</div-->
 {% endblock %}

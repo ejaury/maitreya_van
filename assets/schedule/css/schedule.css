@@ -128,6 +128,11 @@ table.calendar td.header {
   text-align: center;
 }
 
+table.calendar td.today b {
+  color: red;
+  text-shadow: gray 0 0 5px;
+}
+
 table.calendar td.daynumber {
 	font-size: 60%;
 	vertical-align: top;
