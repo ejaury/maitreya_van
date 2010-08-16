@@ -12,6 +12,10 @@
     <script type="text/javascript" src="{{ jsi18nurl|default:'../../jsi18n/' }}"></script>
   {% endif %}
   {{ media.css }}
+  <style type="text/css" title="currentStyle">
+    @import url("/site_media/schedule/css/schedule.css");
+    @import url("/site_media/css/colorbox/colorbox.css");
+  </style>
   {% if not actions_on_top and not actions_on_bottom %}
     <style>
       #changelist table thead th:first-child {width: inherit}
@@ -22,12 +26,25 @@
 {% block extrahead %}
 {{ block.super }}
 {{ media.js }}
+<script type="text/javascript" src="/site_media/js/jquery.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.colorbox-min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function($) {
+        $('#calendar').load('/events/calendar/month/temple/', function() {
+          /*
+          $('.overlay_ex').attr('href', function(idx) {
+            return this.href + window.location.pathname;
+          });
+          */
+          $('.overlay_ex').colorbox({ iframe: true, innerHeight:600, innerWidth:500});
+        });
+    });
+</script>
 {% if action_form %}{% if actions_on_top or actions_on_bottom %}
 <script type="text/javascript">
 (function($) {
     $(document).ready(function($) {
         $("tr input.action-select").actions();
-        $('#calendar').load('/events/calendar/month/temple/');
     });
 })(django.jQuery);
 </script>

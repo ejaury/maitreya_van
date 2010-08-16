@@ -3,7 +3,19 @@
 {% block extra_head %}
   <script type="text/javascript">
     $(document).ready(function($) {
-        $('#calendar').load('/events/calendar/month/temple/');
+      $('#calendar').load('/events/calendar/month/temple/', function() {
+        
+        /*
+        $('.overlay_ex').attr('href', function(idx) {
+          return this.href + '?next=' + window.location.pathname;
+        });
+        $('.overlay_ex').colorbox({
+          iframe: true,
+          innerHeight:600,
+          innerWidth:500
+        });
+          */
+      });
     });
   </script>
 {% endblock %}
