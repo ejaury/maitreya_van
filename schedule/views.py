@@ -141,6 +141,31 @@ def occurrence(request, event_id,
     }, context_instance=RequestContext(request))
 
 
+def view_upcoming_events(request, calendar_slug, template_name='events/list.html'):
+    calendar = get_object_or_404(Calendar, slug=calendar_slug)
+    event_list = Event.objects.filter(calendar=calendar,
+                    end__gt=datetime.datetime.today()).order_by('start','title')[:10] 
+    events = {} 
+
+    # group events by month
+    for event in event_list:
+      month = event.start.month
+      try:
+        events[month].append(event)
+      except KeyError:
+        events[month] = []
+        events[month].append(event)
+
+    # sort ascendingly by month
+    sorted_events = [] 
+    for key, value in sorted(events.items(), key=lambda x: (-1*x[1], x[0])):
+      sorted_events.append((value[0].start.strftime('%B %Y'), value)) 
+
+    return render_to_response(template_name, {
+        'events': sorted_events,
+    }, context_instance=RequestContext(request))
+
+
 @check_event_permissions
 def edit_occurrence(request, event_id,
     template_name="schedule/edit_occurrence.html", *args, **kwargs):

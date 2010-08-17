@@ -309,6 +309,31 @@ a.media_button:hover {
   padding: 10px;
 }
 
+.event_listing {
+  border-bottom: 1px solid lightgray;
+  margin: 10px 0;
+  min-height: 3em;
+}
+
+.event_listing .event_date {
+  float: left;
+  font-size: 250%;
+  padding: 2px 15px;
+}
+
+.event_listing .event_description {
+  padding: 5px 0;
+}
+
+.event_listing .event_description .NA {
+  color: gray;
+  font-style: italic;
+}
+
+#event_list .month_title {
+  padding: 10px 0;
+}
+
 .side_menu_header {
   border-bottom: 2px dotted #FC6;
   letter-spacing: 8px;

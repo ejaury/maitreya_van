@@ -1,0 +1,27 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<h1>Upcoming Events</h1>
+<div id="event_list">
+  {% for month,list in events %}
+    <h2 class="month_title">{{ month }}</h2>
+    {% for event in list %}
+      <div class="event_listing">
+        <div class="event_date">
+          <p>{{ event.start.date|date:'d' }}</p>
+        </div>
+        <div class="event_description">
+          <p><strong><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></strong></p>
+          {% if not event.description %}
+            <p class="NA">Detail event description is not available</p>
+          {% else %}
+            <p>{{ event.description|truncatewords:15 }}<p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  {% empty %}
+    <p>There are currently no upcoming events</p>
+  {% endfor %}
+</div>
+{% endblock %}
