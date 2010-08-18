@@ -90,6 +90,10 @@ p {
   width: 960px;
 }
 
+#event_list .month_title {
+  padding: 10px 0;
+}
+
 #footer {
   margin: auto;
   min-width: 980px;
@@ -113,14 +117,28 @@ p {
 }
 
 #main_menu {
-  font-size: 1.5em;
-  padding: 120px 0 0;
+  font-family: 'Yanone Kaffeesatz', Arial;
+  font-size: 25px;
+  padding: 110px 0 0;
 }
 
 #main_menu a {
-  display: block;
-  float: right;
-  margin: 0 15px;
+  color: white;
+  padding-bottom: 12px;
+}
+
+#main_menu a:hover {
+  background: url("/site_media/css/images/icons/selection_arrow.png") no-repeat center bottom;
+  color: yellow;
+}
+
+#main_menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+#main_menu ul li {
+  padding: 0 10px;
 }
 
 #main_page {
@@ -298,6 +316,14 @@ a.media_button:hover {
   background-position: -43px 0;
 }
 
+ul.horizontal {
+  list-style-type: none;
+}
+
+ul.horizontal li {
+  float: right;
+}
+
 .class_gallery {
   background-color: beige;
   border: 1px solid #DDA;
@@ -335,8 +361,13 @@ a.media_button:hover {
   font-style: italic;
 }
 
-#event_list .month_title {
-  padding: 10px 0;
+.gallery-photo {
+  float: left;
+  padding: 1px 3px;
+}
+
+.gallery-end {
+  clear: both;
 }
 
 .side_menu_header {

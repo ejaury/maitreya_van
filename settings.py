@@ -37,7 +37,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: '/home/media/media.lawrence.com/'
-MEDIA_ROOT = os.path.join(PROJECT_DIR, "site_media")
+MEDIA_ROOT = os.path.join(PROJECT_DIR, "assets")
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -47,7 +47,7 @@ MEDIA_URL = '/site_media/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: 'http://foo.com/media/', '/media/'.
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '@+7cb_=v4lmc&$29x^8pg8k&03dj_*terc(j%*xbv3j@3or!sq'
@@ -92,6 +92,8 @@ INSTALLED_APPS = (
     # ===========
     # django-schedule 1.0 RC-2
     'maitreya_van.schedule',
+    'photologue',
+    'tagging',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -101,3 +103,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.request',
 )
+
+# Photologue Settings
+PHOTOLOGUE_DIR = 'gallery'
+GALLERY_SAMPLE_SIZE = 1

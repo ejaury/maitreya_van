@@ -6,7 +6,7 @@ register = template.Library()
 def submenu(menu, path):
   import re
   for menu_item in menu.root_item.children():
-    if re.search(menu_item.url, path):
+    if re.search('^%s$' % menu_item.url, path):
       return menu_item
 
 @register.filter(name='submenu_children')

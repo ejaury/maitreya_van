@@ -1,3 +1,5 @@
+{% load tree_menu_tags %}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -19,6 +21,7 @@
 	<meta name="author" content="Edwin Jaury" />
 
   <style type="text/css" title="currentStyle">
+    @import url("http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz");
     @import url("/site_media/schedule/css/schedule.css");
     @import url("/site_media/css/style.css");
     @import url("/site_media/css/jquery-ui/jquery-ui.css");
@@ -45,12 +48,7 @@
              src="/site_media/css/images/logo.png"/>
       </a>
       <div id="main_menu">
-        <a class="media_button" alt="Media" href="/"></a>
-        <a class="events_button" alt="Events" href="/"></a>
-        <a class="classes_button" alt="Classes" href="/classes/"></a>
-        <a class="teaching_button" alt="Teaching" href="/"></a>
-        <a class="about_button" alt="About Us" href="/about/contact-us"></a>
-        <a class="home_button" alt="Home" href="/"></a>
+        {% show_menu "Main" "top_menu" %}
       </div>
     </div>
   </div>
@@ -63,7 +61,6 @@
     <div id="content_container">
       <div id="sidebar_wrapper">
         <div id="sidebar">
-          {% load tree_menu_tags %}
           {% show_menu "Main" "sidebar" %}
         </div>
       </div>
