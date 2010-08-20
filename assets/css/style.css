@@ -125,11 +125,14 @@ p {
 #main_menu a {
   color: white;
   padding-bottom: 12px;
+  text-shadow: 0 0 2px #BBB;
 }
 
-#main_menu a:hover {
+#main_menu a:hover,
+#main_menu a.selected {
   background: url("/site_media/css/images/icons/selection_arrow.png") no-repeat center bottom;
-  color: yellow;
+  color: #FF3;
+  text-shadow: 0 0 1px #FFB;
 }
 
 #main_menu ul {

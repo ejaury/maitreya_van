@@ -1,10 +1,10 @@
-{% extends "photologue/root.html" %}
+{% extends "multimedia/root.html" %}
 
-{% block title %}Galleries for {{ day|date }}{% endblock %}
+{% block title %}Galleries for {{ month|date:"F Y" }}{% endblock %}
 
 {% block content %}
 
-<h1>Galleries for {{ day|date }}</h1>
+<h1>Galleries for {{ month|date:"F Y" }}</h1>
 
 {% if object_list %}
     {% for gallery in object_list %}

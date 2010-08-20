@@ -1,19 +1,32 @@
 {% load tree_menu_tags %}
+{% load nav_filters %}
 
 {% ifequal menu_type "top_menu" %}
-		<li><a href="{{ menu_item.url }}">{{ menu_item.caption|upper }}</a></li>
+		<li>
+      <a href="{{ menu_item.url }}"
+         class="{% if request.path|match_path:menu_item.extension.selected_patterns %} selected{% endif %}">
+        {{ menu_item.caption|upper }}
+      </a>
+    </li>
 {% endifequal %}
 
 {% ifequal menu_type "sidebar" %}
 	{% if menu_item.has_children %}
-	    <li><a href="{{ menu_item.url }}">{{ menu_item.caption }}</a>
-			<ul>
-			    {% for child in menu_item.children %}
-			        {% show_menu_item child %}
-				{% endfor %}
-			</ul>
+      <li class="{% if request.path|match_path:menu_item.extension.selected_patterns %} selected{% endif %}">
+        <a href="{{ menu_item.url }}">
+        {{ menu_item.caption }}
+        </a>
+        <ul>
+            {% for child in menu_item.children %}
+                {% show_menu_item child %}
+          {% endfor %}
+        </ul>
 		</li>
 	{% else %}
-		<li><a href="{{ menu_item.url }}">{{ menu_item.caption }}</a></li>
+    <li class="{% if request.path|match_path:menu_item.extension.selected_patterns %} selected{% endif %}">
+      <a href="{{ menu_item.url }}">
+      {{ menu_item.caption }}
+      </a>
+    </li>
 	{% endif %}
 {% endifequal %}

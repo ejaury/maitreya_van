@@ -1,8 +1,13 @@
 from django.conf.urls.defaults import *
+from photologue.models import Gallery, GalleryUpload
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+
+# Hide these models from Admin page
+admin.site.unregister(Gallery)
+admin.site.unregister(GalleryUpload)
 
 urlpatterns = patterns('',
     # Example:
@@ -17,7 +22,7 @@ urlpatterns = patterns('',
     (r'^about/', include('maitreya_van.about.urls')),
     (r'^classes/', include('maitreya_van.classes.urls')),
     (r'^events/', include('maitreya_van.schedule.urls')),
-    (r'^multimedia/photos/', include('photologue.urls')),
+    (r'^multimedia/photos/', include('maitreya_van.multimedia.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {
       'document_root': '/home/edwin/maitreya_van/assets/', 'show_indexes': True
