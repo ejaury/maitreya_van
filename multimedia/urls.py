@@ -5,10 +5,12 @@ from maitreya_van.multimedia.models import *
 
 # Number of random images from the gallery to display.
 SAMPLE_SIZE = ":%s" % getattr(settings, 'GALLERY_SAMPLE_SIZE', 5)
+THUMB_ROW_SIZE = "%i" % getattr(settings, 'THUMBNAIL_ROW_SIZE', 4)
 
 # galleries
 gallery_args = {'date_field': 'date_added', 'allow_empty': True, 'queryset':
-    PhotoGallery.objects.filter(is_public=True), 'extra_context':{'sample_size':SAMPLE_SIZE}}
+    PhotoGallery.objects.filter(is_public=True),
+    'extra_context':{'sample_size':SAMPLE_SIZE, 'thumb_size':THUMB_ROW_SIZE}}
 urlpatterns = patterns('django.views.generic.date_based',
     url(r'^gallery/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/(?P<slug>[\-\d\w]+)/$', 'object_detail', {'date_field': 'date_added', 'slug_field': 'title_slug', 'queryset': PhotoGallery.objects.filter(is_public=True), 'extra_context':{'sample_size':SAMPLE_SIZE}}, name='pl-gallery-detail'),
     url(r'^gallery/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', 'archive_day', gallery_args, name='pl-gallery-archive-day'),
@@ -17,8 +19,13 @@ urlpatterns = patterns('django.views.generic.date_based',
     url(r'^gallery/?$', 'archive_index', gallery_args, name='pl-gallery-archive'),
 )
 urlpatterns += patterns('django.views.generic.list_detail',
-    url(r'^gallery/(?P<slug>[\-\d\w]+)/$', 'object_detail', {'slug_field': 'title_slug', 'queryset': PhotoGallery.objects.filter(is_public=True), 'extra_context':{'sample_size':SAMPLE_SIZE}}, name='pl-gallery'),
-    url(r'^gallery/page/(?P<page>[0-9]+)/$', 'object_list', {'queryset': PhotoGallery.objects.filter(is_public=True), 'allow_empty': True, 'paginate_by': 5, 'extra_context':{'sample_size':SAMPLE_SIZE}}, name='pl-gallery-list'),
+    url(r'^gallery/(?P<slug>[\-\d\w]+)/$', 'object_detail', {'slug_field':
+    'title_slug', 'queryset': PhotoGallery.objects.filter(is_public=True),
+    'extra_context':{'sample_size':SAMPLE_SIZE, 'thumb_size': THUMB_ROW_SIZE}}, name='pl-gallery'),
+    url(r'^gallery/page/(?P<page>[0-9]+)/$', 'object_list', {'queryset':
+    PhotoGallery.objects.filter(is_public=True), 'allow_empty': True,
+    'paginate_by': 5, 'extra_context':{'sample_size':SAMPLE_SIZE,
+    'thumb_size':THUMB_ROW_SIZE}}, name='pl-gallery-list'),
 )
 
 # photographs

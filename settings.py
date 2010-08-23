@@ -67,7 +67,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'maitreya_van.urls'
-
 TEMPLATE_DIRS = (
     # Put strings here, like '/home/html/django_templates' or 'C:/www/django/templates'.
     # Always use forward slashes, even on Windows.
@@ -109,3 +108,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # Photologue Settings
 PHOTOLOGUE_DIR = 'gallery'
 GALLERY_SAMPLE_SIZE = 1
+THUMBNAIL_ROW_SIZE = 4

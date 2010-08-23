@@ -1,23 +1,37 @@
 {% extends "multimedia/root.html" %}
 
 {% load photologue_tags %}
+{% load multimedia_tags %}
 
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block content %}
 
-<h1>{{ object.title }}</h1>
-<div class="gallery-photo">
-    <a href="{{ object.image.url }}"><img src="{{ object.get_display_url }}" alt="{{ object.title }}"/></a>
-    {% if object.caption %}<p>{{ object.caption }}</p>{% endif %}
+<div class="album_header">
+  {% for gallery in object.public_galleries|slice:"1" %}
+    <h1>{{ gallery.title }}</h1>
+    <a href="{{ gallery.get_absolute_url }}"><< Back to Album</a>
+  {% endfor %}
+</div>
+<div class="photo_navigation">
+  <ul class="horizontal" style="display: inline-block">
+  {% for gallery in object.public_galleries|slice:"1" %}
+      <li>{%previous_photo_url object gallery%}  {%next_photo_url object gallery%}</li>
+  {% endfor %}
+  </ul>
+</div>
+<div class="photo_detail">
+    <div class="photo_display">
+    <a href="{{ object.image.url }}" target="_blank" title="Click to open the original image in a new window"><img src="{{ object.get_display_url }}" alt="{{ object.title }}"/></a>
+    </div>
+    {% if object.caption %}<p class="caption">{{ object.caption }}</p>{% endif %}
 </div>
 {% if object.public_galleries %}
-<h2>This photo is found in the following galleries:</h2>
-<ol>
-{% for gallery in object.public_galleries %}
-    <li>{%previous_in_gallery object gallery%} <a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a> {%next_in_gallery object gallery%}</li>
+<!--div class="photo_navigation">
+{% for gallery in object.public_galleries|slice:"1" %}
+    {%previous_in_gallery object gallery%}  {%next_in_gallery object gallery%}
 {% endfor %}
-</ol>
+</div-->
 {% endif %}
 
 {% endblock %}
