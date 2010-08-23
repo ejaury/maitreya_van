@@ -10,7 +10,7 @@
 {% if object.description %}<p class="caption">{{ object.description }}</p>{% endif %}
 <div class="photo-gallery">
   <table class="thumb_grid">
-    {% for photo in object.public %}
+    {% for photo in object.public|sort_title %}
       {% ifequal forloop.counter0|remainder:thumb_size 0 %}
       <tr>
       {% endifequal %}

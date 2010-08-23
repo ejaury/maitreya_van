@@ -1,4 +1,5 @@
 from django import template
+from maitreya_van.utils import nat_sort
 
 register = template.Library()
 
@@ -19,3 +20,7 @@ def previous_photo_url(photo, gallery):
 @register.filter(name='remainder')
 def remainder(input, divisor):
   return int(input) % int(divisor)
+
+@register.filter(name='sort_title')
+def sort_by_title(obj_list):
+  return nat_sort.natsorted(obj_list, key=lambda obj: obj.title)
