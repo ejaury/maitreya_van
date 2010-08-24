@@ -60,7 +60,30 @@ p {
 #bottom_menu {
   font-size: 95%;
   margin: auto;
-  width: 980px;
+  width: 1000px;
+}
+
+#bottom_menu a {
+  color: #ACA9A9;
+}
+
+#bottom_menu a:hover,
+#top_menu a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+#bottom_menu ul {
+  padding: 0;
+  margin: 0;
+}
+
+#bottom_menu li {
+  padding: 0 10px;
+}
+
+#bottom_menu li.right_separator {
+  border-right: 1px solid #ACA9A9;
 }
 
 #bottom_menu_container {
@@ -117,8 +140,13 @@ p {
   min-width: 980px;
 }
 
+#inner_header {
+  margin: auto;
+  width: 980px;
+}
+
 #logo {
-  background: #227ECC url("/site_media/css/images/header_bg.jpg") no-repeat;
+  background-color: #227ECC;
   margin: auto;
   width: 980px;
 }
@@ -273,8 +301,20 @@ p {
 }
 
 #top_menu {
-  color: yellow;
   float: right;
+  font-size: 90%;
+}
+
+#top_menu a {
+  color: lightblue;
+}
+
+#top_menu li {
+  padding: 0 10px;
+}
+
+#top_menu li.left_separator {
+  border-left: 1px solid lightblue;
 }
 
 a.home_button {
@@ -362,12 +402,17 @@ table.thumb_grid .thumb {
   padding: 5px;
 }
 
-ul.horizontal {
+ul.horizontal,
+ul.horizontal_left {
   list-style-type: none;
 }
 
 ul.horizontal li {
   float: right;
+}
+
+ul.horizontal_left li {
+  float: left;
 }
 
 .album_header {

@@ -41,14 +41,21 @@
 
 <body>
   <div id="header">
-    <div id="top_menu">Contact Us | Subscribe</div>
-    <div id="logo">
-      <a href="/">
-        <img alt="Providence Maitreya Buddha Missionary Temple"
-             src="/site_media/css/images/logo.png"/>
-      </a>
-      <div id="main_menu">
-        {% show_menu "Main" "top_menu" %}
+    <div id="inner_header">
+      <div id="top_menu">
+        <ul class="horizontal">
+          <li class="left_separator"><a href="#">Subscribe</a></li>
+          <li><a href="/about/contact-us/">Contact Us</a></li>
+        </ul>
+      </div>
+      <div id="logo">
+        <a href="/">
+          <img alt="Providence Maitreya Buddha Missionary Temple"
+               src="/site_media/css/images/logo.png"/>
+        </a>
+        <div id="main_menu">
+          {% show_menu "Main" "top_menu" %}
+        </div>
       </div>
     </div>
   </div>
@@ -80,8 +87,13 @@
 
   <div id="footer">
     <div id="bottom_menu_container">
-      <div id="bottom_menu">
-        Home | About Us | Contact Us | Site Map
+      <div id="bottom_menu" class="clearfix">
+        <ul class="horizontal_left">
+          <li class="right_separator"><a href="/">Home</a></li>
+          <li class="right_separator"><a href="/about/">About Us</a></li>
+          <li class="right_separator"><a href="/about/contact-us/">Contact Us</a></li>
+          <li><a href="#">Site Map</a></li>
+        </ul>
       </div>
     </div>
     <div id="address_cpright">
