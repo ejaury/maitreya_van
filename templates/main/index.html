@@ -9,27 +9,61 @@
       <p>Welcome to our website! lkajsd falsk fdalks jfdlkas fdlkajs fdlkajs dlfk
       jsadlkfja slkjf lksa flksa jdflkasj dlkf sadljfsalkdfj aslkjfd lkas jdlkfjsad
       kfasdf</p>
+      <br/>
+      <p>Our Sunday service time starts at 11am</p>
     </div>
   </div>
 </div>
 {% endblock %}
 
 {% block mp_updates %}
-    <div id="mp_updates">
+    <div id="mp_updates" class="clearfix">
       <div class="col" id="mp_news">
         <h3>LATEST NEWS</h3>
-        <p class="header2">July 13, 2010</p>
-        <p>New images added to Media section!</p>
+        <div class="latest_list">
+          <ul>
+          {% for news in news_list %}
+            <li {% if not forloop.first %} class="add_separator" {% endif %}>
+              <p class="date">{{ news.date|date:"F d, Y" }}</p>
+              <p class="title"><a href="#">{{ news.title }}</a></p>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
       </div>
       <div class="col" id="mp_events">
-        <h3>UPCOMING NEWS</h3>
-        <p class="header2">July 13, 2010</p>
-        <p>Community Performance at School</p>
+        <h3>UPCOMING EVENTS</h3>
+        <div class="latest_list">
+          {% if events %}
+            <ul>
+            {% for event in events %}
+              <li {% if not forloop.first %} class="add_separator" {% endif %}>
+                <p class="date">{{ event.start.date|date:"F d, Y" }}</p>
+                <p class="title"><a href="#">{{ event.title }}</a></p>
+              </li>
+            {% endfor %}
+            </ul>
+          {% else %}
+            <p class="NA">There are currently no upcoming events</p>
+          {% endif %}
+        </div>
       </div>
       <div class="col" id="mp_blog">
         <h3>RECENT BLOG ENTRIES</h3>
-        <p class="header2">July 13, 2010</p>
-        <p>blog blah blah</p>
+        <div class="latest_list">
+          {% if entries %}
+            <ul>
+            {% for entry in entries %}
+              <li {% if not forloop.first %} class="add_separator" {% endif %}>
+                <p class="date">{{ entry.date|date:"F d, Y" }}</p>
+                <p class="title"><a href="#">{{ entry.title }}</a></p>
+              </li>
+            {% endfor %}
+            </ul>
+          {% else %}
+            <p class="NA">There are currently no blog entry</p>
+          {% endif %}
+        </div>
       </div>
     </div>
 {% endblock %}

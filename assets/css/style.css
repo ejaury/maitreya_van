@@ -35,6 +35,12 @@ h2 {
   margin: 0;
 }
 
+h3 {
+  color: #FF8C00;
+  margin: 0;
+  padding: 7px 0;
+}
+
 p {
   margin: 0;
   padding: 0;
@@ -215,9 +221,16 @@ p {
   background-color: white;
   background-color: white;
   float: left;
+  min-height: 190px;
   margin: 10px 0 10px 8px;
-  padding: 10px;
-  width: 270px;
+  padding: 20px;
+  width: 250px;
+}
+
+#mp_updates .col h3 {
+  border-bottom: 1px dashed gray;
+  margin: 5px 0 10px;
+  padding-bottom: 3px;
 }
 
 #sidebar_wrapper {
@@ -383,6 +396,14 @@ ul.horizontal li {
   padding: 10px;
 }
 
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
 .event_listing {
   border-bottom: 1px solid lightgray;
   margin: 10px 0;
@@ -399,11 +420,6 @@ ul.horizontal li {
   padding: 5px 0;
 }
 
-.event_listing .event_description .NA {
-  color: gray;
-  font-style: italic;
-}
-
 .gallery-photo {
   float: left;
   padding: 1px 3px;
@@ -411,6 +427,29 @@ ul.horizontal li {
 
 .gallery-end {
   clear: both;
+}
+
+.latest_list ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.latest_list li {
+  padding: 5px 0;
+}
+
+.latest_list li.add_separator {
+  border-top: 1px solid #EEE;
+}
+
+.latest_list .date {
+  font-weight: bold;
+}
+
+.NA {
+  color: gray;
+  font-style: italic;
 }
 
 .photo_detail {
