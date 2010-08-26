@@ -1,16 +1,8 @@
-{% extends "schedule/base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load scheduletags %}
 
-{% block body %}
-<div class="navigation">
-  <a href="{% url day_calendar occurrence.event.calendar.slug %}{% querystring_for_date occurrence.start 3 %}">
-    Day
-  </a>
-  <a href="{% url month_calendar occurrence.event.calendar.slug %}{% querystring_for_date occurrence.start 2 %}">
-    Month
-  </a>
-</div>
+{% block content %}
 <div class="event_actions" align="center">
 	{% if back_url %}
 	<a href="{{ back_url }}"><img border="0" src="{{ MEDIA_URL }}left_mod.png" alt="{% trans "Back" %}"></a> &nbsp;
@@ -18,21 +10,32 @@
 	<a href="{{occurrence.get_edit_url}}"><img border="0" src="{{ MEDIA_URL }}pencil.png" alt="{% trans "Change" %}"></a> &nbsp;
 	<a href="{{occurrence.get_cancel_url}}"><img border="0" src="{{ MEDIA_URL }}delete.png" alt="{% trans "Cancel" %}"></a>
 </div>
-<h2 align="center">{{occurrence.title}}</h2>
-<table align="center">
+<h1>Event Detail</h1>
+<h2>{{occurrence.title}}</h2>
+<table>
 <tr>
-<td>Starts</td>
-<td>{% blocktrans with occurrence.start|date:_("DATETIME_FORMAT") as start_date %}{{ start_date }}{% endblocktrans %}</td>
+<td><strong>Starts from:</strong></td>
+<td>{% blocktrans with occurrence.start|date:_("F d, Y \a\t h:i A") as start_date %}{{ start_date }}{% endblocktrans %}</td>
 </tr>
 <tr>
-<td>Ends</td>
-<td>{% blocktrans with occurrence.end|date:_("DATETIME_FORMAT") as end_date %}{{ end_date }}{% endblocktrans %}</td>
+<td><strong>Ends at:<strong></td>
+<td>{% blocktrans with occurrence.end|date:_("F d, Y \a\t h:i A") as end_date %}{{ end_date }}{% endblocktrans %}</td>
 </tr>
-{% if occurrence.event.rule %}
+
+{% if occurrence.location %}
 <tr>
-<td>Reoccurs</td><td>{{event.rule}}</td>
+  <td><strong>Location:</strong></td>
+  <td>{{ occurrence.location }}</td>
 </tr>
 {% endif %}
+
+{% if occurrence.address %}
+<tr>
+  <td><strong>Address:</strong></td>
+  <td>{{ occurrence.address }}</td>
+</tr>
+{% endif %}
+
 </table>
 {% if occurrence.description %}
 <h3>Description</h3>

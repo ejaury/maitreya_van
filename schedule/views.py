@@ -12,7 +12,7 @@ import datetime
 from schedule.conf.settings import GET_EVENTS_FUNC, OCCURRENCE_CANCEL_REDIRECT
 from schedule.forms import EventForm, OccurrenceForm
 from schedule.models import *
-from schedule.periods import weekday_names
+from schedule.periods import Period, weekday_names
 from schedule.utils import check_event_permissions, coerce_date_dict
 
 def index(request):
@@ -140,29 +140,30 @@ def occurrence(request, event_id,
         'back_url': back_url,
     }, context_instance=RequestContext(request))
 
-
-def view_upcoming_events(request, calendar_slug, template_name='events/list.html'):
+def view_upcoming_occurrences(request, calendar_slug, template_name='events/list.html'):
     calendar = get_object_or_404(Calendar, slug=calendar_slug)
-    event_list = Event.objects.filter(calendar=calendar,
-                    end__gt=datetime.datetime.today()).order_by('start','title')[:10] 
-    events = {} 
+    events = Event.objects.filter(calendar=calendar)
+    start = datetime.datetime.now()
+    end = start + datetime.timedelta(days=365)
+    occurrence_list = Period(events, start, end).get_occurrences()[:10]
+    occurrences = {}
 
-    # group events by month
-    for event in event_list:
-      month = event.start.month
+    # group occurrences by month
+    for occurrence in occurrence_list:
+      month = occurrence.start.month
       try:
-        events[month].append(event)
+        occurrences[month].append(occurrence)
       except KeyError:
-        events[month] = []
-        events[month].append(event)
+        occurrences[month] = []
+        occurrences[month].append(occurrence)
 
     # sort ascendingly by month
-    sorted_events = [] 
-    for key, value in sorted(events.items(), key=lambda x: (-1*x[1], x[0])):
-      sorted_events.append((value[0].start.strftime('%B %Y'), value)) 
+    sorted_occurrences = [] 
+    for key, value in sorted(occurrences.items(), key=lambda x: (-1*x[1], x[0])):
+      sorted_occurrences.append((value[0].start.strftime('%B %Y'), value)) 
 
     return render_to_response(template_name, {
-        'events': sorted_events,
+        'occurrences': sorted_occurrences,
     }, context_instance=RequestContext(request))
 
 

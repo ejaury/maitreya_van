@@ -54,7 +54,7 @@ url(r'^calendar/(?P<calendar_slug>[-\w]+)/$',
 
 #Event Urls
 url(r'^list/(?P<calendar_slug>[-\w]+)/$',
-    'schedule.views.view_upcoming_events',
+    'schedule.views.view_upcoming_occurrences',
     kwargs = { 'template_name': 'events/list.html' }),
 
 url(r'^event/create/(?P<calendar_slug>[-\w]+)/$',

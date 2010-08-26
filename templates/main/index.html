@@ -34,12 +34,12 @@
       <div class="col" id="mp_events">
         <h3>UPCOMING EVENTS</h3>
         <div class="latest_list">
-          {% if events %}
+          {% if occurrences %}
             <ul>
-            {% for event in events %}
+            {% for o in occurrences %}
               <li {% if not forloop.first %} class="add_separator" {% endif %}>
-                <p class="date">{{ event.start.date|date:"F d, Y" }}</p>
-                <p class="title"><a href="#">{{ event.title }}</a></p>
+                <p class="date">{{ o.start.date|date:"F d, Y" }}</p>
+                <p class="title"><a href="#">{{ o.title }}</a></p>
               </li>
             {% endfor %}
             </ul>
