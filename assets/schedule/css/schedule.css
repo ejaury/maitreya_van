@@ -284,8 +284,6 @@ div.time-picker li.selected {
   padding-right:5px;
 }
 
-body, td {font-family:sans-serif;}
-
 .error {
   border:1px solid red;
 }
@@ -315,5 +313,6 @@ div.navigation a {
 }
 
 div.tablewrapper {
-    text-align:center;
+  font-family: sans-serif;
+  text-align:center;
 }

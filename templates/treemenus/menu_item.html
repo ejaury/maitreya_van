@@ -16,7 +16,7 @@
         <a href="{{ menu_item.url }}">
         {{ menu_item.caption }}
         </a>
-        <ul>
+        <ul class="second_level">
             {% for child in menu_item.children %}
                 {% show_menu_item child %}
           {% endfor %}
