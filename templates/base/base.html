@@ -61,28 +61,30 @@
   </div>
 
   <div id="body">
-    {% block mp_container %}
-    {% endblock %}
+    <div id="body_wrapper">
+      {% block mp_container %}
+      {% endblock %}
 
-    {% block content_base %}
-    <div id="content_container">
-      <div id="sidebar_wrapper">
-        <div id="sidebar">
-          {% show_menu "Main" "sidebar" %}
+      {% block content_base %}
+      <div id="content_container">
+        <div id="sidebar_wrapper">
+          <div id="sidebar">
+            {% show_menu "Main" "sidebar" %}
+          </div>
+        </div>
+
+        <div id="content_wrapper">
+          <div id="content">
+            {% block content %}
+            {% endblock %}
+          </div>
         </div>
       </div>
+      {% endblock %}
 
-      <div id="content_wrapper">
-        <div id="content">
-          {% block content %}
-          {% endblock %}
-        </div>
-      </div>
+      {% block mp_updates %}
+      {% endblock %}
     </div>
-    {% endblock %}
-
-    {% block mp_updates %}
-    {% endblock %}
   </div>
 
   <div id="footer">

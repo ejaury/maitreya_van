@@ -5,7 +5,7 @@ html, body {
 }
 
 body {
-  background-color: #E5F2FD;
+  background-color: #212E3C;
   font-family: "Myriad Pro", Helvetica, Tahoma, Arial, Sans-serif;
   font-size: 95%;
 }
@@ -57,14 +57,20 @@ p {
 }
 
 #body {
+  background-color: #E5F2FD;
+}
+
+#body_wrapper {
+  background-color: #E5F2FD;
   margin: auto;
+  padding: 15px 0;
   width: 980px;
 }
 
 #bottom_menu {
   font-size: 95%;
   margin: auto;
-  width: 1000px;
+  width: 980px;
 }
 
 #bottom_menu a {
@@ -104,7 +110,7 @@ p {
 
 #copyright_container {
   margin: auto;
-  width: 980px;
+  width: 960px;
 }
 
 #content {
@@ -120,7 +126,6 @@ p {
 
 #content_container {
   margin: auto;
-  margin: 15px auto;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   background-color: #F1F1C6;
@@ -194,7 +199,6 @@ p {
   position: absolute;
   margin: 15px auto;
   */
-  margin-top: 350px;
   width: 980px;
 }
 
@@ -240,7 +244,7 @@ p {
   border-bottom: 1px solid #999;
   min-height: 10em;
   padding: 20px 25px;
-  margin: -15px auto 15px auto;
+  margin: -15px auto 0;
   width: 900px;
 }
 
@@ -263,6 +267,13 @@ p {
   border-bottom: 1px dashed gray;
   margin: 5px 0 10px;
   padding-bottom: 3px;
+}
+
+#mp_wrapper {
+  background: url("/site_media/css/images/front_page_bg.png") no-repeat #E5F2FD;
+  padding-top: 350px;
+  margin: auto;
+  width: 980px;
 }
 
 #sidebar_wrapper {
