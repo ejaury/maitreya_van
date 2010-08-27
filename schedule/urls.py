@@ -101,5 +101,4 @@ url(r'^feed/calendar/(.*)/$',
 (r'^ical/calendar/(.*)/$', CalendarICalendar()),
 
  #url(r'$', object_list, info_dict, name='schedule'),
- url(r'^$', 'schedule.views.index'),
 )

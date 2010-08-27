@@ -15,10 +15,6 @@ from schedule.models import *
 from schedule.periods import Period, weekday_names
 from schedule.utils import check_event_permissions, coerce_date_dict
 
-def index(request):
-    return render_to_response("events/calendar_month.html",
-                              context_instance=RequestContext(request))
-
 def calendar(request, calendar_slug, template='schedule/calendar.html'):
     """
     This view returns a calendar.  This view should be used if you are
