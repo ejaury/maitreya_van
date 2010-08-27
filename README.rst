@@ -15,5 +15,5 @@ Included libraries/apps
 
 Initial Deployment Setup
 ========================
-#. Create a calendar with slug 'temple'
+1. Create a calendar with slug 'temple'
 #. Add treemenu items (eventually database fixtures should be created for this)
