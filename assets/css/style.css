@@ -15,6 +15,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 a:visited {
   color: #227ECC;
 }
@@ -156,7 +160,7 @@ p {
 }
 
 #main_menu {
-  font-family: 'Yanone Kaffeesatz', Arial;
+  font-family: 'Yanone Kaffeesatz', 'Myriad Pro', Arial;
   font-size: 25px;
   padding: 110px 0 0;
 }
@@ -320,6 +324,10 @@ p {
 
 #top_menu li.left_separator {
   border-left: 1px solid lightblue;
+}
+
+a.no_line:hover {
+  text-decoration: none;
 }
 
 a.home_button {
@@ -518,10 +526,6 @@ ul.horizontal_left li {
 
 .photo_navigation a {
   padding: 0 5px;
-}
-
-.photo_navigation a:hover {
-  border-bottom: 1px dotted gray;
 }
 
 .side_menu_header {

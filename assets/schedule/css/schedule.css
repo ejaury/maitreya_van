@@ -41,6 +41,10 @@ div.occ_column div.cancelled .actions {
   display:none;
 }
 
+td.daynumber div.daycell a {
+  color: black;
+}
+
 td.daynumber div.daycell .cancelled {
   background-color:inherit;
   color:gray;

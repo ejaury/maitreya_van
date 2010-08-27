@@ -32,14 +32,14 @@
         </div>
       </div>
       <div class="col" id="mp_events">
-        <h3>UPCOMING EVENTS</h3>
+        <a href="/events/calendar/month/temple"><h3>UPCOMING EVENTS</h3></a>
         <div class="latest_list">
           {% if occurrences %}
             <ul>
             {% for o in occurrences %}
               <li {% if not forloop.first %} class="add_separator" {% endif %}>
                 <p class="date">{{ o.start.date|date:"F d, Y" }}</p>
-                <p class="title"><a href="#">{{ o.title }}</a></p>
+                <p class="title"><a href="{{ o.get_absolute_url }}">{{ o.title }}</a></p>
               </li>
             {% endfor %}
             </ul>

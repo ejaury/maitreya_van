@@ -4,7 +4,7 @@
 {% ifequal menu_type "top_menu" %}
 		<li>
       <a href="{{ menu_item.url }}"
-         class="{% if request.path|match_path:menu_item.extension.selected_patterns %} selected{% endif %}">
+         class="no_line {% if request.path|match_path:menu_item.extension.selected_patterns %} selected{% endif %}">
         {{ menu_item.caption|upper }}
       </a>
     </li>
@@ -13,7 +13,7 @@
 {% ifequal menu_type "sidebar" %}
 	{% if menu_item.has_children %}
       <li class="{% if request.path|match_path:menu_item.extension.selected_patterns %} selected{% endif %}">
-        <a href="{{ menu_item.url }}">
+        <a href="{{ menu_item.url }}" class="no_line">
         {{ menu_item.caption }}
         </a>
         <ul class="second_level">
@@ -24,7 +24,7 @@
 		</li>
 	{% else %}
     <li class="{% if request.path|match_path:menu_item.extension.selected_patterns %} selected{% endif %}">
-      <a href="{{ menu_item.url }}">
+      <a href="{{ menu_item.url }}" class="no_line">
       {{ menu_item.caption }}
       </a>
     </li>
