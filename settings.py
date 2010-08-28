@@ -86,7 +86,6 @@ INSTALLED_APPS = (
     'treemenus',
     'maitreya_van.classes',
     'maitreya_van.general',
-    'maitreya_van.main',
     'maitreya_van.multimedia',
     'maitreya_van.navigation',
     # Third-party

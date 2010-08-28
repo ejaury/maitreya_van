@@ -3,6 +3,9 @@ from maitreya_van.classes.models import Class
 from treemenus.models import Menu, MenuItem
 
 class ClassAdmin(admin.ModelAdmin):
+  filter_horizontal = ('categories',)
+  prepopulated_fields = {"slug": ("title",)}
+
   def save_model(self, request, obj, form, change):
     obj.save()
     # add this object to treemenu list if it's new
