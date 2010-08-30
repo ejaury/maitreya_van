@@ -3,6 +3,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from exceptions import NotImplementedError
 from tagging.fields import TagField
+from treemenus.models import Menu, MenuItem
 
 class BasePage(models.Model):
   title = models.CharField(max_length=100)
@@ -13,6 +14,8 @@ class BasePage(models.Model):
                           in which the pages can be accessed via \
                           http://www.mywebsite.com/pages/comm-performance')
   content = models.TextField()
+  parent_menu_item = models.ForeignKey(MenuItem, help_text = 'Menu item that \
+    this page belongs to (e.g. Dance Class page belongs to "Classes" section)')
   created_at = models.DateTimeField(auto_now_add=True,
                                     default=datetime.datetime.today())
   updated_at = models.DateTimeField(auto_now=True,
@@ -23,6 +26,28 @@ class BasePage(models.Model):
 
   def __unicode__(self):
     return self.title
+
+  def save(self, *args, **kwargs):
+    new = True
+    if self.id:
+      new = False
+    super(BasePage, self).save(*args, **kwargs)
+
+    # add this object to treemenu list if it's new
+    if new:
+      menu_item = MenuItem(parent=self.parent_menu_item,
+                           caption=self.title,
+                           url=self.get_absolute_url())
+      menu_item.save()
+
+  def delete(self, *args, **kwargs):
+    try:
+      menu_item = MenuItem.objects.get(url=self.get_absolute_url())
+      if menu_item:
+        menu_item.delete()
+    except ObjectDoesNotExist:
+      pass
+    super(BasePage, self).delete(*args, **kwargs)
 
   @models.permalink
   def get_absolute_url(self):

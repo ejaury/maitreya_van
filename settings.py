@@ -112,3 +112,6 @@ THUMBNAIL_ROW_SIZE = 4
 # Schedule Settings
 DEFAULT_CALENDAR_SLUG = 'temple'
 UPCOMING_EVENTS_LIMIT = 3
+
+# TreeMenu Settings
+MAIN_MENU_NAME = 'Main'
