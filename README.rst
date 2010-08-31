@@ -19,5 +19,4 @@ Initial Deployment Setup
 ========================
 1. Create a calendar with slug 'temple'
 #. Add a menu called 'Main', or define menu name in settings.py (MAIN_MENU_NAME)
-#. Add 1st-level treemenu items (eventually database fixtures should be created
-for this) to the menu
+#. Add 1st-level treemenu items (eventually database fixtures should be created for this) to the menu

@@ -13,7 +13,7 @@ class Class(TaggablePage):
 
   @models.permalink
   def get_absolute_url(self):
-    return ('maitreya_van.classes.views.view_page', (), {
+    return ('maitreya_van.pages.views.view_page', (), {
               'class_id': self.id,
               'slug': slugify(self.title),
             })
