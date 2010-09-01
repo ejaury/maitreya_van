@@ -1,39 +1,16 @@
 {% extends "base/base.html" %}
 
 {% block title %}
-Classes - 
+{{ title }} -
 {% endblock %}
 
 {% block content %}
-<h1>Classes</h1>
-<h3 id="buddha-enlightenment-class">Buddha Enlightenment Class</h3>
+<h1>{{ title }}</h1>
+{% for obj in object_list %}
+<h3 id="{{ obj.slug }}">{{ obj.title }}</h3>
 <p>
-  {% load webdesign %}
-  {% lorem 40 w %}
+  {{ obj.content }}
 </p>
-
-<div class="class_gallery">
-  <img width="150px" src="/site_media/images/sample1.jpg"/>
-  <img width="150px" src="/site_media/images/sample1.jpg"/>
-  <img width="150px" src="/site_media/images/sample1.jpg"/>
-</div>
-
-<h3>International Youth Class (Web Conference Class)</h3>
-<p>
-  {% load webdesign %}
-  {% lorem %}
-</p>
-
-<h3>Local Youth Class</h3>
-<p>
-  {% load webdesign %}
-  {% lorem 35 w %}
-</p>
-
-{% load tree_menu_tags %}
-{% show_menu "Main" "unordered-list" %}
-
-{{ request.path }}
-
+{% endfor %}
 {% endblock %}
 
