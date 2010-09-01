@@ -8,7 +8,7 @@
 <h1>{{ title }}</h1>
 <h3 id="{{ object.title|slugify }}">{{ object.title }}</h3>
 <p>
-  {{ object.content }}
+  {{ object.content|safe }}
 </p>
 
 <div class="class_gallery">

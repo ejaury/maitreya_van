@@ -9,7 +9,7 @@
 {% for obj in object_list %}
 <h3 id="{{ obj.slug }}">{{ obj.title }}</h3>
 <p>
-  {{ obj.content }}
+  {{ obj.content|safe }}
 </p>
 {% endfor %}
 {% endblock %}

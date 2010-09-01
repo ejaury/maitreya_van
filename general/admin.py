@@ -1,16 +1,29 @@
+from django import forms
 from django.conf import settings
 from django.contrib import admin
-from maitreya_van.general.models import Category
+from maitreya_van.add_ons.tinymce.widgets import TinyMCE
+from maitreya_van.general.models import BasePage, Category
 from maitreya_van.utils.admin import delete_selected_models
 from treemenus.models import Menu, MenuItem
 from treemenus.utils import get_parent_choices
+
+class BasePageAdminForm(forms.ModelForm):
+  content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+  class Meta:
+    model = BasePage
 
 class CategoryAdmin(admin.ModelAdmin):
   prepopulated_fields = {"slug": ("name",)}
 
 class BasePageAdmin(admin.ModelAdmin):
   actions = [delete_selected_models,]
+  form = BasePageAdminForm
   prepopulated_fields = {"slug": ("title",)}
+
+  class Media:
+    js = (
+      "js/tiny_mce/tiny_mce.js",
+    )
 
   def get_actions(self, request):
     actions = super(BasePageAdmin, self).get_actions(request)

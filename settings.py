@@ -1,6 +1,7 @@
 # Django settings for maitreya_van project.
-import os
+import os, sys
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(PROJECT_DIR, "add_ons"))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -83,7 +84,6 @@ INSTALLED_APPS = (
     'django.contrib.webdesign',
     'django.contrib.admin',
     'south',
-    'treemenus',
     'maitreya_van.pages',
     'maitreya_van.general',
     'maitreya_van.multimedia',
@@ -92,8 +92,10 @@ INSTALLED_APPS = (
     # ===========
     # django-schedule 1.0 RC-2
     'maitreya_van.schedule',
+    'maitreya_van.add_ons.tinymce',
     'photologue',
     'tagging',
+    'treemenus',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -115,3 +117,11 @@ UPCOMING_EVENTS_LIMIT = 3
 
 # TreeMenu Settings
 MAIN_MENU_NAME = 'Main'
+
+# django-tinymce settings
+TINYMCE_DEFAULT_CONFIG = {
+    'mode': 'textareas',
+    'theme': "advanced",
+    'plugins': "searchreplace,table",
+    'theme_advanced_buttons3_add': "search,replace,tablecontrols",
+}

@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     (r'^events/upcoming/', include('maitreya_van.schedule.urls')),
     (r'^multimedia/photos/', include('maitreya_van.multimedia.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^tinymce/', include('maitreya_van.add_ons.tinymce.urls')),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {
       'document_root': '/home/edwin/maitreya_van/assets/', 'show_indexes': True
     }),

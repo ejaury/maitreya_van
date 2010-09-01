@@ -2,6 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from maitreya_van.general.models import Category, TaggablePage
 
+
 class Class(TaggablePage):
   categories = models.ManyToManyField(Category, blank=True, null=True,
                                       limit_choices_to = {

@@ -13,6 +13,7 @@ Required apps
 Included libraries/apps
 =======================
 * django-schedule 1.0 RC-2
+# django-tinymce 3.3.8
 
 
 Initial Deployment Setup
