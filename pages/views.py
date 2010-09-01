@@ -12,6 +12,10 @@ def view_class(request, class_id, slug):
   obj = get_object_or_404(Class, pk=class_id)
   return __render_detail(request, slug, obj)
 
+def view_past_event(request, past_event_id, slug):
+  obj = get_object_or_404(PastEvent, pk=past_event_id)
+  return __render_detail(request, slug, obj)
+
 def view_teaching(request, teaching_id, slug):
   obj = get_object_or_404(Teaching, pk=teaching_id)
   return __render_detail(request, slug, obj)

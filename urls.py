@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^$', 'maitreya_van.main.views.index'),
     (r'^about/', include('maitreya_van.about.urls')),
-    (r'^events/', include('maitreya_van.schedule.urls')),
+    (r'^events/upcoming/', include('maitreya_van.schedule.urls')),
     (r'^multimedia/photos/', include('maitreya_van.multimedia.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {
@@ -31,6 +31,7 @@ urlpatterns = patterns('',
 
 urlpatterns += patterns('maitreya_van.pages.views',
     (r'^classes/(?P<class_id>\d+)/(?P<slug>[\w-]+)/$', 'view_class'),
+    (r'^events/past/(?P<past_event_id>\d+)/(?P<slug>[\w-]+)/$', 'view_past_event'),
     (r'^teachings/(?P<teaching_id>\d+)/(?P<slug>[\w-]+)/$', 'view_teaching'),
 )
 
@@ -47,6 +48,13 @@ urlpatterns += patterns('django.views.generic.list_detail',
       'template_name' :'pages/index.html',
       'extra_context': {
         'title': 'Classes',
+      },
+    }),
+    url(r'^events/past/$', 'object_list', name='past_event_index', kwargs={
+      'queryset': PastEvent.objects.all(),
+      'template_name' :'pages/index.html',
+      'extra_context': {
+        'title': 'Past Events',
       },
     }),
 )
