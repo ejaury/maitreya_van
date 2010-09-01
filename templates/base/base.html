@@ -22,17 +22,17 @@
 
   <style type="text/css" title="currentStyle">
     @import url("http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz");
-    @import url("/site_media/schedule/css/schedule.css");
-    @import url("/site_media/css/style.css");
-    @import url("/site_media/css/jquery-ui/jquery-ui.css");
-    @import url("/site_media/css/colorbox/colorbox.css");
+    @import url("{{ MEDIA_URL }}schedule/css/schedule.css");
+    @import url("{{ MEDIA_URL }}css/style.css");
+    @import url("{{ MEDIA_URL }}css/jquery-ui/jquery-ui.css");
+    @import url("{{ MEDIA_URL }}css/colorbox/colorbox.css");
   </style>
 
   <!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script-->
-  <script type="text/javascript" src="/site_media/js/jquery.js"></script>
-  <script type="text/javascript" src="/site_media/js/jquery-ui.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.js"></script>
   <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.colorbox-min.js"></script>
-  <script type="text/javascript" src="/site_media/js/jquery.tools.min.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.tools.min.js"></script>
 
   {% block extra_head %}
   {% endblock %}
@@ -51,7 +51,7 @@
       <div id="logo">
         <a href="/">
           <img alt="Providence Maitreya Buddha Missionary Temple"
-               src="/site_media/css/images/logo.png"/>
+               src="{{ MEDIA_URL }}css/images/logo.png"/>
         </a>
         <div id="main_menu">
           {% show_menu "Main" "top_menu" %}

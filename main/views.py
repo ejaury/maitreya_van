@@ -1,6 +1,7 @@
 import datetime
 from django.conf import settings
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 from maitreya_van.schedule.models import Event, Calendar
 from maitreya_van.schedule.periods import Period
 
@@ -14,4 +15,4 @@ def index(request):
   occurrences = Period(events, start, end).get_occurrences()[:event_limit]
   return render_to_response('main/index.html', {
       'occurrences': occurrences,
-    })
+    }, context_instance=RequestContext(request))
