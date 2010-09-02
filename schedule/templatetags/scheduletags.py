@@ -81,7 +81,6 @@ def options(context, occurrence ):
     user = context['request'].user
     if CHECK_PERMISSION_FUNC(occurrence.event, user):
         context['edit_occurrence'] = occurrence.get_edit_url()
-        print context['edit_occurrence']
         context['cancel_occurrence'] = occurrence.get_cancel_url()
         context['delete_event'] = reverse('delete_event', args=(occurrence.event.id,))
         context['edit_event'] = reverse('edit_event', args=(occurrence.event.calendar.slug, occurrence.event.id,))

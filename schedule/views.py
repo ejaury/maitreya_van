@@ -134,6 +134,11 @@ def occurrence(request, event_id,
         'event': event,
         'occurrence': occurrence,
         'back_url': back_url,
+        'edit_occurrence': occurrence.get_edit_url(),
+        'cancel_occurrence': occurrence.get_cancel_url(),
+        'delete_event': reverse('delete_event', args=(occurrence.event.id,)),
+        'edit_event': reverse('edit_event',
+          args=(occurrence.event.calendar.slug, occurrence.event.id,)),
     }, context_instance=RequestContext(request))
 
 def view_upcoming_occurrences(request, calendar_slug, template_name='events/list.html'):

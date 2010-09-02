@@ -9,12 +9,14 @@
     <td class="{{size}} daynumber free {% ifequal today.day day.start.day %} today {% endifequal %}">
 {% endif %}
     <div class="header">
-        <!--a href="{% url day_calendar calendar.slug %}{% querystring_for_date day.start 3 %}">
-        </a-->
-        <a id="day_{{ day.start.day }}" href="/admin/schedule/event/add/"
-           style="text-decoration: none;">
-            <b>{{day.start.day}}</b>
-        </a>
+        {% if perms.schedule.add_event %}
+          <a id="day_{{ day.start.day }}" href="/admin/schedule/event/add/"
+             style="text-decoration: none;">
+              <b>{{day.start.day}}</b>
+          </a>
+        {% else %}
+          <b>{{day.start.day}}</b>
+        {% endif %}
     </div>
     {% ifnotequal size "small" %}
         <div class="daycell">
