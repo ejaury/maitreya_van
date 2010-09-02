@@ -1,18 +1,35 @@
 {% extends "schedule/event_form_base.html" %}
 {% load i18n %}
 
-{% block body %}
+{% block content %}
 <b>{% trans "Create or change event. All fields are required." %}</b>
 <br/><br/>
 <form action="" method="post">
-<table>
-{{ form.as_table }}
+<table class="event_form">
+  <tbody>
+    {% for f in form %}
+    <tr>
+      <th>
+        <label for="{{ f.auto_id }}" {% if not f.field.required%}class="optional"{% endif %}>{{ f.label }}:</label>
+      </th>
+      <td>
+        {% if f.errors %}
+        <ul class="errorlist"
+          {% for error in f.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {{ f }}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 <br/>
 <input type="submit" value="{% trans "Save" %}"
        onsubmit="redirect_on_success({{ status }})">
-<!--input type="button" value="{% trans "Cancel" %}"
-onclick="parent.window.location.reload()"/-->
 <input type="button" value="{% trans "Cancel" %}"
 onclick="window.location='{{next}}'"/>
 <input type="hidden" name="next" value="{{next|default:""}}"/>

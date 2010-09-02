@@ -91,6 +91,7 @@ def options(context, occurrence ):
 @register.inclusion_tag("schedule/_create_event_options.html", takes_context=True)
 def create_event_url(context, calendar, slot ):
     context.update ( {
+        'day_start': slot,
         'calendar' : calendar,
         'MEDIA_URL' : getattr(settings, "MEDIA_URL"),
     })

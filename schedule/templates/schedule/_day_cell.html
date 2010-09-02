@@ -10,12 +10,9 @@
 {% endif %}
     <div class="header">
         {% if perms.schedule.add_event %}
-          <a id="day_{{ day.start.day }}" href="/admin/schedule/event/add/"
-             style="text-decoration: none;">
-              <b>{{day.start.day}}</b>
-          </a>
+          {% create_event_url calendar day.start %}
         {% else %}
-          <b>{{day.start.day}}</b>
+          <strong>{{day.start.day}}</strong>
         {% endif %}
     </div>
     {% ifnotequal size "small" %}

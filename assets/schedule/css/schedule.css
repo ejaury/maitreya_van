@@ -164,14 +164,10 @@ table.calendar td.small {
 td.daynumber { height:50px;}
 
 td.daynumber div.header {
+  color: #444;
   margin-bottom:2px;
-  padding-bottom:1px;
-  padding-top:1px;
-  text-align:right;
-}
-
-td.daynumber div.header a {
   padding:1px 5px 1px 75px;
+  text-align:right;
 }
 
 td.small div.header a {
@@ -319,4 +315,20 @@ div.navigation a {
 div.tablewrapper {
   font-family: sans-serif;
   text-align:center;
+}
+
+.event_actions {
+  margin: 10px 0;
+}
+
+.event_actions img {
+  vertical-align: middle;
+}
+
+table.event_form .errorlist {
+  color: red;
+}
+
+table.event_form label.optional {
+  font-weight: normal;
 }
