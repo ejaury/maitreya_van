@@ -113,6 +113,7 @@ THUMBNAIL_ROW_SIZE = 4
 
 # Schedule Settings
 DEFAULT_CALENDAR_SLUG = 'temple'
+OCCURRENCE_CANCEL_REDIRECT = '/events/upcoming/calendar/month/temple/'
 UPCOMING_EVENTS_LIMIT = 3
 
 # TreeMenu Settings

@@ -192,12 +192,13 @@ def cancel_occurrence(request, event_id,
     conformation to cancel.
     """
     event, occurrence = get_occurrence(event_id, *args, **kwargs)
-    next = kwargs.get('next',None) or get_next_url(request, event.get_absolute_url())
+    next = request.META.get('HTTP_REFERER', None)
     if request.method != "POST":
         return render_to_response(template_name, {
             "occurrence": occurrence,
             "next":next,
         }, context_instance=RequestContext(request))
+    next = OCCURRENCE_CANCEL_REDIRECT
     occurrence.cancel()
     return HttpResponseRedirect(next)
 
