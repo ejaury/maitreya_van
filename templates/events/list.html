@@ -15,7 +15,7 @@
           {% if not occ.description %}
             <p class="NA">Detail event description is not available</p>
           {% else %}
-            <p>{{ occ.description|truncatewords:15 }}<p>
+            <p>{{ occ.description|striptags|truncatewords_html:15|safe }}<p>
           {% endif %}
         </div>
       </div>
