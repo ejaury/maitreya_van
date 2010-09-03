@@ -23,8 +23,10 @@ def view_teaching(request, teaching_id, slug):
 def __render_detail(request, slug, obj):
   if not slug == slugify(obj.title):
     raise Http404
+  verbose_name = obj.__class__._meta.verbose_name.split()
+  model_title = ' '.join([ word.capitalize() for word in verbose_name ])
   return render_to_response('pages/view_page.html', {
                               'object': obj,
-                              'title': obj.__class__.__name__,
+                              'title': model_title,
                             },
                             context_instance=RequestContext(request))
