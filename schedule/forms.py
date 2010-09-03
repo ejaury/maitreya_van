@@ -1,5 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from maitreya_van.add_ons.tinymce.widgets import TinyMCE
 from schedule.models import Event, Occurrence
 import datetime
 import time
@@ -17,6 +18,11 @@ class SpanForm(forms.ModelForm):
 
 
 class EventForm(SpanForm):
+    description = forms.CharField(widget=TinyMCE(attrs={
+        'cols': 80,
+        'rows': 30,
+      }), required=False)
+
     def __init__(self, hour24=False, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
     
@@ -28,7 +34,11 @@ class EventForm(SpanForm):
         
 
 class OccurrenceForm(SpanForm):
-    
+    description = forms.CharField(widget=TinyMCE(attrs={
+        'cols': 80,
+        'rows': 30,
+      }), required=False)
+
     class Meta:
         model = Occurrence
         exclude = ('original_start', 'original_end', 'event', 'cancelled')

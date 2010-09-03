@@ -122,7 +122,12 @@ MAIN_MENU_NAME = 'Main'
 # django-tinymce settings
 TINYMCE_DEFAULT_CONFIG = {
     'mode': 'textareas',
-    'theme': "advanced",
     'plugins': "searchreplace,table",
+    'theme': "advanced",
+    'theme_advanced_buttons1_add': "fontsizeselect",
     'theme_advanced_buttons3_add': "search,replace,tablecontrols",
+    'theme_advanced_blockformats': 'p,address,pre,h4,h5,h6',
+    'convert_fonts_to_spans': 'false',
+    'theme_advanced_font_sizes': '80%, 100%, 120%, 135%, 155%, 180%',
+    'font_size_style_values': '80%, 100%, 120%, 135%, 155%, 180%',
 }

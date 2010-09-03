@@ -35,7 +35,7 @@
 </table>
 {% if occurrence.description %}
 <h3>Description</h3>
-<p>{{occurrence.description}}</p>
+<p>{{ occurrence.description|safe }}</p>
 {% endif %}
 
 <div class="event_actions">
