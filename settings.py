@@ -12,13 +12,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'maitreya_van'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'root'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'root'         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
-
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -55,23 +48,21 @@ SECRET_KEY = '@+7cb_=v4lmc&$29x^8pg8k&03dj_*terc(j%*xbv3j@3or!sq'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'maitreya_van.urls'
 TEMPLATE_DIRS = (
-    # Put strings here, like '/home/html/django_templates' or 'C:/www/django/templates'.
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_DIR,"templates"),
 )
 
@@ -99,7 +90,7 @@ INSTALLED_APPS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.auth',
+    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
@@ -131,3 +122,32 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme_advanced_font_sizes': '80%, 100%, 120%, 135%, 155%, 180%',
     'font_size_style_values': '80%, 100%, 120%, 135%, 155%, 180%',
 }
+
+try:
+    import local_settings
+except ImportError:
+    print """
+    -------------------------------------------------------------------------
+    You need to create a local_settings.py file which needs to contain at least
+    database connection information.
+
+    Copy local_settings.py.example to local_settings.py and edit it.
+    -------------------------------------------------------------------------
+        """
+    import sys
+    sys.exit(1)
+else:
+    # Import any symbols that begin with A-Z. Append to lists any symbols that
+    # begin with "EXTRA_".
+    import re
+    for attr in dir(local_settings):
+        match = re.search('^EXTRA_(\w+)', attr)
+        if match:
+            name = match.group(1)
+            value = getattr(local_settings, attr)
+            try:
+                globals()[name] += value
+            except KeyError:
+                globals()[name] = value
+        elif re.search('^[A-Z]', attr):
+            globals()[attr] = getattr(local_settings, attr)
