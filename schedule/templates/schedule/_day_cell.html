@@ -1,5 +1,4 @@
 {% load scheduletags %}
-
 {% ifnotequal day.start.month month.start.month %}
   <td class="{{size}} daynumber noday"></td>
 {% else %}
@@ -27,8 +26,6 @@
                                 {% ifequal o.class 1 %}{{ o.occurrence.start|time:"G:i" }}{% endifequal %}
                                 {% ifequal o.class 2 %}(All day){% endifequal %}
                                 {% ifequal o.class 3 %}Ends at {{ o.occurrence.end|time:"G:i" }}{% endifequal %}
-                            <!--/div>
-                            <div class="eventdesc"-->
                                 {% title o.occurrence %}
                             </div>
                           </a>

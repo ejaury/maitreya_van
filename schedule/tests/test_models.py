@@ -115,6 +115,17 @@ class TestOccurrence(TestCase):
         period_post = Period([self.recurring_event], span_post[0], span_post[1])
         self.assertFalse(period_pre.has_occurrences())
         self.assertTrue(period_post.has_occurrences())
+        # trigger bug discovered by gautamadude - modifying recurring event
+        # breaks link between a persistent occurrence and the occurrence chain
+        # leaving an "orphaned" occurrence
+        occurrences = self.recurring_event.get_occurrences(start=self.start,
+                                    end=self.end)
+        self.assertTrue(len(occurrences) == 3)
+        self.recurring_event.start = datetime.datetime(2008, 1, 5, 8, 15)
+        self.recurring_event.save()
+        occurrences_later = self.recurring_event.get_occurrences(start=self.start,
+                                    end=self.end)
+        self.assertEquals(len(occurrences_later), len(occurrences))
 
     def test_cancelled_occurrences(self):
         occurrences = self.recurring_event.get_occurrences(start=self.start,
@@ -128,4 +139,13 @@ class TestOccurrence(TestCase):
         occurrences = self.recurring_event.get_occurrences(start=self.start,
                                     end=self.end)
         self.assertFalse(occurrences[2].cancelled)
+        # trigger bug discovered by gautamadude
+        occurrences = self.recurring_event.get_occurrences(start=self.start,
+                                    end=self.end)
+        self.assertTrue(len(occurrences) == 3)
+        self.recurring_event.start = datetime.datetime(2008, 1, 5, 8, 15)
+        self.recurring_event.save()
+        occurrences_later = self.recurring_event.get_occurrences(start=self.start,
+                                    end=self.end)
+        self.assertEquals(len(occurrences_later), len(occurrences))
 

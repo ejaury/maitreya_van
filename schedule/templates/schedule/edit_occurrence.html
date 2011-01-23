@@ -2,9 +2,9 @@
 {% load i18n %}
 
 {% block content %}
-<h1>{% trans "Edit Occurrence" %}</h1>
+<h1>{% trans "Edit occurrence" %}</h1>
 <br/><br/>
-<form action="" method="post">
+<form action="" method="post">{% csrf_token %}
 <table class="event_form">
   <tbody>
     {% for f in form %}

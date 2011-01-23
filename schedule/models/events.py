@@ -31,7 +31,7 @@ class Event(models.Model):
     created_on = models.DateTimeField(_("created on"), default = datetime.datetime.now)
     rule = models.ForeignKey(Rule, null = True, blank = True, verbose_name=_("rule"), help_text=_("Select '----' for a one time only event."))
     end_recurring_period = models.DateTimeField(_("end recurring period"), null = True, blank = True, help_text=_("This date is ignored for one time only events."))
-    calendar = models.ForeignKey(Calendar)
+    calendar = models.ForeignKey(Calendar, blank=True, null=True)
     objects = EventManager()
 
     # extra fields
@@ -45,6 +45,7 @@ class Event(models.Model):
         verbose_name = _('event')
         verbose_name_plural = _('events')
         app_label = 'schedule'
+	get_latest_by = 'start' 
 
     def __unicode__(self):
         date_format = u'l, %s' % ugettext("DATE_FORMAT")
@@ -104,8 +105,8 @@ class Event(models.Model):
     def get_rrule_object(self):
         if self.rule is not None:
             params = self.rule.get_params()
-            frequency = 'rrule.%s' % self.rule.frequency
-            return rrule.rrule(eval(frequency), dtstart=self.start, **params)
+            frequency = rrule.__dict__[self.rule.frequency]
+            return rrule.rrule(frequency, dtstart=self.start, **params)
 
     def _create_occurrence(self, start, end=None):
         if end is None:
@@ -135,7 +136,7 @@ class Event(models.Model):
             if self.end_recurring_period and self.end_recurring_period < end:
                 end = self.end_recurring_period
             rule = self.get_rrule_object()
-            o_starts = rule.between(start-difference, end, inc=True)
+            o_starts = rule.between(start-difference, end, inc=False)
             for o_start in o_starts:
                 o_end = o_start + difference
                 occurrences.append(self._create_occurrence(o_start, o_end))
@@ -181,7 +182,11 @@ class Event(models.Model):
         while True:
             next = generator.next()
             yield occ_replacer.get_occurrence(next)
-
+    
+    def next_occurrence(self):
+        for o in self.occurrences_after():
+            return o
+    
 
 class EventRelationManager(models.Manager):
     '''
@@ -379,7 +384,6 @@ class Occurrence(models.Model):
             self.location = self.event.location
         if self.address is None:
             self.address = self.event.address
-
 
     def moved(self):
         return self.original_start != self.start or self.original_end != self.end

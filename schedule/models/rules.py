@@ -1,7 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-freqs = (   ("YEARLY", _("Yearly")),
+from dateutil import rrule
+
+RRULE_WEEKDAYS = {"MO":0,"TU":1,"WE":2,"TH":3,"FR":4,"SA":5,"SU":6}
+
+freqs = ( ("YEARLY", _("Yearly")),
             ("MONTHLY", _("Monthly")),
             ("WEEKLY", _("Weekly")),
             ("DAILY", _("Daily")),
@@ -11,7 +15,7 @@ freqs = (   ("YEARLY", _("Yearly")),
 
 class Rule(models.Model):
     """
-    This defines a rule by which an event will recur.  This is defined by the
+    This defines a rule by which an event will recur. This is defined by the
     rrule in the dateutil documentation.
 
     * name - the human friendly name of this kind of recursion.
@@ -48,6 +52,18 @@ class Rule(models.Model):
         verbose_name_plural = _('rules')
         app_label = 'schedule'
 
+    def parse_param(self, param_value):
+        param = param_value.split('(',1)[0]
+        if param in RRULE_WEEKDAYS:
+            try:
+                return eval("rrule.%s" % param_value)
+            except ValueError:
+                raise ValueError('rrule parameter improperly formatted. Error on: %s' % param_value)
+        try:
+            return int(param_value)
+        except ValueError:
+            raise ValueError('rrule parameter should be integer or weekday constant (e.g. MO, TU, etc.). Error on: %s' % param_value)
+
     def get_params(self):
         """
         >>> rule = Rule(params = "count:1;bysecond:1;byminute:1,2,4,5")
@@ -59,9 +75,11 @@ class Rule(models.Model):
         params = self.params.split(';')
         param_dict = []
         for param in params:
+            if param.strip() == "":
+                continue # skip blanks
             param = param.split(':')
             if len(param) == 2:
-                param = (str(param[0]), [int(p) for p in param[1].split(',')])
+                param = (str(param[0]).strip(), [self.parse_param(p.strip()) for p in param[1].split(',')])
                 if len(param[1]) == 1:
                     param = (param[0], param[1][0])
                 param_dict.append(param)
@@ -70,3 +88,4 @@ class Rule(models.Model):
     def __unicode__(self):
         """Human readable string for Rule"""
         return self.name
+

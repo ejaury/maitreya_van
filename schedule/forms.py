@@ -1,9 +1,10 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from maitreya_van.add_ons.tinymce.widgets import TinyMCE
 from schedule.models import Event, Occurrence
 import datetime
 import time
+
+from maitreya_van.add_ons.tinymce.widgets import TinyMCE
 
 
 class SpanForm(forms.ModelForm):
@@ -21,7 +22,7 @@ class EventForm(SpanForm):
     description = forms.CharField(widget=TinyMCE(attrs={
         'cols': 80,
         'rows': 30,
-      }), required=False)
+    }), required=False)
 
     def __init__(self, hour24=False, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
@@ -37,8 +38,26 @@ class OccurrenceForm(SpanForm):
     description = forms.CharField(widget=TinyMCE(attrs={
         'cols': 80,
         'rows': 30,
-      }), required=False)
-
+    }), required=False)
+    
     class Meta:
         model = Occurrence
         exclude = ('original_start', 'original_end', 'event', 'cancelled')
+
+
+class RuleForm(forms.ModelForm):
+    params = forms.CharField(widget=forms.Textarea, help_text=_("Extra parameters to define this type of recursion. Should follow this format: rruleparam:value;otherparam:value."))
+
+    def clean_params(self):
+        params = self.cleaned_data["params"]
+        try:
+            params = params.split(';')
+            for param in params:
+                param = param.split(':')
+                if len(param) == 2:
+                    param = (str(param[0]), [int(p) for p in param[1].split(',')])
+                    if len(param[1]) == 1:
+                        param = (param[0], param[1][0])
+        except ValueError:
+            raise forms.ValidationError(_("Params format looks invalide"))
+        return self.cleaned_data["params"]

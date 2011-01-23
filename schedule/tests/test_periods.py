@@ -138,7 +138,7 @@ class TestMonth(TestCase):
         if FIRST_DAY_OF_WEEK == 0:
             expecteds = [
                 (0, datetime.datetime(2008, 1, 27, 0, 0),
-                 datetime.datetime(2008, 1, 28, 0, 0))
+                 datetime.datetime(2008, 1, 28, 0, 0)),
                 (0, datetime.datetime(2008, 1, 28, 0, 0),
                  datetime.datetime(2008, 1, 29, 0, 0)),
                 (0, datetime.datetime(2008, 1, 29, 0, 0),
@@ -155,7 +155,7 @@ class TestMonth(TestCase):
 
         else:
             expecteds = [
-                (0, datetime.datetime(2008, 1, 28, 0, 0),
+               (0, datetime.datetime(2008, 1, 28, 0, 0),
                  datetime.datetime(2008, 1, 29, 0, 0)),
                 (0, datetime.datetime(2008, 1, 29, 0, 0),
                  datetime.datetime(2008, 1, 30, 0, 0)),
@@ -205,7 +205,7 @@ class TestDay(TestCase):
 
 
 class TestOccurrencePool(TestCase):
-    
+
     def setUp(self):
         rule = Rule(frequency = "WEEKLY")
         rule.save()

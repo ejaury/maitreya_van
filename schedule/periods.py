@@ -47,7 +47,7 @@ class Period(object):
         occurrences = []
         if hasattr(self, "occurrence_pool") and self.occurrence_pool is not None:
             for occurrence in self.occurrence_pool:
-                if occurrence.start <= self.end and occurrence.end >= self.start:
+                if occurrence.start < self.end and occurrence.end > self.start:
                     occurrences.append(occurrence)
             return occurrences
         for event in self.events:
@@ -71,6 +71,14 @@ class Period(object):
             return self._persisted_occurrences
 
     def classify_occurrence(self, occurrence):
+        """
+            returns an integer marker denoting what is the relation of the
+            occurrence to the period:
+            0 - it started in the period and lasted
+            1 - it is fully contained within the period
+            2 - it lasted throughout the period
+            3 - it started before and ended within the period
+        """
         if occurrence.cancelled and not SHOW_CANCELLED_OCCURRENCES:
             return
         if occurrence.start > self.end or occurrence.end < self.start:
@@ -318,4 +326,3 @@ class Day(Period):
 
     def current_week(self):
         return Week(self.events, self.start)
-

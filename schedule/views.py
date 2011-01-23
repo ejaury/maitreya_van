@@ -15,7 +15,7 @@ from schedule.models import *
 from schedule.periods import Period, weekday_names
 from schedule.utils import check_event_permissions, coerce_date_dict
 
-def calendar(request, calendar_slug, template='schedule/calendar.html'):
+def calendar(request, calendar_slug, template='schedule/calendar.html', extra_context=None):
     """
     This view returns a calendar.  This view should be used if you are
     interested in the meta data of a calendar, not if you want to display a
@@ -27,13 +27,14 @@ def calendar(request, calendar_slug, template='schedule/calendar.html'):
     ``calendar``
         The Calendar object designated by the ``calendar_slug``.
     """
+    extra_context = extra_context or {}
     calendar = get_object_or_404(Calendar, slug=calendar_slug)
-    return render_to_response(template, {
-        "calendar": calendar,
-    }, context_instance=RequestContext(request))
+    context = {"calendar": calendar}
+    context.update(extra_context)
+    return render_to_response(template, context, context_instance=RequestContext(request))
 
 def calendar_by_periods(request, calendar_slug, periods=None,
-    template_name="schedule/calendar_by_period.html"):
+    template_name="schedule/calendar_by_period.html", extra_context=None):
     """
     This view is for getting a calendar, but also getting periods with that
     calendar.  Which periods you get, is designated with the list periods. You
@@ -66,6 +67,7 @@ def calendar_by_periods(request, calendar_slug, periods=None,
         internationalization.
 
     """
+    extra_context = extra_context or {}
     calendar = get_object_or_404(Calendar, slug=calendar_slug)
     date = coerce_date_dict(request.GET)
     if date:
@@ -77,16 +79,17 @@ def calendar_by_periods(request, calendar_slug, periods=None,
         date = datetime.datetime.now()
     event_list = GET_EVENTS_FUNC(request, calendar)
     period_objects = dict([(period.__name__.lower(), period(event_list, date)) for period in periods])
-    return render_to_response(template_name,{
+    context = {
             'date': date,
             'periods': period_objects,
             'calendar': calendar,
             'weekday_names': weekday_names,
             'here':quote(request.get_full_path()),
-            'today': datetime.date.today(),
-        },context_instance=RequestContext(request),)
+        }
+    context.update(extra_context)
+    return render_to_response(template_name, context,context_instance=RequestContext(request),)
 
-def event(request, event_id, template_name="schedule/event.html"):
+def event(request, event_id, template_name="schedule/event.html", extra_context=None):
     """
     This view is for showing an event. It is important to remember that an
     event is not an occurrence.  Events define a set of reccurring occurrences.
@@ -101,16 +104,19 @@ def event(request, event_id, template_name="schedule/event.html"):
     back_url
         this is the url that referred to this view.
     """
+    extra_context = extra_context or {}
     event = get_object_or_404(Event, id=event_id)
     back_url = request.META.get('HTTP_REFERER', None)
     try:
         cal = event.calendar_set.get()
     except:
         cal = None
-    return render_to_response(template_name, {
+    context = {
         "event": event,
         "back_url" : back_url,
-    }, context_instance=RequestContext(request))
+    }
+    context.update(extra_context)
+    return render_to_response(template_name, context, context_instance=RequestContext(request))
 
 def occurrence(request, event_id,
     template_name="schedule/occurrence.html", *args, **kwargs):
@@ -128,9 +134,10 @@ def occurrence(request, event_id,
     ``back_url``
         the url from which this request was refered
     """
+    extra_context = kwargs.get('extra_context', None) or {}
     event, occurrence = get_occurrence(event_id, *args, **kwargs)
     back_url = request.META.get('HTTP_REFERER', None)
-    return render_to_response(template_name, {
+    context =  {
         'event': event,
         'occurrence': occurrence,
         'back_url': back_url,
@@ -139,7 +146,9 @@ def occurrence(request, event_id,
         'delete_event': reverse('delete_event', args=(occurrence.event.id,)),
         'edit_event': reverse('edit_event',
           args=(occurrence.event.calendar.slug, occurrence.event.id,)),
-    }, context_instance=RequestContext(request))
+    }
+    context.update(extra_context)
+    return render_to_response(template_name, context, context_instance=RequestContext(request))
 
 def view_upcoming_occurrences(request, calendar_slug, template_name='events/list.html'):
     calendar = get_object_or_404(Calendar, slug=calendar_slug)
@@ -167,10 +176,10 @@ def view_upcoming_occurrences(request, calendar_slug, template_name='events/list
         'occurrences': sorted_occurrences,
     }, context_instance=RequestContext(request))
 
-
 @check_event_permissions
 def edit_occurrence(request, event_id,
     template_name="schedule/edit_occurrence.html", *args, **kwargs):
+    extra_context = kwargs.get('extra_context', None) or {}
     event, occurrence = get_occurrence(event_id, *args, **kwargs)
     next = kwargs.get('next', None)
     form = OccurrenceForm(data=request.POST or None, instance=occurrence)
@@ -181,11 +190,13 @@ def edit_occurrence(request, event_id,
         next = next or get_next_url(request, occurrence.get_absolute_url())
         return HttpResponseRedirect(next)
     next = next or get_next_url(request, occurrence.get_absolute_url())
-    return render_to_response(template_name, {
+    context = {
         'form': form,
         'occurrence': occurrence,
         'next':next,
-    }, context_instance=RequestContext(request))
+    }
+    context.update(extra_context)
+    return render_to_response(template_name, context, context_instance=RequestContext(request))
 
 
 @check_event_permissions
@@ -196,13 +207,16 @@ def cancel_occurrence(request, event_id,
     will cancel the view. If it is called with a GET it will ask for
     conformation to cancel.
     """
+    extra_context = kwargs.get('extra_context', None) or {}
     event, occurrence = get_occurrence(event_id, *args, **kwargs)
     next = request.META.get('HTTP_REFERER', None)
     if request.method != "POST":
-        return render_to_response(template_name, {
+        context = {
             "occurrence": occurrence,
             "next":next,
-        }, context_instance=RequestContext(request))
+        }
+        context.update(extra_context)
+        return render_to_response(template_name, context, context_instance=RequestContext(request))
     next = OCCURRENCE_CANCEL_REDIRECT
     occurrence.cancel()
     return HttpResponseRedirect(next)
@@ -234,7 +248,7 @@ def get_occurrence(event_id, occurrence_id=None, year=None, month=None,
 
 @check_event_permissions
 def create_or_edit_event(request, calendar_slug, event_id=None, next=None,
-    template_name='schedule/create_event.html', form_class = EventForm):
+    template_name='schedule/create_event.html', form_class = EventForm, extra_context=None):
     """
     This function, if it receives a GET request or if given an invalid form in a
     POST request it will generate the following response
@@ -266,6 +280,7 @@ def create_or_edit_event(request, calendar_slug, event_id=None, next=None,
     # If the key word argument redirect is set
     # Lastly redirect to the event detail of the recently create event
     """
+    extra_context = extra_context or {}
     date = coerce_date_dict(request.GET)
     initial_data = None
     if date:
@@ -300,15 +315,17 @@ def create_or_edit_event(request, calendar_slug, event_id=None, next=None,
         return HttpResponseRedirect(next)
 
     next = get_next_url(request, next)
-    return render_to_response(template_name, {
+    context = {
         "form": form,
         "calendar": calendar,
         "next":next
-    }, context_instance=RequestContext(request))
+    }
+    context.update(extra_context)
+    return render_to_response(template_name, context, context_instance=RequestContext(request))
 
 
 @check_event_permissions
-def delete_event(request, event_id, next=None, login_required=True):
+def delete_event(request, event_id, next=None, login_required=True, extra_context=None):
     """
     After the event is deleted there are three options for redirect, tried in
     this order:
@@ -317,15 +334,17 @@ def delete_event(request, event_id, next=None, login_required=True):
     # If the key word argument redirect is set
     # Lastly redirect to the event detail of the recently create event
     """
+    extra_context = extra_context or {}
     event = get_object_or_404(Event, id=event_id)
     next = next or reverse('day_calendar', args=[event.calendar.slug])
     next = get_next_url(request, next)
+    extra_context['next'] = next
     return delete_object(request,
                          model = Event,
                          object_id = event_id,
                          post_delete_redirect = next,
                          template_name = "schedule/delete_event.html",
-                         extra_context = dict(next=next),
+                         extra_context = extra_context,
                          login_required = login_required
                         )
 

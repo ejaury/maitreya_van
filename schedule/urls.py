@@ -56,7 +56,6 @@ url(r'^calendar/(?P<calendar_slug>[-\w]+)/$',
 url(r'^list/(?P<calendar_slug>[-\w]+)/$',
     'schedule.views.view_upcoming_occurrences',
     kwargs = { 'template_name': 'events/list.html' }),
-
 url(r'^event/create/(?P<calendar_slug>[-\w]+)/$',
     'schedule.views.create_or_edit_event',
     name='calendar_create_event'),
@@ -100,5 +99,5 @@ url(r'^feed/calendar/(.*)/$',
  
 (r'^ical/calendar/(.*)/$', CalendarICalendar()),
 
- #url(r'$', object_list, info_dict, name='schedule'),
+#url(r'^$', object_list, info_dict, name='schedule'), 
 )

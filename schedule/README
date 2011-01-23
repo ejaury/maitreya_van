@@ -1,12 +1,12 @@
-This app is extended from:
+This app is forked from:
 
-django-schedule 1.0 RC-2
-========================
-* Tony Hauber
+django-schedule
+===============
 * Bartek Gorny
+* Tony Hauber
 
-Revision: November 7, 2009
-http://github.com/thauber/django-schedule
+Revision: Jan 10, 2010
+https://github.com/bartekgorny/django-schedule
 
 
 Note on extending basic Event model:
