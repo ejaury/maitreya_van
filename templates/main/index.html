@@ -20,7 +20,7 @@
 {% block mp_updates %}
     <div id="mp_updates" class="clearfix">
       <div class="col" id="mp_news">
-        <h3>LATEST NEWS</h3>
+        <h3 class="uppercase">Latest News</h3>
         <div class="latest_list">
           <ul>
           {% for news in news_list %}
@@ -33,7 +33,8 @@
         </div>
       </div>
       <div class="col" id="mp_events">
-        <a href="/events/calendar/month/temple"><h3>UPCOMING EVENTS</h3></a>
+          <a href="{% url month_calendar calendar_slug="temple" %}">
+            <h3 class="uppercase">Upcoming Events</h3></a>
         <div class="latest_list">
           {% if occurrences %}
             <ul>
@@ -50,7 +51,7 @@
         </div>
       </div>
       <div class="col" id="mp_blog">
-        <h3>RECENT BLOG ENTRIES</h3>
+        <h3 class="uppercase">Recent Blog Entries</h3>
         <div class="latest_list">
           {% if entries %}
             <ul>

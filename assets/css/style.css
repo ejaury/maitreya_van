@@ -545,6 +545,10 @@ ul.horizontal_left li {
   padding-bottom: 5px;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 .left {
   float: left;
 }
