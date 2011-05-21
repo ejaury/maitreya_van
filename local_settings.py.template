@@ -1,0 +1,14 @@
+# Skeleton for local_settings.py. Fill in required fields (ENGINE, NAME, USER,
+# PASSWORD, TEST_NAME)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+        'TEST_NAME': '',
+    }
+}
