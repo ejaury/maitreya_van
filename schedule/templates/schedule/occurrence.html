@@ -2,9 +2,12 @@
 {% load i18n %}
 {% load scheduletags %}
 
-{% include "schedule/_dialogs.html" %}
+{% block extra_head %}{{ block.super }}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/schedule.js"></script>
+{% endblock extra_head %}
 
 {% block content %}
+{% include "schedule/_dialogs.html" %}
 <h1>Event Detail</h1>
 <h2>{{occurrence.title}}</h2>
 <table>

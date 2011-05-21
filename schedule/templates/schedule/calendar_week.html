@@ -1,9 +1,12 @@
 {% extends "schedule/base.html" %}
 {% load scheduletags %}
 
-{% include "schedule/_dialogs.html" %}
+{% block extra_head %}{{ block.super }}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/schedule.js"></script>
+{% endblock extra_head %}
 
 {% block body %}
+{% include "schedule/_dialogs.html" %}
 <div class="navigation">
   <a href="{% url month_calendar calendar.slug %}{% querystring_for_date periods.week.start 2 %}">
     Month
