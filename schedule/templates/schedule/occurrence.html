@@ -2,9 +2,10 @@
 {% load i18n %}
 {% load scheduletags %}
 
+{% include "schedule/_dialogs.html" %}
+
 {% block content %}
 <h1>Event Detail</h1>
-{% include "schedule/_dialogs.html" %}
 <h2>{{occurrence.title}}</h2>
 <table>
 <tr>

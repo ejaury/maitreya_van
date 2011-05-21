@@ -87,7 +87,7 @@ def calendar_by_periods(request, calendar_slug, periods=None,
             'here':quote(request.get_full_path()),
         }
     context.update(extra_context)
-    return render_to_response(template_name, context,context_instance=RequestContext(request),)
+    return render_to_response(template_name, context, context_instance=RequestContext(request))
 
 def event(request, event_id, template_name="schedule/event.html", extra_context=None):
     """
