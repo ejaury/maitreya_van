@@ -123,6 +123,10 @@ TINYMCE_DEFAULT_CONFIG = {
     'font_size_style_values': '80%, 100%, 120%, 135%, 155%, 180%',
 }
 
+# Authentication
+LOGIN_URL = '/admin/login'
+LOGIN_REDIRECT_URL = '/admin/'
+
 try:
     import local_settings
 except ImportError:
