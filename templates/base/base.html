@@ -20,16 +20,11 @@
 	
 	<meta name="author" content="Edwin Jaury" />
 
-  <style type="text/css" title="currentStyle">
-    @import url("http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz");
-    @import url("{{ MEDIA_URL }}schedule/css/schedule.css");
-    @import url("{{ MEDIA_URL }}css/style.css");
-    @import url("{{ MEDIA_URL }}css/jquery-ui/jquery-ui.css");
-    /*
-    @import url("http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/flick/jquery-ui.css");
-    */
-    @import url("{{ MEDIA_URL }}css/colorbox/colorbox.css");
-  </style>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css?asd=asf" />
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}schedule/css/schedule.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/jquery-ui/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/colorbox/colorbox.css"/>
 
   <!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script type="text/javascript"
@@ -58,9 +53,9 @@
           <img alt="Providence Maitreya Buddha Missionary Temple"
                src="{{ MEDIA_URL }}css/images/logo.png"/>
         </a>
-        <div id="main_menu">
-          {% show_menu "Main" "top_menu" %}
-        </div>
+      </div>
+      <div id="main_menu">
+        {% show_menu "Main" "top_menu" %}
       </div>
     </div>
   </div>
@@ -117,6 +112,8 @@
       </div>
     </div>
   </div>
+  {% block extra_footer %}
+  {% endblock %}
 </body>
 
 </html>

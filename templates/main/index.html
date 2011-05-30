@@ -1,11 +1,19 @@
 {% extends "base/base.html" %}
 
+{% block extra_head %}{{ block.super }}
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/tinyfader.js"></script>
+{% endblock extra_head %}
+
 {% block mp_container %}
 <div id="mp_wrapper">
   <div id="main_page">
     <div id="mp_container">
       <div id="mp_slideshow">
-        <img src="/site_media/images/sample2.jpg"/>
+        <ul id="slides">
+          {% for url in photo_urls %}
+          <li><img src="{{ url }}"></li>
+          {% endfor %}
+        </ul>
         <p>Welcome to our website! lkajsd falsk fdalks jfdlkas fdlkajs fdlkajs dlfk
         jsadlkfja slkjf lksa flksa jdflkasj dlkf sadljfsalkdfj aslkjfd lkas jdlkfjsad
         kfasdf</p>
@@ -72,3 +80,15 @@
 
 {% block content_base %}
 {% endblock %}
+
+{% block extra_footer %}{{ block.super }}
+<script type="text/javascript">
+    var slideshow=new TINY.fader.fade('slideshow',{
+        id:'slides',
+        auto:3,
+        resume:true,
+        visible:true,
+        position:0
+    });
+</script>
+{% endblock extra_footer %}

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls.defaults import *
 from maitreya_van.pages.models import *
 from photologue.models import Gallery, GalleryUpload
@@ -26,7 +27,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^tinymce/', include('maitreya_van.add_ons.tinymce.urls')),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {
-      'document_root': '/home/edwin/maitreya_van/assets/', 'show_indexes': True
+      'document_root': settings.MEDIA_ROOT, 'show_indexes': True
     }),
 )
 
