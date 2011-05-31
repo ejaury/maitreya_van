@@ -22,11 +22,11 @@ def index(request):
 
     # Get random photos
     photo_count = Photo.objects.count()
+    photo_urls = []
 
     if photo_count >= settings.MIN_SLIDESHOW_PHOTOS:
         # Materialize queryset
         photos = list(Photo.objects.all()[0:photo_count])
-        photo_urls = []
 
         while len(photo_urls) < settings.MIN_SLIDESHOW_PHOTOS:
             idx = random.randint(0, photo_count - 1)
