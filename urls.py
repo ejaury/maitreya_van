@@ -33,6 +33,7 @@ urlpatterns = patterns('',
 
 urlpatterns += patterns('maitreya_van.pages.views',
     (r'^classes/(?P<class_id>\d+)/(?P<slug>[\w-]+)/$', 'view_class'),
+    (r'^events/news/(?P<news_id>\d+)/(?P<slug>[\w-]+)/$', 'view_news'),
     (r'^events/past/(?P<past_event_id>\d+)/(?P<slug>[\w-]+)/$', 'view_past_event'),
     (r'^teachings/(?P<teaching_id>\d+)/(?P<slug>[\w-]+)/$', 'view_teaching'),
 )
@@ -57,6 +58,13 @@ urlpatterns += patterns('django.views.generic.list_detail',
       'template_name' :'pages/index.html',
       'extra_context': {
         'title': 'Past Events',
+      },
+    }),
+    url(r'^events/news/$', 'object_list', name='news_index', kwargs={
+      'queryset': News.objects.all(),
+      'template_name' :'pages/index.html',
+      'extra_context': {
+        'title': 'News',
       },
     }),
 )

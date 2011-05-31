@@ -5,6 +5,9 @@ from maitreya_van.general.admin import TaggablePageAdmin
 class ClassAdmin(TaggablePageAdmin):
   filter_horizontal = ('categories',)
 
+class NewsAdmin(admin.ModelAdmin):
+  prepopulated_fields = {"slug": ("title",)}
+
 class PastEventAdmin(TaggablePageAdmin):
   pass
 
@@ -12,5 +15,6 @@ class TeachingAdmin(TaggablePageAdmin):
   filter_horizontal = ('categories',)
 
 admin.site.register(Class, ClassAdmin)
+admin.site.register(News, NewsAdmin)
 admin.site.register(PastEvent, PastEventAdmin)
 admin.site.register(Teaching, TeachingAdmin)
