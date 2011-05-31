@@ -32,7 +32,8 @@
 {% block mp_updates %}
     <div id="mp_updates" class="clearfix">
       <div class="col" id="mp_news">
-        <h3 class="uppercase">Latest News</h3>
+          <a href="{% url news_index %}">
+            <h3 class="uppercase">Latest News</h3></a>
         <div class="latest_list">
           <ul>
           {% for news in news_list %}
