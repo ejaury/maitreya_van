@@ -297,6 +297,29 @@ p {
   width: 980px;
 }
 
+#short_summary {
+    /* Fallback for browsers with RGB only */
+    background: rgb(255,255,100);
+    background: rgba(255,255,100,0.3);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000)";
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    display: block;
+    float: right;
+    font-size: 12pt;
+    font-style: italic;
+    margin-right: 100px;
+    margin-top: 80px;
+    min-height: 120px;
+    padding: 10px;
+    text-shadow: 1px 1px 10px gray;
+    width: 350px;
+}
+
 #sidebar_wrapper {
   background-color: #F1F1C6;
   float: right;
