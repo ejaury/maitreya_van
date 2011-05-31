@@ -148,7 +148,7 @@ p {
 #header {
   background-color: #9c9f77;
   color: white;
-  height: 150px;
+  height: 130px;
   min-width: 980px;
 }
 
@@ -160,6 +160,11 @@ p {
 #logo {
   margin: auto;
   width: 980px;
+  z-index: 0;
+}
+
+#logo a {
+  position: absolute;
 }
 
 #logo img {
@@ -169,7 +174,7 @@ p {
 #main_menu {
   font-family: 'Yanone Kaffeesatz', 'Myriad Pro', Arial;
   font-size: 25px;
-  padding: 110px 0 0;
+  padding: 90px 0 0;
 }
 
 #main_menu a {
@@ -188,6 +193,8 @@ p {
 #main_menu ul {
   margin: 0;
   padding: 0;
+  position: relative;
+  z-index: 9;
 }
 
 #main_menu ul li {
@@ -226,7 +233,6 @@ p {
 }
 
 #mp_slideshow {
-  min-height: 350px;
   padding-top: 10px;
 }
 
