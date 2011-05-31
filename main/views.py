@@ -22,18 +22,20 @@ def index(request):
 
     # Get random photos
     photo_count = Photo.objects.count()
-    # Materialize queryset
-    photos = list(Photo.objects.all()[0:photo_count])
-    photo_urls = []
 
-    while len(photo_urls) < 5:
-        idx = random.randint(0, photo_count - 1)
-        p = photos[idx]
-        if p.image.url not in photo_urls:
-            im = Image.open(p.image.path)
-            width, height = im.size
-            if width/height > 0:
-                photo_urls.append(p.image.url)
+    if photo_count >= settings.MIN_SLIDESHOW_PHOTOS:
+        # Materialize queryset
+        photos = list(Photo.objects.all()[0:photo_count])
+        photo_urls = []
+
+        while len(photo_urls) < settings.MIN_SLIDESHOW_PHOTOS:
+            idx = random.randint(0, photo_count - 1)
+            p = photos[idx]
+            if p.image.url not in photo_urls:
+                im = Image.open(p.image.path)
+                width, height = im.size
+                if width/height > 0:
+                    photo_urls.append(p.image.url)
 
     return render_to_response('main/index.html', {
         'occurrences': occurrences,
