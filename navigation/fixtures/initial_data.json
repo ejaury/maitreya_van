@@ -1,110 +1,6 @@
 [
     {
         "pk": 1, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/about/contact-us/$", 
-            "menu_item": 2
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/classes/", 
-            "menu_item": 4
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/about/contact-us/$", 
-            "menu_item": 3
-        }
-    }, 
-    {
-        "pk": 4, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/events/", 
-            "menu_item": 6
-        }
-    }, 
-    {
-        "pk": 5, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/events/upcoming/list/temple/$", 
-            "menu_item": 22
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/events/upcoming", 
-            "menu_item": 20
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/$", 
-            "menu_item": 24
-        }
-    }, 
-    {
-        "pk": 8, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/multimedia/photos", 
-            "menu_item": 7
-        }
-    }, 
-    {
-        "pk": 9, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/multimedia/photos", 
-            "menu_item": 23
-        }
-    }, 
-    {
-        "pk": 10, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/teachings/", 
-            "menu_item": 5
-        }
-    }, 
-    {
-        "pk": 11, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/events/upcoming/calendar/month/temple/$", 
-            "menu_item": 25
-        }
-    }, 
-    {
-        "pk": 19, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/events/past/", 
-            "menu_item": 21
-        }
-    }, 
-    {
-        "pk": 22, 
-        "model": "navigation.menuitemextension", 
-        "fields": {
-            "selected_patterns": "^/events/news/$", 
-            "menu_item": 40
-        }
-    }, 
-    {
-        "pk": 1, 
         "model": "treemenus.menuitem", 
         "fields": {
             "parent": null, 
@@ -291,6 +187,110 @@
         "fields": {
             "root_item": 1, 
             "name": "Main"
+        }
+    },
+    {
+        "pk": 1, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/about/contact-us/$", 
+            "menu_item": 2
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/classes/", 
+            "menu_item": 4
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/about/contact-us/$", 
+            "menu_item": 3
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/events/", 
+            "menu_item": 6
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/events/upcoming/list/temple/$", 
+            "menu_item": 22
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/events/upcoming", 
+            "menu_item": 20
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/$", 
+            "menu_item": 24
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/multimedia/photos", 
+            "menu_item": 7
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/multimedia/photos", 
+            "menu_item": 23
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/teachings/", 
+            "menu_item": 5
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/events/upcoming/calendar/month/temple/$", 
+            "menu_item": 25
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/events/past/", 
+            "menu_item": 21
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/events/news/$", 
+            "menu_item": 40
         }
     }
 ]
