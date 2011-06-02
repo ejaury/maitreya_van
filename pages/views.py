@@ -25,7 +25,7 @@ def view_teaching(request, teaching_id, slug):
     return __render_detail(request, slug, obj)
 
 def __render_detail(request, slug, obj):
-    if not slug == slugify(obj.title):
+    if slug != obj.slug:
         raise Http404
     verbose_name = obj.__class__._meta.verbose_name.split()
     model_title = ' '.join([ word.capitalize() for word in verbose_name ])

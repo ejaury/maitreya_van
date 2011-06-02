@@ -32,10 +32,18 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('maitreya_van.pages.views',
-    (r'^classes/(?P<class_id>\d+)/(?P<slug>[\w-]+)/$', 'view_class'),
-    (r'^events/news/(?P<news_id>\d+)/(?P<slug>[\w-]+)/$', 'view_news'),
-    (r'^events/past/(?P<past_event_id>\d+)/(?P<slug>[\w-]+)/$', 'view_past_event'),
-    (r'^teachings/(?P<teaching_id>\d+)/(?P<slug>[\w-]+)/$', 'view_teaching'),
+    url(r'^classes/(?P<class_id>\d+)/(?P<slug>[\w-]+)/$',
+        'view_class',
+        name='class_detail'),
+    url(r'^events/news/(?P<news_id>\d+)/(?P<slug>[\w-]+)/$',
+        'view_news',
+        name='news_detail'),
+    url(r'^events/past/(?P<past_event_id>\d+)/(?P<slug>[\w-]+)/$',
+        'view_past_event',
+        name='past_event_detail'),
+    url(r'^teachings/(?P<teaching_id>\d+)/(?P<slug>[\w-]+)/$',
+        'view_teaching',
+        name='teaching_detail'),
 )
 
 urlpatterns += patterns('django.views.generic.list_detail',

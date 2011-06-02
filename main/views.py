@@ -5,6 +5,7 @@ from django.conf import settings
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
+from maitreya_van.pages.models import News
 from maitreya_van.schedule.models import Event, Calendar
 from maitreya_van.schedule.periods import Period
 
@@ -12,13 +13,13 @@ from photologue.models import Photo
 from PIL import Image
 
 def index(request):
-    event_limit = int(getattr(settings, 'UPCOMING_EVENTS_LIMIT', 3))
+    content_limit = int(getattr(settings, 'WIDGET_CONTENT_LIMIT', 3))
     default_cal = getattr(settings, 'DEFAULT_CALENDAR_SLUG')
     calendar = Calendar.objects.get(slug=default_cal)
     events = Event.objects.filter(calendar=calendar)
     start = datetime.datetime.now()
     end = start + datetime.timedelta(days=365)
-    occurrences = Period(events, start, end).get_occurrences()[:event_limit]
+    occurrences = Period(events, start, end).get_occurrences()[:content_limit]
 
     # Get random photos
     photo_count = Photo.objects.count()
@@ -37,7 +38,11 @@ def index(request):
                 if width/height > 0:
                     photo_urls.append(p.image.url)
 
+    # Populate latest news
+    news = News.objects.all()[:content_limit]
+
     return render_to_response('main/index.html', {
         'occurrences': occurrences,
         'photo_urls': photo_urls,
+        'news_list': news,
     }, context_instance=RequestContext(request))

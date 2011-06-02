@@ -38,8 +38,8 @@
           <ul>
           {% for news in news_list %}
             <li {% if not forloop.first %} class="add_separator" {% endif %}>
-              <p class="date">{{ news.date|date:"F d, Y" }}</p>
-              <p class="title"><a href="#">{{ news.title }}</a></p>
+              <p class="date">{{ news.pub_date|date:"F d, Y" }}</p>
+              <p class="title"><a href="{% url news_detail news.pk news.slug %}">{{ news.title }}</a></p>
             </li>
           {% endfor %}
           </ul>
