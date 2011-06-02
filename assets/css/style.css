@@ -435,6 +435,10 @@ a.events_button:hover {
   background-position: -53px 0;
 }
 
+a.nav {
+  font-size:13px;
+}
+
 a.media_button {
   background: url("/site_media/css/images/buttons/media_button.png") no-repeat;
   height: 34px;
@@ -474,6 +478,7 @@ ul.horizontal,
 ul.horizontal_left {
   list-style-type: none;
   margin: 5px 0;
+  padding: 0;
 }
 
 ul.horizontal li {
@@ -567,7 +572,6 @@ ul.horizontal_left li {
 }
 
 .photo_detail {
-  clear: both;
   text-align: center;
 }
 
@@ -580,7 +584,7 @@ ul.horizontal_left li {
 }
 
 .photo_navigation a {
-  padding: 0 5px;
+  padding: 0 2px;
 }
 
 .side_menu_header {

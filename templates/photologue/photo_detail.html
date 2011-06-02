@@ -10,7 +10,7 @@
 <div class="album_header">
   {% for gallery in object.public_galleries|slice:"1" %}
     <h1>{{ gallery.title }}</h1>
-    <a href="{{ gallery.get_absolute_url }}"><< Back to Album</a>
+    <a class="nav" href="{{ gallery.get_absolute_url }}"><< Back to Album</a>
   {% endfor %}
 </div>
 <div class="photo_navigation">
