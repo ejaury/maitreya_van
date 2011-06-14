@@ -18,7 +18,7 @@ class Class(TaggablePage):
     def get_absolute_url(self):
         return ('maitreya_van.pages.views.view_class', (), {
             'class_id': self.id,
-            'slug': slugify(self.title),
+            'slug': self.slug,
         })
 
 
@@ -30,7 +30,7 @@ class Teaching(TaggablePage):
     def get_absolute_url(self):
         return ('maitreya_van.pages.views.view_teaching', (), {
             'teaching_id': self.id,
-            'slug': slugify(self.title),
+            'slug': self.slug,
         })
 
 
@@ -39,7 +39,7 @@ class PastEvent(TaggablePage):
     def get_absolute_url(self):
         return ('maitreya_van.pages.views.view_past_event', (), {
             'past_event_id': self.id,
-            'slug': slugify(self.title),
+            'slug': self.slug,
         })
 
 
@@ -62,5 +62,5 @@ class News(models.Model):
     def get_absolute_url(self):
         return ('maitreya_van.pages.views.view_news', (), {
             'news_id': self.id,
-            'slug': slugify(self.title),
+            'slug': self.slug,
         })
