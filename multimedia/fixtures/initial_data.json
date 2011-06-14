@@ -1,0 +1,34 @@
+[
+    {
+        "pk": 1, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "thumbnail", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": false, 
+            "height": 0, 
+            "width": 150, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 50
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "display", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": false, 
+            "height": 0, 
+            "width": 660, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 70
+        }
+    }
+]
