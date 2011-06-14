@@ -9,6 +9,8 @@ Required apps
 
 * django-treemenus 0.8.6
 
+* python-dateutil 1.5 - required by django-schedule
+
 
 Included libraries/apps
 =======================
