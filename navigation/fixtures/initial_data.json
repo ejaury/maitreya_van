@@ -193,7 +193,7 @@
         "pk": 1, 
         "model": "navigation.menuitemextension", 
         "fields": {
-            "selected_patterns": "^/about/contact-us/$", 
+            "selected_patterns": "^/about/", 
             "menu_item": 2
         }
     }, 
@@ -289,7 +289,7 @@
         "pk": 22, 
         "model": "navigation.menuitemextension", 
         "fields": {
-            "selected_patterns": "^/events/news/$", 
+            "selected_patterns": "^/events/news/", 
             "menu_item": 40
         }
     }

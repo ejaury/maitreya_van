@@ -2,19 +2,17 @@ from django.contrib import admin
 from maitreya_van.pages.models import *
 from maitreya_van.general.admin import TaggablePageAdmin
 
-class ClassAdmin(TaggablePageAdmin):
-  filter_horizontal = ('categories',)
+
+class FilterablePageAdmin(TaggablePageAdmin):
+    filter_horizontal = ('categories',)
+
 
 class NewsAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug": ("title",)}
+    prepopulated_fields = {"slug": ("title",)}
 
-class PastEventAdmin(TaggablePageAdmin):
-  pass
 
-class TeachingAdmin(TaggablePageAdmin):
-  filter_horizontal = ('categories',)
-
-admin.site.register(Class, ClassAdmin)
+admin.site.register(About, TaggablePageAdmin)
+admin.site.register(PastEvent, TaggablePageAdmin)
+admin.site.register(Class, FilterablePageAdmin)
+admin.site.register(Teaching, FilterablePageAdmin)
 admin.site.register(News, NewsAdmin)
-admin.site.register(PastEvent, PastEventAdmin)
-admin.site.register(Teaching, TeachingAdmin)

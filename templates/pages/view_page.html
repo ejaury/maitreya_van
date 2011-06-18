@@ -5,8 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ title }}</h1>
-<h3 id="{{ object.title|slugify }}">{{ object.title }}</h3>
+<h2 id="{{ object.title|slugify }}">{{ object.title }}</h2>
 <p>
   {{ object.content|safe }}
 </p>

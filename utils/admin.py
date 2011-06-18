@@ -1,8 +1,11 @@
 from django import template
-from django.contrib.admin.util import get_deleted_objects, model_ngettext
+from django.core.exceptions import PermissionDenied
 from django.contrib.admin import helpers
+from django.contrib.admin.util import get_deleted_objects, model_ngettext
+from django.db import router
 from django.shortcuts import render_to_response
 from django.utils.encoding import force_unicode
+from django.utils.translation import ugettext as _
 
 def delete_selected_models(modeladmin, request, queryset):
     """
@@ -21,10 +24,13 @@ def delete_selected_models(modeladmin, request, queryset):
     if not modeladmin.has_delete_permission(request):
         raise PermissionDenied
 
+    using = router.db_for_write(modeladmin.model)
+
     # Populate deletable_objects, a data structure of all related objects that
     # will also be deleted.
-    deletable_objects, perms_needed = get_deleted_objects(queryset, opts, request.user, modeladmin.admin_site, levels_to_root=2)
-    
+    deletable_objects, perms_needed, protected = get_deleted_objects(
+        queryset, opts, request.user, modeladmin.admin_site, using)
+
     # The user has already confirmed the deletion.
     # Do the deletion and return a None to display the change list view again.
     if request.POST.get('post'):
@@ -36,18 +42,29 @@ def delete_selected_models(modeladmin, request, queryset):
                 obj_display = force_unicode(obj)
                 modeladmin.log_deletion(request, obj, obj_display)
                 obj.delete()
-            modeladmin.message_user(request, ("Successfully deleted %(count)d %(items)s.") % {
+            modeladmin.message_user(request, _("Successfully deleted %(count)d %(items)s.") % {
                 "count": n, "items": model_ngettext(modeladmin.opts, n)
             })
         # Return None to display the change list page again.
         return None
 
+    if len(queryset) == 1:
+        objects_name = force_unicode(opts.verbose_name)
+    else:
+        objects_name = force_unicode(opts.verbose_name_plural)
+
+    if perms_needed or protected:
+        title = _("Cannot delete %(name)s") % {"name": objects_name}
+    else:
+        title = _("Are you sure?")
+
     context = {
-        "title": ("Are you sure?"),
-        "object_name": force_unicode(opts.verbose_name),
+        "title": title,
+        "objects_name": objects_name,
         "deletable_objects": [deletable_objects],
         'queryset': queryset,
         "perms_lacking": perms_needed,
+        "protected": protected,
         "opts": opts,
         "root_path": modeladmin.admin_site.root_path,
         "app_label": app_label,
@@ -60,5 +77,5 @@ def delete_selected_models(modeladmin, request, queryset):
         "admin/%s/delete_selected_model_conf.html" % app_label,
         "admin/delete_selected_model_conf.html"
     ], context, context_instance=template.RequestContext(request))
-delete_selected_models.short_description = 'Delete selected items'
 
+delete_selected_models.short_description = 'Delete selected items'

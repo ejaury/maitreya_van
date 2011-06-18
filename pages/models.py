@@ -1,10 +1,22 @@
 from django.db import models
-from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from maitreya_van.general.models import Category, TaggablePage
 
 from tagging.fields import TagField
+
+
+class About(TaggablePage):
+    class Meta:
+        verbose_name = _('about us')
+        verbose_name_plural = verbose_name
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('about_page_detail', (), {
+            'pk': self.id,
+            'slug': self.slug,
+        })
 
 
 class Class(TaggablePage):
@@ -16,8 +28,8 @@ class Class(TaggablePage):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('maitreya_van.pages.views.view_class', (), {
-            'class_id': self.id,
+        return ('class_detail', (), {
+            'pk': self.id,
             'slug': self.slug,
         })
 
@@ -28,8 +40,8 @@ class Teaching(TaggablePage):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('maitreya_van.pages.views.view_teaching', (), {
-            'teaching_id': self.id,
+        return ('teaching_detail', (), {
+            'pk': self.id,
             'slug': self.slug,
         })
 
@@ -37,8 +49,8 @@ class Teaching(TaggablePage):
 class PastEvent(TaggablePage):
     @models.permalink
     def get_absolute_url(self):
-        return ('maitreya_van.pages.views.view_past_event', (), {
-            'past_event_id': self.id,
+        return ('past_event_detail', (), {
+            'pk': self.id,
             'slug': self.slug,
         })
 
@@ -60,7 +72,7 @@ class News(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('maitreya_van.pages.views.view_news', (), {
-            'news_id': self.id,
+        return ('news_detail', (), {
+            'pk': self.id,
             'slug': self.slug,
         })
