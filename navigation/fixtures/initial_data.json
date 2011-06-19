@@ -182,13 +182,26 @@
         }
     }, 
     {
+        "pk": 41, 
+        "model": "treemenus.menuitem", 
+        "fields": {
+            "parent": 7, 
+            "level": 2, 
+            "url": "/multimedia/music", 
+            "menu": 1, 
+            "rank": 1, 
+            "caption": "Music", 
+            "named_url": ""
+        }
+    }, 
+    {
         "pk": 1, 
         "model": "treemenus.menu", 
         "fields": {
             "root_item": 1, 
             "name": "Main"
         }
-    },
+    }, 
     {
         "pk": 1, 
         "model": "navigation.menuitemextension", 
@@ -249,7 +262,7 @@
         "pk": 8, 
         "model": "navigation.menuitemextension", 
         "fields": {
-            "selected_patterns": "^/multimedia/photos", 
+            "selected_patterns": "^/multimedia/", 
             "menu_item": 7
         }
     }, 
@@ -291,6 +304,14 @@
         "fields": {
             "selected_patterns": "^/events/news/", 
             "menu_item": 40
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/multimedia/music/", 
+            "menu_item": 41
         }
     }
 ]

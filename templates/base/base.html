@@ -7,6 +7,9 @@
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 	<title>
     {% block title %}
+        {% if title %}
+            {{ title }} - 
+        {% endif %}
     {% endblock %}
     Providence Maitreya Buddha Missionary Temple
   </title>
@@ -26,11 +29,13 @@
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/jquery-ui/jquery-ui.css"/>
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/colorbox/colorbox.css"/>
 
-  <!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  <script type="text/javascript"
-  src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script-->
-  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
-  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.js"></script>
+    {% block extra_style %}
+    {% endblock %}
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
+  <!--script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.js"></script-->
   <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.colorbox-min.js"></script>
   <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.tools.min.js"></script>
 
