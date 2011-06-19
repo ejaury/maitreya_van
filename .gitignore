@@ -3,4 +3,5 @@
 *~
 *.bak
 assets/gallery
+assets/music
 local_settings.py
