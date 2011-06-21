@@ -84,6 +84,7 @@ INSTALLED_APPS = (
     # django-schedule 1.0 RC-2
     'maitreya_van.schedule',
     'maitreya_van.add_ons.tinymce',
+    'contact_form',
     'photologue',
     'tagging',
     'treemenus',

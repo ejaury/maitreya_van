@@ -453,6 +453,12 @@ div.photo-gallery {
   width: auto;
 }
 
+form.aligned p label {
+    display: block;
+    float: left;
+    width: 12em;
+}
+
 p.caption {
   padding: 5px 0;
   text-align: left;
@@ -472,6 +478,17 @@ table.thumb_grid .thumb {
   border: 1px solid #AAA;
   display: inline-block;
   padding: 5px;
+}
+
+ul.errorlist {
+    margin: 2px 0;
+    padding: 0;
+}
+
+ul.errorlist li {
+    background: #FF5544;
+    color: white;
+    padding: 2px 7px;
 }
 
 ul.horizontal,

@@ -18,7 +18,7 @@
         "fields": {
             "parent": 1, 
             "level": 1, 
-            "url": "/about/contact-us/", 
+            "url": "/about/location/", 
             "menu": 1, 
             "rank": 1, 
             "caption": "About", 
@@ -31,10 +31,10 @@
         "fields": {
             "parent": 2, 
             "level": 2, 
-            "url": "/about/contact-us/", 
+            "url": "/about/location/", 
             "menu": 1, 
             "rank": 0, 
-            "caption": "Contact Us", 
+            "caption": "Location", 
             "named_url": ""
         }
     }, 
@@ -195,6 +195,19 @@
         }
     }, 
     {
+        "pk": 42, 
+        "model": "treemenus.menuitem", 
+        "fields": {
+            "parent": 2, 
+            "level": 2, 
+            "url": "/about/contact/", 
+            "menu": 1, 
+            "rank": 1, 
+            "caption": "Contact Us", 
+            "named_url": ""
+        }
+    }, 
+    {
         "pk": 1, 
         "model": "treemenus.menu", 
         "fields": {
@@ -222,7 +235,7 @@
         "pk": 3, 
         "model": "navigation.menuitemextension", 
         "fields": {
-            "selected_patterns": "^/about/contact-us/$", 
+            "selected_patterns": "^/about/location/$", 
             "menu_item": 3
         }
     }, 
@@ -312,6 +325,14 @@
         "fields": {
             "selected_patterns": "^/multimedia/music/", 
             "menu_item": 41
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/about/contact/", 
+            "menu_item": 42
         }
     }
 ]

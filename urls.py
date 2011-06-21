@@ -22,6 +22,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^$', 'maitreya_van.main.views.index'),
+    (r'^about/contact/', include('contact_form.urls')),
     (r'^events/upcoming/', include('maitreya_van.schedule.urls')),
     (r'^multimedia/', include('maitreya_van.multimedia.urls')),
     (r'^admin/', include(admin.site.urls)),
@@ -32,9 +33,9 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-    url(r'^about/contact-us/$',
+    url(r'^about/location/$',
         ContactView.as_view(),
-        name='about_contact'),
+        name='about_location'),
     url(r'^about/(?P<pk>\d+)/(?P<slug>[\w-]+)/$',
         PageDetailView.as_view(model=About),
         name='about_page_detail'),

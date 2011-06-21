@@ -20,4 +20,4 @@ class PageDetailView(ContextDataMixin, DetailView):
 
 
 class ContactView(TemplateView):
-    template_name = 'pages/about/contact_us.html'
+    template_name = 'pages/about/location.html'

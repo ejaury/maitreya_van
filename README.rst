@@ -11,6 +11,8 @@ Required apps
 
 * python-dateutil 1.5 - required by django-schedule
 
+# django-contact-form 4 (jezdez fork): https://github.com/jezdez/django-contact-form
+
 
 Included libraries/apps
 =======================
