@@ -6,8 +6,8 @@ html, body {
 
 body {
   background-color: #212E3C;
-  font-family: "Myriad Pro", Helvetica, Tahoma, Arial, Sans-serif;
-  font-size: 95%;
+  font-family: "Myriad Pro", Helvetica, Arial, Sans-serif;
+  font-size: 90%;
 }
 
 a {
@@ -310,7 +310,7 @@ p {
     border-radius: 7px;
     display: block;
     float: right;
-    font-size: 12pt;
+    font-size: 1.1em;
     font-style: italic;
     margin-right: 100px;
     margin-top: 80px;
