@@ -7,10 +7,11 @@
 {% block content %}
 <h1>{{ title }}</h1>
 {% for obj in object_list %}
-<h3 id="{{ obj.slug }}">{{ obj.title }}</h3>
-<p>
-  {{ obj.content|safe }}
-</p>
+<h3 id="{{ obj.slug }}" class="page_title">
+    <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
+</h3>
+{{ obj.content|truncatewords_html:30|safe }}
+<br/>
+<br/>
 {% endfor %}
 {% endblock %}
-
