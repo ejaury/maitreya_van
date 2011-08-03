@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
 from maitreya_van.pages.models import *
-from maitreya_van.pages.views import ContactView, PageDetailView, PageListView
+from maitreya_van.pages.views import ContactView, PageDetailView, PageListView,\
+                                     TemplateView
 from photologue.models import Gallery, GalleryUpload
 
 # Uncomment the next two lines to enable the admin:
@@ -36,6 +37,12 @@ urlpatterns += patterns('',
     url(r'^about/location/$',
         ContactView.as_view(),
         name='about_location'),
+    url(r'^about/us/$',
+        TemplateView.as_view(template_name='pages/about/aboutus.html'),
+        name='about_us'),
+    url(r'^about/principle/$',
+        TemplateView.as_view(template_name='pages/about/principle.html'),
+        name='about_principle'),
     url(r'^about/(?P<pk>\d+)/(?P<slug>[\w-]+)/$',
         PageDetailView.as_view(model=About),
         name='about_page_detail'),

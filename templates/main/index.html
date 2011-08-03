@@ -6,8 +6,13 @@
 
 {% block mp_container %}
 <div id="short_summary">
-    {% load webdesign %}
-    {% lorem %}
+  <strong>Providence Maitreya Buddha Missionary Temple</strong>, located in Vancouver, Canada, is
+  a member of the <strong>World Maitreya Great Tao</strong>. We are dedicated to the vow of Buddha
+  Maitreya to bring global peace and harmony. <strong>Love for nature, self-reflection,
+  and universal joy to all</strong> are the core foundations of the World Maitreya Great
+  Tao. We believe that this practice will lead us to uncover the goodness of
+  humankind and to restore the harmony with nature, thus <strong>bringing the global peace
+  on earth.</strong>
 </div>
 <div id="mp_wrapper">
   <div id="main_page">
@@ -18,11 +23,12 @@
           <li><img src="{{ url }}"></li>
           {% endfor %}
         </ul>
-        <p>Welcome to our website! lkajsd falsk fdalks jfdlkas fdlkajs fdlkajs dlfk
-        jsadlkfja slkjf lksa flksa jdflkasj dlkf sadljfsalkdfj aslkjfd lkas jdlkfjsad
-        kfasdf</p>
-        <br/>
-        <p>Our Sunday service time starts at 11am</p>
+        <h2>Welcome!</h2>
+        <p>Do you want to know more <a href="{% url about_us %}">about us</a>? Please read <a href="{% url about_principle %}">our principle</a> and <a href="{% url teaching_index %}">teachings</a>.<br/><br/>
+        Our regular service is every Sunday at 11:00AM. Everyone is welcome to join!<br/><br/>
+        To find out about our other activities, please go to the <a href="{% url calendar_upcoming calendar_slug='temple' %}">upcoming events</a> page.
+        For other classes, please visit <a href="{% url class_index %}">Classes</a> page.
+        </p>
       </div>
     </div>
   </div>
