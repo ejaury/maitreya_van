@@ -85,6 +85,7 @@ def calendar_by_periods(request, calendar_slug, periods=None,
             'calendar': calendar,
             'weekday_names': weekday_names,
             'here':quote(request.get_full_path()),
+            'title': 'Events',
         }
     context.update(extra_context)
     return render_to_response(template_name, context, context_instance=RequestContext(request))
@@ -174,6 +175,7 @@ def view_upcoming_occurrences(request, calendar_slug, template_name='events/list
 
     return render_to_response(template_name, {
         'occurrences': sorted_occurrences,
+        'title': 'Upcoming Events',
     }, context_instance=RequestContext(request))
 
 @check_event_permissions

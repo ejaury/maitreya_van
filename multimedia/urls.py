@@ -8,9 +8,15 @@ SAMPLE_SIZE = ":%s" % getattr(settings, 'GALLERY_SAMPLE_SIZE', 5)
 THUMB_ROW_SIZE = "%i" % getattr(settings, 'THUMBNAIL_ROW_SIZE', 4)
 
 # galleries
-gallery_args = {'date_field': 'date_added', 'allow_empty': True, 'queryset':
-    PhotoGallery.objects.filter(is_public=True),
-    'extra_context':{'sample_size':SAMPLE_SIZE, 'thumb_size':THUMB_ROW_SIZE}}
+gallery_args = {
+    'date_field': 'date_added',
+    'allow_empty': True,
+    'queryset': PhotoGallery.objects.filter(is_public=True),
+    'extra_context':{
+        'sample_size':SAMPLE_SIZE,
+        'thumb_size':THUMB_ROW_SIZE,
+    }
+}
 urlpatterns = patterns('django.views.generic.date_based',
     url(r'^photos/gallery/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/(?P<slug>[\-\d\w]+)/$', 'object_detail', {'date_field': 'date_added', 'slug_field': 'title_slug', 'queryset': PhotoGallery.objects.filter(is_public=True), 'extra_context':{'sample_size':SAMPLE_SIZE}}, name='pl-gallery-detail'),
     url(r'^photos/gallery/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', 'archive_day', gallery_args, name='pl-gallery-archive-day'),
