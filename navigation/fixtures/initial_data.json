@@ -18,11 +18,11 @@
         "fields": {
             "parent": 1, 
             "level": 1, 
-            "url": "/about/location/", 
+            "url": "/about/us/", 
             "menu": 1, 
             "rank": 1, 
             "caption": "About", 
-            "named_url": "about"
+            "named_url": "about_us"
         }
     }, 
     {
@@ -33,7 +33,7 @@
             "level": 2, 
             "url": "/about/location/", 
             "menu": 1, 
-            "rank": 0, 
+            "rank": 2, 
             "caption": "Location", 
             "named_url": ""
         }
@@ -202,9 +202,35 @@
             "level": 2, 
             "url": "/about/contact/", 
             "menu": 1, 
-            "rank": 1, 
+            "rank": 3, 
             "caption": "Contact Us", 
             "named_url": ""
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "treemenus.menuitem", 
+        "fields": {
+            "parent": 2, 
+            "level": 2, 
+            "url": "/about/us/", 
+            "menu": 1, 
+            "rank": 0, 
+            "caption": "About Us", 
+            "named_url": "about_us"
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "treemenus.menuitem", 
+        "fields": {
+            "parent": 2, 
+            "level": 2, 
+            "url": "/about/principle/", 
+            "menu": 1, 
+            "rank": 1, 
+            "caption": "Our Principle", 
+            "named_url": "about_principle"
         }
     }, 
     {
@@ -333,6 +359,22 @@
         "fields": {
             "selected_patterns": "^/about/contact/", 
             "menu_item": 42
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/about/us/$", 
+            "menu_item": 45
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "navigation.menuitemextension", 
+        "fields": {
+            "selected_patterns": "^/about/principle/$", 
+            "menu_item": 46
         }
     }
 ]
