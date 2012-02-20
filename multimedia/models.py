@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from photologue.models import Gallery, GalleryUpload
 from maitreya_van.general.models import Category
 from maitreya_van.utils.managers import PluggableQuerySetManager
@@ -21,11 +23,16 @@ class Music(models.Model):
     file = models.FileField(upload_to='music')
     title = models.CharField(max_length=200)
     artist = models.CharField(max_length=50, null=True, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True, null=True)
     tags = TagField(help_text='Separate tags with spaces, put quotes around \
                     multiple-word tags.',
                     verbose_name=('tags'))
 
     objects = PluggableQuerySetManager(MusicQuerySet)
+    
+    class Meta:
+        get_latest_by = 'timestamp'
+        verbose_name_plural = _('music')
 
     @property
     def song_title(self):

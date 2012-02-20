@@ -69,19 +69,20 @@
         </div>
       </div>
       <div class="col" id="mp_blog">
-        <h3 class="uppercase">Recent Blog Entries</h3>
+        <h3 class="uppercase">Media</h3>
         <div class="latest_list">
-          {% if entries %}
+          {# TODO: Use template tags to render media info properly #}
+          {% if latest_media %}
             <ul>
-            {% for entry in entries %}
+            {% for media in latest_media %}
               <li {% if not forloop.first %} class="add_separator" {% endif %}>
-                <p class="date">{{ entry.date|date:"F d, Y" }}</p>
-                <p class="title"><a href="#">{{ entry.title }}</a></p>
+                <p class="date">{{ media.date_added|date:"F d, Y" }}</p>
+                <p class="title"><a href="#">{{ media.title }}</a></p>
               </li>
             {% endfor %}
             </ul>
           {% else %}
-            <p class="NA">There are currently no blog entry</p>
+            <p class="NA">There are currently no media available</p>
           {% endif %}
         </div>
       </div>
