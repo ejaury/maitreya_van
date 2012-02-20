@@ -13,6 +13,6 @@ class NewsAdmin(admin.ModelAdmin):
 
 admin.site.register(About, TaggablePageAdmin)
 admin.site.register(PastEvent, TaggablePageAdmin)
-admin.site.register(Class, FilterablePageAdmin)
-admin.site.register(Teaching, FilterablePageAdmin)
+admin.site.register(Story, FilterablePageAdmin)
+admin.site.register(Maitreya, FilterablePageAdmin)
 admin.site.register(News, NewsAdmin)

@@ -19,28 +19,17 @@ class About(TaggablePage):
         })
 
 
-class Class(TaggablePage):
+class Maitreya(TaggablePage):
     categories = models.ManyToManyField(Category, blank=True, null=True,
-        limit_choices_to={'content_type__model': 'Class'})
+        limit_choices_to = {'content_type__model': 'Maitreya'})
 
     class Meta:
-        verbose_name_plural = 'Classes'
+        verbose_name = _('Maitreya Buddha')
+        verbose_name_plural = verbose_name
 
     @models.permalink
     def get_absolute_url(self):
-        return ('class_detail', (), {
-            'pk': self.id,
-            'slug': self.slug,
-        })
-
-
-class Teaching(TaggablePage):
-    categories = models.ManyToManyField(Category, blank=True, null=True,
-        limit_choices_to = {'content_type__model': 'Teaching'})
-
-    @models.permalink
-    def get_absolute_url(self):
-        return ('teaching_detail', (), {
+        return ('maitreya_detail', (), {
             'pk': self.id,
             'slug': self.slug,
         })
@@ -50,6 +39,21 @@ class PastEvent(TaggablePage):
     @models.permalink
     def get_absolute_url(self):
         return ('past_event_detail', (), {
+            'pk': self.id,
+            'slug': self.slug,
+        })
+
+
+class Story(TaggablePage):
+    categories = models.ManyToManyField(Category, blank=True, null=True,
+        limit_choices_to={'content_type__model': 'Story'})
+
+    class Meta:
+        verbose_name_plural = 'Stories'
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('story_detail', (), {
             'pk': self.id,
             'slug': self.slug,
         })

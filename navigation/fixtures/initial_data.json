@@ -1,379 +1,379 @@
 [
     {
-        "pk": 1, 
-        "model": "treemenus.menuitem", 
+        "pk": 1,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": null, 
-            "level": 0, 
-            "url": "", 
-            "menu": 1, 
-            "rank": 0, 
-            "caption": "Root", 
+            "parent": null,
+            "level": 0,
+            "url": "",
+            "menu": 1,
+            "rank": 0,
+            "caption": "Root",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 2, 
-        "model": "treemenus.menuitem", 
+        "pk": 2,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 1, 
-            "level": 1, 
-            "url": "/about/us/", 
-            "menu": 1, 
-            "rank": 1, 
-            "caption": "About", 
+            "parent": 1,
+            "level": 1,
+            "url": "/about/us/",
+            "menu": 1,
+            "rank": 1,
+            "caption": "About",
             "named_url": "about_us"
         }
-    }, 
+    },
     {
-        "pk": 3, 
-        "model": "treemenus.menuitem", 
+        "pk": 3,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 2, 
-            "level": 2, 
-            "url": "/about/location/", 
-            "menu": 1, 
-            "rank": 2, 
-            "caption": "Location", 
+            "parent": 2,
+            "level": 2,
+            "url": "/about/location/",
+            "menu": 1,
+            "rank": 2,
+            "caption": "Location",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 4, 
-        "model": "treemenus.menuitem", 
+        "pk": 4,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 1, 
-            "level": 1, 
-            "url": "/classes/", 
-            "menu": 1, 
-            "rank": 3, 
-            "caption": "Classes", 
-            "named_url": "classes"
+            "parent": 1,
+            "level": 1,
+            "url": "/stories/",
+            "menu": 1,
+            "rank": 3,
+            "caption": "Stories",
+            "named_url": "stories"
         }
-    }, 
+    },
     {
-        "pk": 5, 
-        "model": "treemenus.menuitem", 
+        "pk": 5,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 1, 
-            "level": 1, 
-            "url": "/teachings/", 
-            "menu": 1, 
-            "rank": 2, 
-            "caption": "Teaching", 
+            "parent": 1,
+            "level": 1,
+            "url": "/maitreya/",
+            "menu": 1,
+            "rank": 2,
+            "caption": "Maitreya Buddha",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 6, 
-        "model": "treemenus.menuitem", 
+        "pk": 6,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 1, 
-            "level": 1, 
-            "url": "/events/upcoming/calendar/month/temple/", 
-            "menu": 1, 
-            "rank": 4, 
-            "caption": "Events", 
+            "parent": 1,
+            "level": 1,
+            "url": "/events/upcoming/calendar/month/temple/",
+            "menu": 1,
+            "rank": 4,
+            "caption": "Events",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 7, 
-        "model": "treemenus.menuitem", 
+        "pk": 7,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 1, 
-            "level": 1, 
-            "url": "/multimedia/photos/gallery", 
-            "menu": 1, 
-            "rank": 5, 
-            "caption": "Media", 
+            "parent": 1,
+            "level": 1,
+            "url": "/multimedia/photos/gallery",
+            "menu": 1,
+            "rank": 6,
+            "caption": "Media",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 20, 
-        "model": "treemenus.menuitem", 
+        "pk": 20,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 6, 
-            "level": 2, 
-            "url": "/events/upcoming/calendar/month/temple/", 
-            "menu": 1, 
-            "rank": 0, 
-            "caption": "Upcoming Events", 
+            "parent": 6,
+            "level": 2,
+            "url": "/events/upcoming/calendar/month/temple/",
+            "menu": 1,
+            "rank": 0,
+            "caption": "Upcoming Events",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 21, 
-        "model": "treemenus.menuitem", 
+        "pk": 21,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 6, 
-            "level": 2, 
-            "url": "/events/past/", 
-            "menu": 1, 
-            "rank": 2, 
-            "caption": "Past Events", 
+            "parent": 6,
+            "level": 2,
+            "url": "/events/past/",
+            "menu": 1,
+            "rank": 1,
+            "caption": "Past Events",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 22, 
-        "model": "treemenus.menuitem", 
+        "pk": 22,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 20, 
-            "level": 3, 
-            "url": "/events/upcoming/list/temple/", 
-            "menu": 1, 
-            "rank": 1, 
-            "caption": "Event List", 
+            "parent": 20,
+            "level": 3,
+            "url": "/events/upcoming/list/temple/",
+            "menu": 1,
+            "rank": 1,
+            "caption": "Event List",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 23, 
-        "model": "treemenus.menuitem", 
+        "pk": 23,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 7, 
-            "level": 2, 
-            "url": "/multimedia/photos/gallery", 
-            "menu": 1, 
-            "rank": 0, 
-            "caption": "Photos", 
+            "parent": 7,
+            "level": 2,
+            "url": "/multimedia/photos/gallery",
+            "menu": 1,
+            "rank": 0,
+            "caption": "Photos",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 24, 
-        "model": "treemenus.menuitem", 
+        "pk": 24,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 1, 
-            "level": 1, 
-            "url": "/", 
-            "menu": 1, 
-            "rank": 0, 
-            "caption": "Home", 
+            "parent": 1,
+            "level": 1,
+            "url": "/",
+            "menu": 1,
+            "rank": 0,
+            "caption": "Home",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 25, 
-        "model": "treemenus.menuitem", 
+        "pk": 25,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 20, 
-            "level": 3, 
-            "url": "/events/upcoming/calendar/month/temple/", 
-            "menu": 1, 
-            "rank": 0, 
-            "caption": "Calendar", 
+            "parent": 20,
+            "level": 3,
+            "url": "/events/upcoming/calendar/month/temple/",
+            "menu": 1,
+            "rank": 0,
+            "caption": "Calendar",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 40, 
-        "model": "treemenus.menuitem", 
+        "pk": 40,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 6, 
-            "level": 2, 
-            "url": "/events/news/", 
-            "menu": 1, 
-            "rank": 1, 
-            "caption": "News", 
+            "parent": 1,
+            "level": 1,
+            "url": "/news/",
+            "menu": 1,
+            "rank": 5,
+            "caption": "News",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 41, 
-        "model": "treemenus.menuitem", 
+        "pk": 41,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 7, 
-            "level": 2, 
-            "url": "/multimedia/music", 
-            "menu": 1, 
-            "rank": 1, 
-            "caption": "Music", 
+            "parent": 7,
+            "level": 2,
+            "url": "/multimedia/music",
+            "menu": 1,
+            "rank": 1,
+            "caption": "Music",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 42, 
-        "model": "treemenus.menuitem", 
+        "pk": 42,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 2, 
-            "level": 2, 
-            "url": "/about/contact/", 
-            "menu": 1, 
-            "rank": 3, 
-            "caption": "Contact Us", 
+            "parent": 2,
+            "level": 2,
+            "url": "/about/contact/",
+            "menu": 1,
+            "rank": 3,
+            "caption": "Contact Us",
             "named_url": ""
         }
-    }, 
+    },
     {
-        "pk": 45, 
-        "model": "treemenus.menuitem", 
+        "pk": 45,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 2, 
-            "level": 2, 
-            "url": "/about/us/", 
-            "menu": 1, 
-            "rank": 0, 
-            "caption": "About Us", 
+            "parent": 2,
+            "level": 2,
+            "url": "/about/us/",
+            "menu": 1,
+            "rank": 0,
+            "caption": "About Us",
             "named_url": "about_us"
         }
-    }, 
+    },
     {
-        "pk": 46, 
-        "model": "treemenus.menuitem", 
+        "pk": 46,
+        "model": "treemenus.menuitem",
         "fields": {
-            "parent": 2, 
-            "level": 2, 
-            "url": "/about/principle/", 
-            "menu": 1, 
-            "rank": 1, 
-            "caption": "Our Principle", 
+            "parent": 2,
+            "level": 2,
+            "url": "/about/principle/",
+            "menu": 1,
+            "rank": 1,
+            "caption": "Our Principle",
             "named_url": "about_principle"
         }
-    }, 
+    },
     {
-        "pk": 1, 
-        "model": "treemenus.menu", 
+        "pk": 1,
+        "model": "treemenus.menu",
         "fields": {
-            "root_item": 1, 
+            "root_item": 1,
             "name": "Main"
         }
-    }, 
+    },
     {
-        "pk": 1, 
-        "model": "navigation.menuitemextension", 
+        "pk": 1,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/about/", 
+            "selected_patterns": "^/about/",
             "menu_item": 2
         }
-    }, 
+    },
     {
-        "pk": 2, 
-        "model": "navigation.menuitemextension", 
+        "pk": 2,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/classes/", 
+            "selected_patterns": "^/stories/",
             "menu_item": 4
         }
-    }, 
+    },
     {
-        "pk": 3, 
-        "model": "navigation.menuitemextension", 
+        "pk": 3,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/about/location/$", 
+            "selected_patterns": "^/about/location/$",
             "menu_item": 3
         }
-    }, 
+    },
     {
-        "pk": 4, 
-        "model": "navigation.menuitemextension", 
+        "pk": 4,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/", 
+            "selected_patterns": "^/events/",
             "menu_item": 6
         }
-    }, 
+    },
     {
-        "pk": 5, 
-        "model": "navigation.menuitemextension", 
+        "pk": 5,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/upcoming/list/temple/$", 
+            "selected_patterns": "^/events/upcoming/list/temple/$",
             "menu_item": 22
         }
-    }, 
+    },
     {
-        "pk": 6, 
-        "model": "navigation.menuitemextension", 
+        "pk": 6,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/upcoming", 
+            "selected_patterns": "^/events/upcoming",
             "menu_item": 20
         }
-    }, 
+    },
     {
-        "pk": 7, 
-        "model": "navigation.menuitemextension", 
+        "pk": 7,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/$", 
+            "selected_patterns": "^/$",
             "menu_item": 24
         }
-    }, 
+    },
     {
-        "pk": 8, 
-        "model": "navigation.menuitemextension", 
+        "pk": 8,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/multimedia/", 
+            "selected_patterns": "^/multimedia/",
             "menu_item": 7
         }
-    }, 
+    },
     {
-        "pk": 9, 
-        "model": "navigation.menuitemextension", 
+        "pk": 9,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/multimedia/photos", 
+            "selected_patterns": "^/multimedia/photos",
             "menu_item": 23
         }
-    }, 
+    },
     {
-        "pk": 10, 
-        "model": "navigation.menuitemextension", 
+        "pk": 10,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/teachings/", 
+            "selected_patterns": "^/maitreya/",
             "menu_item": 5
         }
-    }, 
+    },
     {
-        "pk": 11, 
-        "model": "navigation.menuitemextension", 
+        "pk": 11,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/upcoming/calendar/month/temple/$", 
+            "selected_patterns": "^/events/upcoming/calendar/month/temple/$",
             "menu_item": 25
         }
-    }, 
+    },
     {
-        "pk": 19, 
-        "model": "navigation.menuitemextension", 
+        "pk": 19,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/past/", 
+            "selected_patterns": "^/events/past/",
             "menu_item": 21
         }
-    }, 
+    },
     {
-        "pk": 22, 
-        "model": "navigation.menuitemextension", 
+        "pk": 22,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/news/", 
+            "selected_patterns": "^/news/",
             "menu_item": 40
         }
-    }, 
+    },
     {
-        "pk": 23, 
-        "model": "navigation.menuitemextension", 
+        "pk": 23,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/multimedia/music/", 
+            "selected_patterns": "^/multimedia/music/",
             "menu_item": 41
         }
-    }, 
+    },
     {
-        "pk": 24, 
-        "model": "navigation.menuitemextension", 
+        "pk": 24,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/about/contact/", 
+            "selected_patterns": "^/about/contact/",
             "menu_item": 42
         }
-    }, 
+    },
     {
-        "pk": 27, 
-        "model": "navigation.menuitemextension", 
+        "pk": 27,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/about/us/$", 
+            "selected_patterns": "^/about/us/$",
             "menu_item": 45
         }
-    }, 
+    },
     {
-        "pk": 28, 
-        "model": "navigation.menuitemextension", 
+        "pk": 28,
+        "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/about/principle/$", 
+            "selected_patterns": "^/about/principle/$",
             "menu_item": 46
         }
     }
