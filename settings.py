@@ -29,6 +29,10 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
+# If you set this to False, Django will not format dates, numbers and
+# calendars according to the current locale
+USE_L10N = True
+
 # Absolute path to the directory that holds media.
 # Example: '/home/media/media.lawrence.com/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, "assets")
@@ -38,10 +42,36 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, "assets")
 # Examples: 'http://media.lawrence.com', 'http://example.com/media/'
 MEDIA_URL = '/site_media/'
 
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/home/media/media.lawrence.com/static/"
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets', 'static')
+
+# URL prefix for static files.
+# Example: "http://media.lawrence.com/static/"
+STATIC_URL = '/static/'
+
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: 'http://foo.com/media/', '/media/'.
-ADMIN_MEDIA_PREFIX = '/admin_media/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    MEDIA_ROOT,
+)
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '@+7cb_=v4lmc&$29x^8pg8k&03dj_*terc(j%*xbv3j@3or!sq'
@@ -63,6 +93,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'maitreya_van.urls'
 TEMPLATE_DIRS = (
+    os.path.join("/usr/local/lib/python2.7/dist-packages/grappelli", "templates"),
     os.path.join(PROJECT_DIR,"templates"),
 )
 
@@ -73,6 +104,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.webdesign',
+    'django.contrib.staticfiles',
+    'grappelli',
     'django.contrib.admin',
     'south',
     'maitreya_van.pages',
@@ -95,6 +128,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
+    'django.core.context_processors.static',
     'django.core.context_processors.request',
 )
 

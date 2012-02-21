@@ -27,6 +27,11 @@ class PhotoGalleryUploadAdmin(admin.ModelAdmin):
     pass
 
 
+# Hide these models from Admin page
+from photologue.models import Gallery, GalleryUpload
+admin.site.unregister(Gallery)
+admin.site.unregister(GalleryUpload)
+
 admin.site.register(Music, MusicAdmin)
 admin.site.register(PhotoGallery, PhotoGalleryAdmin)
 admin.site.register(PhotoGalleryUpload)
