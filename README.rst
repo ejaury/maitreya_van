@@ -1,5 +1,7 @@
 Required apps 
 =============
+* django-grappelli 2.3.7
+
 * Python Imaging Library 1.1.7
 
 * django-tagging 0.3.1
@@ -11,13 +13,14 @@ Required apps
 
 * python-dateutil 1.5 - required by django-schedule
 
-# django-contact-form 4 (jezdez fork): https://github.com/jezdez/django-contact-form
-
 
 Included libraries/apps
 =======================
 * django-schedule 1.0 RC-2
-# django-tinymce 3.3.8
+
+* django-contact-form 4 (jezdez fork): https://github.com/jezdez/django-contact-form
+
+* django-tinymce 3.3.8
 
 
 Initial Deployment Setup

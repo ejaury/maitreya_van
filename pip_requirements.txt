@@ -1,3 +1,4 @@
+django-grappelli==2.3.7
 django-tagging==0.3.1
 django-photologue==2.2
 django-treemenus==0.8.6

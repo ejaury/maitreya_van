@@ -1,11 +1,11 @@
 {% extends "base/base.html" %}
 
 {% block extra_style %}
-<link type="text/css" href="{{ MEDIA_URL }}css/jplayer_skins/bluemonday/jplayer.blue.monday.css" rel="stylesheet" />
+<link type="text/css" href="{{ STATIC_URL }}css/jplayer_skins/bluemonday/jplayer.blue.monday.css" rel="stylesheet" />
 {% endblock %}
 
 {% block extra_head %}{{ block.super }}
-  <script type="text/javascript" src="{{ MEDIA_URL }}js/jplayer/jquery.jplayer.min.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/jplayer/jquery.jplayer.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
         var Playlist = function(instance, playlist, options) {
@@ -142,7 +142,7 @@
             play: function() {
                 $(this).jPlayer("pauseOthers");
             },
-            swfPath: "{{ MEDIA_URL }}js/jplayer",
+            swfPath: "{{ STATIC_URL }}js/jplayer",
             supplied: "mp3"
         });
     })
