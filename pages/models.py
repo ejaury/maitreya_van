@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -18,6 +19,9 @@ class About(TaggablePage):
             'slug': self.slug,
         })
 
+    def get_index_url(self):
+        return reverse('about_us')
+
 
 class Maitreya(TaggablePage):
     categories = models.ManyToManyField(Category, blank=True, null=True,
@@ -34,6 +38,9 @@ class Maitreya(TaggablePage):
             'slug': self.slug,
         })
 
+    def get_index_url(self):
+        return reverse('maitreya_index')
+
 
 class PastEvent(TaggablePage):
     @models.permalink
@@ -42,6 +49,9 @@ class PastEvent(TaggablePage):
             'pk': self.id,
             'slug': self.slug,
         })
+
+    def get_index_url(self):
+        return reverse('past_event_index')
 
 
 class Story(TaggablePage):
@@ -57,6 +67,9 @@ class Story(TaggablePage):
             'pk': self.id,
             'slug': self.slug,
         })
+
+    def get_index_url(self):
+        return reverse('story_index')
 
 
 class News(models.Model):

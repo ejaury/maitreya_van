@@ -83,7 +83,7 @@
         "fields": {
             "parent": 1,
             "level": 1,
-            "url": "/multimedia/photos/gallery",
+            "url": "/multimedia/photos/gallery/",
             "menu": 1,
             "rank": 6,
             "caption": "Media",
@@ -135,7 +135,7 @@
         "fields": {
             "parent": 7,
             "level": 2,
-            "url": "/multimedia/photos/gallery",
+            "url": "/multimedia/photos/gallery/",
             "menu": 1,
             "rank": 0,
             "caption": "Photos",
@@ -187,7 +187,7 @@
         "fields": {
             "parent": 7,
             "level": 2,
-            "url": "/multimedia/music",
+            "url": "/multimedia/music/",
             "menu": 1,
             "rank": 1,
             "caption": "Music",
