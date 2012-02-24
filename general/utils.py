@@ -14,7 +14,7 @@ def get_menu_item_choices(page):
         # Return choices for the outermost menu item (menu item with the
         # lowest level - closest to root)
         if menu_items.count() > 0:
-            return get_flat_tuples(menu_items[0], page.parent_menu_item)
+            return get_flat_tuples(menu_items[0])
 
     # Return all menu items
     menu = Menu.objects.get(name=getattr(settings, 'MAIN_MENU_NAME', 'Main'))
