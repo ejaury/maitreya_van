@@ -7,7 +7,7 @@ html, body {
 body {
   background-color: #212E3C;
   font-family: "Myriad Pro", Helvetica, Arial, Sans-serif;
-  font-size: 90%;
+  font-size: 14px;
 }
 
 a {
@@ -269,6 +269,11 @@ p {
   width: 900px;
 }
 
+#mp_updates p,
+#mp_updates ul {
+  font-size: 93%;
+}
+
 #mp_updates .col {
   -moz-box-shadow: 1px 1px 5px lightgrey;
   -webkit-box-shadow: 1px 1px 5px lightgrey;
@@ -310,7 +315,6 @@ p {
     border-radius: 7px;
     display: block;
     float: right;
-    font-size: 1.1em;
     font-style: italic;
     margin-right: 100px;
     margin-top: 80px;
