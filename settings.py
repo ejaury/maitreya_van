@@ -111,6 +111,7 @@ INSTALLED_APPS = (
     'maitreya_van.general',
     'maitreya_van.multimedia',
     'maitreya_van.navigation',
+    'maitreya_van.main',
     # Third-party
     # ===========
     # django-schedule 1.0 RC-2
