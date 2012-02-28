@@ -77,7 +77,7 @@
             {% for media in latest_media %}
               <li {% if not forloop.first %} class="add_separator" {% endif %}>
                 <p class="date">{{ media.date_added|date:"F d, Y" }}</p>
-                <p class="title"><a href="#">{{ media.title }}</a></p>
+                <p class="title"><a href="{% url pl-photo slug=media.title_slug %}">{{ media.title }}</a></p>
               </li>
             {% endfor %}
             </ul>
