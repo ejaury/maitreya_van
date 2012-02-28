@@ -1,6 +1,6 @@
 from django.contrib import admin
 from maitreya_van.multimedia.forms import *
-from maitreya_van.multimedia.models import Music, PhotoGallery, PhotoGalleryUpload
+from maitreya_van.multimedia.models import Music, PhotoGallery, PhotoGalleryUpload, Photo
 from photologue.admin import GalleryAdmin
 
 
@@ -28,10 +28,12 @@ class PhotoGalleryUploadAdmin(admin.ModelAdmin):
 
 
 # Hide these models from Admin page
-from photologue.models import Gallery, GalleryUpload
+from photologue.models import Gallery, GalleryUpload, Photo as OriginalPhoto
 admin.site.unregister(Gallery)
 admin.site.unregister(GalleryUpload)
+admin.site.unregister(OriginalPhoto)
 
 admin.site.register(Music, MusicAdmin)
 admin.site.register(PhotoGallery, PhotoGalleryAdmin)
 admin.site.register(PhotoGalleryUpload)
+admin.site.register(Photo)

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from photologue.models import Gallery, GalleryUpload
+from photologue.models import Gallery, GalleryUpload, Photo as OriginalPhoto
 from maitreya_van.general.models import Category
 from maitreya_van.utils.managers import PluggableQuerySetManager
 from tagging.fields import TagField
@@ -62,3 +62,9 @@ class PhotoGallery(Gallery):
 
 class PhotoGalleryUpload(GalleryUpload):
     pass
+
+class Photo(OriginalPhoto):
+    """Act as a proxy model to the real Photo model from photologue. We do this
+    so that we can re-group this model with Multimedia app."""
+    class Meta:
+        proxy = True
