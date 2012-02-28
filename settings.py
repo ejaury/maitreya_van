@@ -93,7 +93,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'maitreya_van.urls'
 TEMPLATE_DIRS = (
-    os.path.join("/usr/local/lib/python2.7/dist-packages/grappelli", "templates"),
     os.path.join(PROJECT_DIR,"templates"),
 )
 
@@ -162,6 +161,8 @@ TINYMCE_DEFAULT_CONFIG = {
 # Authentication
 LOGIN_URL = '/admin/login'
 LOGIN_REDIRECT_URL = '/admin/'
+
+GRAPPELLI_ADMIN_TITLE = 'Providence of Maitreya Buddha Missionary Temple Vancouver'
 
 try:
     import local_settings
