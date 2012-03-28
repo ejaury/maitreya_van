@@ -59,7 +59,7 @@ class Story(TaggablePage):
         limit_choices_to={'content_type__model': 'Story'})
 
     class Meta:
-        verbose_name_plural = 'Stories'
+        verbose_name = 'Inspiration'
 
     @models.permalink
     def get_absolute_url(self):
