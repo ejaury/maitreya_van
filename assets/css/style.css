@@ -222,7 +222,8 @@ p {
   box-shadow: 0 5px 10px lightgrey;
   background-color: #FBFBEF;
   border: 1px solid #999;
-  min-height: 350px;
+  min-height: 270px;
+  overflow: auto;
   padding: 20px 25px;
   width: 900px;
 }
@@ -242,8 +243,8 @@ p {
   -webkit-box-shadow: 0 0 15px #999999;
   box-shadow: 0 0 15px #999999;
   border: 10px solid white;
-  max-height: 300px;
-  max-width: 400px;
+  max-height: 270px;
+  max-width: 360px;
 }
 
 #mp_slideshow ul {
@@ -252,8 +253,8 @@ p {
     left: 450px;
     list-style: none;
     margin: 0;
-    height: 320px;
-    width: 420px;
+    height: 270px;
+    width: 390px;
 }
 
 #mp_updates {
