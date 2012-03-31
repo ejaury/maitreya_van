@@ -133,6 +133,7 @@ p {
   box-shadow: 0 5px 10px lightgrey;
   background-color: #F1F1C6;
   border: 1px solid #CCC;
+  overflow: auto; /* act as clear:both */
   width: 960px;
 }
 
@@ -185,7 +186,7 @@ p {
 
 #main_menu a:hover,
 #main_menu a.selected {
-  background: url("/site_media/css/images/icons/selection_arrow.png") no-repeat center bottom;
+  background: url("images/icons/selection_arrow.png") no-repeat center bottom;
   color: #FF3;
   text-shadow: 0 0 1px #FFB;
 }
@@ -202,7 +203,7 @@ p {
 }
 
 #main_page {
-  /*background: transparent url("/site_media/css/images/front_page_bg.png")
+  /*background: transparent url("images/front_page_bg.png")
    * no-repeat 0 0;
   height: 450px;
   position: absolute;
@@ -221,7 +222,8 @@ p {
   box-shadow: 0 5px 10px lightgrey;
   background-color: #FBFBEF;
   border: 1px solid #999;
-  min-height: 350px;
+  min-height: 270px;
+  overflow: auto;
   padding: 20px 25px;
   width: 900px;
 }
@@ -241,8 +243,8 @@ p {
   -webkit-box-shadow: 0 0 15px #999999;
   box-shadow: 0 0 15px #999999;
   border: 10px solid white;
-  max-height: 300px;
-  max-width: 400px;
+  max-height: 270px;
+  max-width: 360px;
 }
 
 #mp_slideshow ul {
@@ -251,8 +253,8 @@ p {
     left: 450px;
     list-style: none;
     margin: 0;
-    height: 320px;
-    width: 420px;
+    height: 270px;
+    width: 390px;
 }
 
 #mp_updates {
@@ -296,7 +298,7 @@ p {
 }
 
 #mp_wrapper {
-  background: url("/site_media/css/images/front_page_bg.png") no-repeat white;
+  background: url("images/front_page_bg.png") no-repeat white;
   padding-top: 350px;
   margin: auto;
   width: 980px;
@@ -346,7 +348,7 @@ p {
 
 #sidebar li {
   font-size: 100%;
-  list-style-image: url("/site_media/css/images/icons/arrow_right_small.png");
+  list-style-image: url("images/icons/arrow_right_small.png");
   padding: 5px 0;
 }
 
@@ -390,7 +392,7 @@ a.no_line:hover {
 }
 
 a.home_button {
-  background: url("/site_media/css/images/buttons/home_button.png") no-repeat;
+  background: url("images/buttons/home_button.png") no-repeat;
   height: 34px;
   width: 38px;
 }
@@ -400,7 +402,7 @@ a.home_button:hover {
 }
 
 a.about_button {
-  background: url("/site_media/css/images/buttons/about_button.png") no-repeat;
+  background: url("images/buttons/about_button.png") no-repeat;
   height: 34px;
   width: 74px;
 }
@@ -410,7 +412,7 @@ a.about_button:hover {
 }
 
 a.teaching_button {
-  background: url("/site_media/css/images/buttons/teaching_button.png") no-repeat;
+  background: url("images/buttons/teaching_button.png") no-repeat;
   height: 34px;
   width: 68px;
 }
@@ -420,7 +422,7 @@ a.teaching_button:hover {
 }
 
 a.classes_button {
-  background: url("/site_media/css/images/buttons/classes_button.png") no-repeat;
+  background: url("images/buttons/classes_button.png") no-repeat;
   height: 34px;
   width: 59px;
 }
@@ -430,7 +432,7 @@ a.classes_button:hover {
 }
 
 a.events_button {
-  background: url("/site_media/css/images/buttons/events_button.png") no-repeat;
+  background: url("images/buttons/events_button.png") no-repeat;
   height: 34px;
   width: 53px;
 }
@@ -444,7 +446,7 @@ a.nav {
 }
 
 a.media_button {
-  background: url("/site_media/css/images/buttons/media_button.png") no-repeat;
+  background: url("images/buttons/media_button.png") no-repeat;
   height: 34px;
   width: 43px;
 }

@@ -1,6 +1,7 @@
 # Django settings for maitreya_van project.
 import os, sys
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+WWW_ROOT = os.path.abspath(os.path.join(PROJECT_DIR, '../..'))
 sys.path.insert(0, os.path.join(PROJECT_DIR, "add_ons"))
 
 DEBUG = True
@@ -35,7 +36,7 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: '/home/media/media.lawrence.com/'
-MEDIA_ROOT = os.path.join(PROJECT_DIR, "assets")
+MEDIA_ROOT = os.path.join(WWW_ROOT, 'public/media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -46,7 +47,7 @@ MEDIA_URL = '/site_media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'assets', 'static')
+STATIC_ROOT = os.path.join(WWW_ROOT, 'public/static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -62,7 +63,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    MEDIA_ROOT,
+    os.path.join(PROJECT_DIR, 'assets'),
 )
 
 # List of finder classes that know how to find static files in

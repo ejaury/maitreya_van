@@ -2,8 +2,8 @@
 
 {% block extra_head %}
     {{ block.super }}
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.timePicker.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.timePicker.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/tiny_mce/tiny_mce.js"></script>
     <script type="text/javascript">
     $(function() {
         $("#id_start_0").datepicker({dateFormat: $.datepicker.ATOM});

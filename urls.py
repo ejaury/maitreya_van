@@ -74,5 +74,7 @@ urlpatterns += patterns('django.views.generic.list_detail',
         name='past_event_index'),
 )
 
-urlpatterns += staticfiles_urlpatterns(settings.STATIC_URL)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns(settings.STATIC_URL)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT, show_indexes=True)

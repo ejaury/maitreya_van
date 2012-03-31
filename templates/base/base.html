@@ -36,6 +36,17 @@
   {% block extra_head %}
   {% endblock %}
 
+  <script type="text/javascript">
+    {# auto adjust content height #}
+    $(document).ready(function() {
+        var $sidebar = $("#sidebar_wrapper");
+        var $content = $("#content_wrapper");
+        var $container = $("#content_container");
+        if ($sidebar.height() > $content.height()) {
+          $content.css("height", $container.height() + "px");
+        }
+    });
+  </script>
 </head>
 
 <body>
