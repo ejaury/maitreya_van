@@ -54,7 +54,7 @@ class Music(models.Model):
 class PhotoGallery(Gallery):
     categories = models.ManyToManyField(Category, limit_choices_to = {
                 'content_type__model': 'PhotoGallery',
-               })
+               }, blank=True)
 
     class Meta:
         verbose_name_plural = 'Photo Galleries'
