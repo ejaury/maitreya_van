@@ -64,10 +64,11 @@ def get_random_photo_urls():
         if not p.is_public:
             continue
 
-        if p.image.url not in photo_urls:
+        url = p.get_display_url()
+        if url not in photo_urls:
             im = Image.open(p.image.path)
             width, height = im.size
             if width/height > 0:
-                photo_urls.append(p.image.url)
+                photo_urls.append(url)
 
     return photo_urls

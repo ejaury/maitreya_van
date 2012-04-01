@@ -1,8 +1,9 @@
 import re
+
 from django import forms
 
 from maitreya_van.multimedia import utils
-from maitreya_van.multimedia.models import Music
+from maitreya_van.multimedia.models import Music, PhotoGallery
 
 
 class MusicUploadForm(forms.ModelForm):
@@ -29,3 +30,13 @@ class MusicChangeForm(forms.ModelForm):
     class Meta:
         model = Music
         exclude = ('file',)
+
+
+class PhotoGalleryUploadForm(forms.ModelForm):
+    def clean_title(self):
+        title = self.cleaned_data['title']
+        if PhotoGallery.objects.filter(title=title).exists():
+            raise forms.ValidationError(
+                ('A gallery with this title already exists. Please specify '
+                 'a different title.'))
+        return title
