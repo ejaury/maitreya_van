@@ -33,7 +33,7 @@
             "level": 2,
             "url": "/about/location/",
             "menu": 1,
-            "rank": 2,
+            "rank": 4,
             "caption": "Location",
             "named_url": ""
         }
@@ -46,8 +46,8 @@
             "level": 1,
             "url": "/stories/",
             "menu": 1,
-            "rank": 3,
-            "caption": "Stories",
+            "rank": 5,
+            "caption": "Inspirations",
             "named_url": "stories"
         }
     },
@@ -72,7 +72,7 @@
             "level": 1,
             "url": "/events/upcoming/calendar/month/temple/",
             "menu": 1,
-            "rank": 4,
+            "rank": 3,
             "caption": "Events",
             "named_url": ""
         }
@@ -176,7 +176,7 @@
             "level": 1,
             "url": "/news/",
             "menu": 1,
-            "rank": 5,
+            "rank": 4,
             "caption": "News",
             "named_url": ""
         }
@@ -202,7 +202,7 @@
             "level": 2,
             "url": "/about/contact/",
             "menu": 1,
-            "rank": 3,
+            "rank": 5,
             "caption": "Contact Us",
             "named_url": ""
         }
@@ -228,7 +228,7 @@
             "level": 2,
             "url": "/about/principle/",
             "menu": 1,
-            "rank": 1,
+            "rank": 2,
             "caption": "Our Principle",
             "named_url": "about_principle"
         }
