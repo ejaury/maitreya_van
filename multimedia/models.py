@@ -1,7 +1,19 @@
+import os
+import zipfile
+
+try:
+    import Image
+except ImportError:
+    from PIL import Image
+
+from django.core.files.base import ContentFile
 from django.db import models
+from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
-from photologue.models import Gallery, GalleryUpload, Photo as OriginalPhoto
+from photologue.models import Gallery, Photo as OriginalPhoto
+from photologue.models import PHOTOLOGUE_DIR, tagfield_help_text
+
 from maitreya_van.general.models import Category
 from maitreya_van.utils.managers import PluggableQuerySetManager
 from tagging.fields import TagField
@@ -60,8 +72,83 @@ class PhotoGallery(Gallery):
         verbose_name_plural = 'Photo Galleries'
 
 
-class PhotoGalleryUpload(GalleryUpload):
-    pass
+class PhotoGalleryUpload(models.Model):
+    """
+    Model that's simply used to upload photos in batch.
+    Copied directly from photologue's GalleryUpload.
+    """
+    zip_file = models.FileField(_('images file (.zip)'), upload_to=PHOTOLOGUE_DIR+"/temp",
+                                help_text=_('Select a .zip file of images to upload into a new Gallery.'))
+    gallery = models.ForeignKey(PhotoGallery, null=True, blank=True, help_text=_('Select a gallery to add these images to. leave this empty to create a new gallery from the supplied title.'))
+    title = models.CharField(_('title'), max_length=75, help_text=_('All photos in the gallery will be given a title made up of the gallery title + a sequential number.'))
+    caption = models.TextField(_('caption'), blank=True, help_text=_('Caption will be added to all photos.'))
+    description = models.TextField(_('description'), blank=True, help_text=_('A description of this Gallery.'))
+    is_public = models.BooleanField(_('is public'), default=True, help_text=_('Uncheck this to make the uploaded gallery and included photographs private.'))
+    tags = TagField(help_text=tagfield_help_text, verbose_name=_('tags'))
+
+    class Meta:
+        verbose_name = _('photo gallery upload')
+
+    def save(self, *args, **kwargs):
+        super(PhotoGalleryUpload, self).save(*args, **kwargs)
+        gallery = self.process_zipfile()
+        super(PhotoGalleryUpload, self).delete()
+        return gallery
+
+    def process_zipfile(self):
+        if os.path.isfile(self.zip_file.path):
+            # TODO: implement try-except here
+            zip = zipfile.ZipFile(self.zip_file.path)
+            bad_file = zip.testzip()
+            if bad_file:
+                raise Exception('"%s" in the .zip archive is corrupt.' % bad_file)
+            count = 1
+            if self.gallery:
+                gallery = self.gallery
+            else:
+                gallery = PhotoGallery.objects.create(title=self.title,
+                                                      title_slug=slugify(self.title),
+                                                      description=self.description,
+                                                      is_public=self.is_public,
+                                                      tags=self.tags)
+            from cStringIO import StringIO
+            for filename in zip.namelist():
+                if filename.startswith('__'): # do not process meta files
+                    continue
+                data = zip.read(filename)
+                if len(data):
+                    try:
+                        # the following is taken from django.newforms.fields.ImageField:
+                        #  load() is the only method that can spot a truncated JPEG,
+                        #  but it cannot be called sanely after verify()
+                        trial_image = Image.open(StringIO(data))
+                        trial_image.load()
+                        # verify() is the only method that can spot a corrupt PNG,
+                        #  but it must be called immediately after the constructor
+                        trial_image = Image.open(StringIO(data))
+                        trial_image.verify()
+                    except Exception:
+                        # if a "bad" file is found we just skip it.
+                        continue
+                    while 1:
+                        title = ' '.join([self.title, str(count)])
+                        slug = slugify(title)
+                        try:
+                            p = Photo.objects.get(title_slug=slug)
+                        except Photo.DoesNotExist:
+                            photo = Photo(title=title,
+                                          title_slug=slug,
+                                          caption=self.caption,
+                                          is_public=self.is_public,
+                                          tags=self.tags)
+                            photo.image.save(filename, ContentFile(data))
+                            gallery.photos.add(photo)
+                            count = count + 1
+                            break
+                        count = count + 1
+            zip.close()
+            return gallery
+
 
 class Photo(OriginalPhoto):
     """Act as a proxy model to the real Photo model from photologue. We do this
