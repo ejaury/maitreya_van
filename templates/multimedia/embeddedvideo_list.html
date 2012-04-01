@@ -1,0 +1,14 @@
+{% extends "pages/index.html" %}
+
+{% block list %}
+  {% for obj in object_list %}
+    <h3 id="{{ obj.slug }}" class="page_title">
+      <a href="{% url video_detail obj.slug %}">{{ obj.title }}</a>
+    </h3>
+    {% include "multimedia/includes/_video_inline.html" %}
+    <br/>
+    <br/>
+  {% empty %}
+    <p>No videos available at the moment.</p>
+  {% endfor %}
+{% endblock list %}

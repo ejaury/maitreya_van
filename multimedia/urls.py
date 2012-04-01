@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
+
 from maitreya_van.multimedia.models import *
+from maitreya_van.multimedia.views import VideoDetailView, VideoListView
 
 # Number of random images from the gallery to display.
 SAMPLE_SIZE = ":%s" % getattr(settings, 'GALLERY_SAMPLE_SIZE', 5)
@@ -85,6 +87,12 @@ urlpatterns += patterns('django.views.generic.list_detail',
 
 # Other multimedia views
 urlpatterns += patterns('maitreya_van.multimedia.views',
+    url(r'^videos/$',
+        VideoListView.as_view(),
+        name='video_index'),
+    url(r'^videos/(?P<slug>[\-\d\w]+)/$',
+        VideoDetailView.as_view(),
+        name='video_detail'),
     url(r'^music/$',
         'music_gallery_view',
         name='music_index')

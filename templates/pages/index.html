@@ -6,6 +6,8 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
+
+{% block list %}
 {% for obj in object_list %}
 <h3 id="{{ obj.slug }}" class="page_title">
     <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
@@ -14,4 +16,6 @@
 <br/>
 <br/>
 {% endfor %}
+{% endblock list %}
+
 {% endblock %}

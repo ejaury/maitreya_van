@@ -234,6 +234,19 @@
         }
     },
     {
+        "pk": 47,
+        "model": "treemenus.menuitem",
+        "fields": {
+            "parent": 7,
+            "level": 2,
+            "url": "/multimedia/videos/",
+            "menu": 1,
+            "rank": 2,
+            "caption": "Videos",
+            "named_url": "video_index"
+        }
+    },
+    {
         "pk": 1,
         "model": "treemenus.menu",
         "fields": {
@@ -375,6 +388,14 @@
         "fields": {
             "selected_patterns": "^/about/principle/$",
             "menu_item": 46
+        }
+    },
+    {
+        "pk": 29,
+        "model": "navigation.menuitemextension",
+        "fields": {
+            "selected_patterns": "^/multimedia/videos/",
+            "menu_item": 47
         }
     }
 ]

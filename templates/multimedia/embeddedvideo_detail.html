@@ -1,0 +1,11 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+  <h2>{{ title }}</h2>
+  <h3 id="{{ object.slug }}" class="page_title">{{ object.title }}</h2>
+  {% include "multimedia/includes/_video_inline.html" with obj=object %}
+
+  <div class="end-note">
+    <a href="{% url video_index %}">See all videos</a>
+  </div>
+{% endblock %}

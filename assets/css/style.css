@@ -117,6 +117,17 @@ p {
   padding: 20px 25px;
 }
 
+#content .desc {
+    color: #555555;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+#content .date {
+    color: #885500;
+    font-size: 12px;
+}
+
 #content_wrapper {
   background-color: #FBFBEF;
   border-right: 1px solid lightgray;
@@ -546,6 +557,10 @@ ul.horizontal_left li {
     visibility: hidden;
 }
 
+.end-note {
+    margin: 20px 0 5px;
+}
+
 .event_listing {
   border-bottom: 1px solid lightgray;
   margin: 10px 0;
@@ -612,12 +627,17 @@ ul.horizontal_left li {
 
 .side_menu_header {
   border-bottom: 2px dotted #FC6;
-  letter-spacing: 8px;
+  letter-spacing: 4px;
   padding-bottom: 5px;
+  text-align: center;
 }
 
 .uppercase {
     text-transform: uppercase;
+}
+
+.video-frame {
+    margin: 5px 0 0;
 }
 
 .left {

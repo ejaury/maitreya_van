@@ -19,6 +19,34 @@ from maitreya_van.utils.managers import PluggableQuerySetManager
 from tagging.fields import TagField
 
 
+class EmbeddedVideo(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True,
+        help_text='A "slug" is a unique URL-friendly title \
+                  (link name) for an object. (e.g. category Community \
+                  Performance can have a slug named "comm-performance",\
+                  in which the pages can be accessed via \
+                  http://www.mywebsite.com/category/comm-performance')
+    link = models.CharField(max_length=512, blank=True, help_text=_('Only a Youtube link is allowed here'))
+    embed_code = models.TextField(blank=True, help_text=_('If you have the actual embed code, you can directly copy and paste it here without specifying a link. To obtain an embed code from Youtube, under the video, click on "Share" button, then click on "Embed", to show the code. Paste the code in the above field. It would be better if you specify an embed code rather than a link because this way you can embed a video from any site (not only Youtube).'))
+    description = models.TextField(blank=True)
+    timestamp = models.DateTimeField(verbose_name=_('date published'),
+        auto_now_add=True, null=True)
+    tags = TagField(help_text='Separate tags with spaces, put quotes around \
+                    multiple-word tags.',
+                    verbose_name=('tags'))
+    categories = models.ManyToManyField(Category, limit_choices_to = {
+                'content_type__model': 'EmbeddedVideo',
+               }, blank=True)
+
+    class Meta:
+        verbose_name = _('video')
+        ordering = ('-timestamp',)
+
+    def __unicode__(self):
+        return self.title
+
+
 class MusicQuerySet(models.query.QuerySet):
     """Queryset for Music model to remove associated uploaded files"""
     def delete(self):

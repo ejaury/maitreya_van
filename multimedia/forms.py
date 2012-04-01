@@ -3,7 +3,27 @@ import re
 from django import forms
 
 from maitreya_van.multimedia import utils
-from maitreya_van.multimedia.models import Music, PhotoGallery
+from maitreya_van.multimedia.models import EmbeddedVideo, Music, PhotoGallery
+
+
+class EmbeddedVideoForm(forms.ModelForm):
+    class Meta:
+        model = EmbeddedVideo
+
+    def clean_link(self):
+        link = self.cleaned_data.get('link')
+        if link:
+            if 'youtube.com' not in link:
+                raise forms.ValidationError('Only a Youtube link can be processed')
+        return link
+
+    def clean(self):
+        cleaned_data = super(EmbeddedVideoForm, self).clean()
+        link = cleaned_data.get('link')
+        code = cleaned_data.get('embed_code')
+        if not code and not link:
+            raise forms.ValidationError('You need to specify either a link or embedded code for the video below')
+        return cleaned_data
 
 
 class MusicUploadForm(forms.ModelForm):

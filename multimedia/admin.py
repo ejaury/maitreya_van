@@ -1,9 +1,15 @@
 from django.contrib import admin
 
 from maitreya_van.multimedia.forms import *
-from maitreya_van.multimedia.models import Music, PhotoGallery, PhotoGalleryUpload, Photo
+from maitreya_van.multimedia.models import EmbeddedVideo, Music, PhotoGallery, PhotoGalleryUpload, Photo
 
 from photologue.admin import GalleryAdmin, PhotoAdmin as OriginalPhotoAdmin
+
+
+class EmbeddedVideoAdmin(admin.ModelAdmin):
+    form = EmbeddedVideoForm
+    list_display = ('title', 'timestamp')
+    prepopulated_fields = {'slug': ('title',)}
 
 
 class MusicAdmin(admin.ModelAdmin):
@@ -35,6 +41,7 @@ admin.site.unregister(Gallery)
 admin.site.unregister(GalleryUpload)
 admin.site.unregister(OriginalPhoto)
 
+admin.site.register(EmbeddedVideo, EmbeddedVideoAdmin)
 admin.site.register(Music, MusicAdmin)
 admin.site.register(PhotoGallery, PhotoGalleryAdmin)
 admin.site.register(PhotoGalleryUpload, PhotoGalleryUploadAdmin)
