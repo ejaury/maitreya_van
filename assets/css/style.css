@@ -243,8 +243,8 @@ p {
   -webkit-box-shadow: 0 0 15px #999999;
   box-shadow: 0 0 15px #999999;
   border: 10px solid white;
-  max-height: 270px;
-  max-width: 330px;
+  min-height: 247px;
+  width: 330px;
 }
 
 #mp_slideshow ul {
