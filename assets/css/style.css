@@ -244,7 +244,7 @@ p {
   box-shadow: 0 0 15px #999999;
   border: 10px solid white;
   max-height: 270px;
-  max-width: 360px;
+  max-width: 330px;
 }
 
 #mp_slideshow ul {
@@ -254,7 +254,7 @@ p {
     list-style: none;
     margin: 0;
     height: 270px;
-    width: 390px;
+    width: 360px;
 }
 
 #mp_updates {
