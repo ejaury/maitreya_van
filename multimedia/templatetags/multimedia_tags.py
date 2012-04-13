@@ -1,4 +1,5 @@
 import re
+import urlparse
 
 from django import template
 
@@ -38,11 +39,12 @@ class YoutubeNode(template.Node):
         self.parsed_link = parsed_link
 
     def render(self, context):
-        del_it = re.compile('(&amp.*)')
-        replace_it = re.compile('watch\?v=')
         link = self.parsed_link.render(context)
-        link = del_it.sub('', link)
-        link = replace_it.sub('embed/', link)
+        url = urlparse.urlparse(link)
+        params = urlparse.parse_qs(url.query)
+        vid_id = params.get('v', [''])[0]
+        replace_it = re.compile('watch$')
+        link = replace_it.sub('embed/', url.path) + vid_id
         video = """<iframe width="560" height="315" src="%s" frameborder="0" allowfullscreen></iframe>""" % link
         return video
 
