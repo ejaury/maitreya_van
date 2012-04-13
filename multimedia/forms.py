@@ -11,11 +11,14 @@ class EmbeddedVideoForm(forms.ModelForm):
         model = EmbeddedVideo
 
     def clean_link(self):
-        link = self.cleaned_data.get('link')
+        link = self.cleaned_data.get('link', '')
         if link:
             if 'youtube.com' not in link:
                 raise forms.ValidationError('Only a Youtube link can be processed')
-        return link
+        return link.strip()
+
+    def clean_code(self):
+        return self.cleaned_data.get('code', '').strip()
 
     def clean(self):
         cleaned_data = super(EmbeddedVideoForm, self).clean()
