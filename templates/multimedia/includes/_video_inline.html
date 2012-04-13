@@ -1,11 +1,5 @@
 {% load multimedia_tags %}
 
-<p class="date">Published on <strong>{{ obj.timestamp.date }}</strong></p>
-<div class="desc">{{ obj.description|linebreaksbr }}</div>
-<div class="video-frame">
-  {% if obj.embed_code %}
-    {{ obj.embed_code|safe }}
-  {% else %}
-    {% embed %}{{ obj.link }}{% endembed %}
-  {% endif %}
-</div>
+<p class="date">Published on <strong>{{ vid.timestamp.date }}</strong></p>
+<div class="desc">{{ vid.description|linebreaksbr }}</div>
+<div class="video-frame">{{ vid.embed_code|safe }}</div>

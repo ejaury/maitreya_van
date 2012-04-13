@@ -26,6 +26,15 @@ class EmbeddedVideoForm(forms.ModelForm):
         code = cleaned_data.get('embed_code')
         if not code and not link:
             raise forms.ValidationError('You need to specify either a link or embedded code for the video below')
+
+        if link:
+            # Only override code if it's not provided, or it's manually changed
+            if not code or 'embed_code' not in self.changed_data:
+                try:
+                    cleaned_data['embed_code'] = utils.create_youtube_embed(link)
+                except:
+                    raise forms.ValidationError('The link you provided is not valid')
+
         return cleaned_data
 
 

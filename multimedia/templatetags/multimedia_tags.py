@@ -1,9 +1,7 @@
-import re
-import urlparse
-
 from django import template
 
 from maitreya_van.utils import nat_sort
+from maitreya_van.multimedia.utils import create_youtube_embed
 
 register = template.Library()
 
@@ -39,18 +37,7 @@ class YoutubeNode(template.Node):
         self.parsed_link = parsed_link
 
     def render(self, context):
-        url = urlparse.urlparse(self.parsed_link.render(context))
-        params = urlparse.parse_qs(url.query)
-        vid_id = params.get('v', [''])[0]
-        replace_it = re.compile('watch$')
-        link = '%(scheme)s://%(netloc)s%(path)s%(query)s' % {
-            'scheme': url.scheme,
-            'netloc': url.netloc,
-            'path': replace_it.sub('embed/', url.path),
-            'query': vid_id,
-        }
-        video = """<iframe width="560" height="315" src="%s" frameborder="0" allowfullscreen></iframe>""" % link
-        return video
+        return create_youtube_embed(self.parsed_link.render(context))
 
 @register.tag
 def embed(parser, token):

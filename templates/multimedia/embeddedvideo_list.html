@@ -1,13 +1,15 @@
 {% extends "pages/index.html" %}
 
 {% block list %}
-  {% for obj in object_list %}
-    <h3 id="{{ obj.slug }}" class="page_title">
-      <a href="{% url video_detail obj.slug %}">{{ obj.title }}</a>
-    </h3>
-    {% include "multimedia/includes/_video_inline.html" %}
-    <br/>
-    <br/>
+  {% for vid in object_list %}
+    {% if vid.embed_code %}
+      <h3 id="{{ vid.slug }}" class="page_title">
+        <a href="{% url video_detail vid.slug %}">{{ vid.title }}</a>
+      </h3>
+      {% include "multimedia/includes/_video_inline.html" %}
+      <br/>
+      <br/>
+    {% endif %}
   {% empty %}
     <p>No videos available at the moment.</p>
   {% endfor %}

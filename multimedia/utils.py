@@ -1,5 +1,23 @@
+import re
+import urlparse
+
 from django.core.urlresolvers import reverse
 from django.utils.text import truncate_words
+
+def create_youtube_embed(link):
+    """Convert a Youtube link into an embed code."""
+    # Source: http://djangosnippets.org/snippets/2554/
+    url = urlparse.urlparse(link)
+    params = urlparse.parse_qs(url.query)
+    vid_id = params.get('v', [''])[0]
+    replace_it = re.compile('watch$')
+    link = '%(scheme)s://%(netloc)s%(path)s%(query)s' % {
+        'scheme': url.scheme,
+        'netloc': url.netloc,
+        'path': replace_it.sub('embed/', url.path),
+        'query': vid_id,
+    }
+    return """<iframe width="560" height="315" src="%s" frameborder="0" allowfullscreen></iframe>""" % link
 
 def is_mp3(filename):
     """Determine if file is an MP3"""
