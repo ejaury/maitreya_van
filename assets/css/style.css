@@ -183,6 +183,19 @@ p {
   float: left;
 }
 
+#logo span {
+    color: #EEEEEE;
+    font-size: 20px;
+    font-family: "Mate SC";
+    position: relative;
+    right: 198px;
+    top: 3px;
+}
+
+#logo a:hover {
+    text-decoration: none;
+}
+
 #main_menu {
   font-family: 'Yanone Kaffeesatz', 'Myriad Pro', Arial;
   font-size: 25px;
