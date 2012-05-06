@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     # django-schedule 1.0 RC-2
     'maitreya_van.schedule',
     'maitreya_van.add_ons.tinymce',
+    'captcha',
     'contact_form',
     'photologue',
     'tagging',
@@ -166,6 +167,10 @@ LOGIN_URL = '/admin/login'
 LOGIN_REDIRECT_URL = '/admin/'
 
 GRAPPELLI_ADMIN_TITLE = 'Providence of Maitreya Buddha Missionary Temple Vancouver'
+
+# Google ReCaptcha
+RECAPTCHA_PUBLIC_KEY = '6Ld5HNESAAAAAPcirt1BAbHGT6KTniP5TtpX9KHa'
+RECAPTCHA_USE_SSL = True
 
 LOG_FILEPATH = os.path.join(WWW_ROOT, 'logs/web.log')
 

@@ -10,10 +10,11 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.template import loader, RequestContext
 from django.contrib.sites.models import Site, RequestSite
+from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
 
-__all__ = ('ContactBaseForm', 'ContactForm', 'AkismetContactForm')
+__all__ = ('ContactBaseForm', 'ContactForm', 'AkismetContactForm', 'CaptchaContactForm')
 
 # I put this on all required fields, because it's easier to pick up
 # on them with CSS or JavaScript if they have a class of "required"
@@ -170,7 +171,7 @@ class ContactBaseForm(forms.Form):
         subject = loader.render_to_string(self.subject_template_name,
                                           self.get_context())
         return ''.join(subject.splitlines())
-    
+
     def get_context(self):
         """
         Return the context used to render the templates for the email
@@ -255,6 +256,17 @@ class ContactForm(ContactBaseForm):
     body = forms.CharField(widget=forms.Textarea(attrs=attrs_dict),
                               label=_('Your message'))
 
+    def subject(self):
+        context = self.get_context()
+        return 'Message from %(name)ss <%(email)s>' % {
+            'name': escape(context['name']),
+            'email': escape(context['email']),
+        }
+
+    def message(self):
+        context = self.get_context()
+        return escape(context['body'])
+
 
 class AkismetContactForm(ContactForm):
     """
@@ -285,3 +297,10 @@ class AkismetContactForm(ContactForm):
                 if akismet_api.comment_check(smart_str(self.cleaned_data['body']), data=akismet_data, build_data=True):
                     raise forms.ValidationError(_("Akismet thinks this message is spam"))
         return self.cleaned_data['body']
+
+
+from captcha.fields import ReCaptchaField
+
+class CaptchaContactForm(ContactForm):
+    """Use ReCaptcha"""
+    captcha = ReCaptchaField(attrs={'theme' : 'clean'})

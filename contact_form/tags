@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AkismetContactForm	forms.py	/^class AkismetContactForm(ContactForm):$/;"	c
+ContactBaseForm	forms.py	/^class ContactBaseForm(forms.Form):$/;"	c
+ContactForm	forms.py	/^class ContactForm(ContactBaseForm):$/;"	c
+__all__	forms.py	/^__all__ = ('ContactBaseForm', 'ContactForm', 'AkismetContactForm')$/;"	v
+__init__	forms.py	/^    def __init__(self, data=None, files=None, request=None, *args, **kwargs):$/;"	m	class:ContactBaseForm
+attrs_dict	forms.py	/^attrs_dict = { 'class': 'required' }$/;"	v
+body	forms.py	/^    body = forms.CharField(widget=forms.Textarea(attrs=attrs_dict),$/;"	v	class:ContactForm
+clean_body	forms.py	/^    def clean_body(self):$/;"	m	class:AkismetContactForm
+contact_form	views.py	/^def contact_form(request, form_class=ContactForm,$/;"	f
+email	forms.py	/^    email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,$/;"	v	class:ContactForm
+from_email	forms.py	/^    from_email = settings.DEFAULT_FROM_EMAIL$/;"	v	class:ContactBaseForm
+get_context	forms.py	/^    def get_context(self):$/;"	m	class:ContactBaseForm
+get_current_site	forms.py	/^    def get_current_site(self):$/;"	m	class:ContactBaseForm
+get_message_dict	forms.py	/^    def get_message_dict(self):$/;"	m	class:ContactBaseForm
+get_success_redirect	forms.py	/^    def get_success_redirect(self):$/;"	m	class:ContactBaseForm
+label	forms.py	/^                              label=_('Your message'))$/;"	v	class:ContactForm
+label	forms.py	/^                             label=_('Your email address'))$/;"	v	class:ContactForm
+label	forms.py	/^                           label=_('Your name'))$/;"	v	class:ContactForm
+maxlength	forms.py	/^                                                               maxlength=200)),$/;"	v	class:ContactForm
+message	forms.py	/^    def message(self):$/;"	m	class:ContactBaseForm
+name	forms.py	/^    name = forms.CharField(max_length=100,$/;"	v	class:ContactForm
+name	urls.py	/^                           name='contact_form'),$/;"	v
+name	urls.py	/^                           name='contact_form_sent'),$/;"	v
+recipient_list	forms.py	/^    recipient_list = [mail_tuple[1] for mail_tuple in settings.MANAGERS]$/;"	v	class:ContactBaseForm
+save	forms.py	/^    def save(self, fail_silently=False):$/;"	m	class:ContactBaseForm
+subject	forms.py	/^    def subject(self):$/;"	m	class:ContactBaseForm
+subject_template_name	forms.py	/^    subject_template_name = "contact_form\/contact_form_subject.txt"$/;"	v	class:ContactBaseForm
+template_name	forms.py	/^    template_name = 'contact_form\/contact_form.txt'$/;"	v	class:ContactBaseForm
+urlpatterns	urls.py	/^urlpatterns = patterns('',$/;"	v
+widget	forms.py	/^                           widget=forms.TextInput(attrs=attrs_dict),$/;"	v	class:ContactForm
