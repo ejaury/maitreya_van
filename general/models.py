@@ -1,10 +1,16 @@
 import datetime
+import logging
+
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.sitemaps import ping_google
 from django.db import models
+from django.utils.encoding import force_unicode
 from exceptions import NotImplementedError
 from maitreya_van.navigation.models import MenuItemExtension
 from tagging.fields import TagField
 from treemenus.models import MenuItem
+
+logger = logging.getLogger(__name__)
 
 
 class BasePage(models.Model):
@@ -37,6 +43,16 @@ class BasePage(models.Model):
                 pass
             self.menu_item.delete()
         super(BasePage, self).delete(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        super(BasePage, self).save(*args, **kwargs)
+        try:
+            ping_google()
+        except:
+            logger.exception('Error informing Google about a new entry in "%(model)s" page: %(title)s' % {
+                'model': force_unicode(self._meta.verbose_name),
+                'title': self.title,
+            })
 
     @models.permalink
     def get_absolute_url(self):

@@ -5,10 +5,10 @@ View which can render and send email from a contact form.
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 
-from contact_form.forms import ContactForm
+from contact_form.forms import CaptchaContactForm
 
 
-def contact_form(request, form_class=ContactForm,
+def contact_form(request, form_class=CaptchaContactForm,
                  template_name='contact_form/contact_form.html',
                  success_url=None, extra_context=None,
                  fail_silently=False):

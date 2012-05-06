@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     # django-schedule 1.0 RC-2
     'maitreya_van.schedule',
     'maitreya_van.add_ons.tinymce',
+    'captcha',
     'contact_form',
     'photologue',
     'tagging',
@@ -167,6 +168,12 @@ LOGIN_REDIRECT_URL = '/admin/'
 
 GRAPPELLI_ADMIN_TITLE = 'Providence of Maitreya Buddha Missionary Temple Vancouver'
 
+# Google ReCaptcha
+RECAPTCHA_PUBLIC_KEY = '6Ld5HNESAAAAAPcirt1BAbHGT6KTniP5TtpX9KHa'
+RECAPTCHA_USE_SSL = True
+
+LOG_FILEPATH = os.path.join(WWW_ROOT, 'logs/web.log')
+
 try:
     import local_settings
 except ImportError:
@@ -195,3 +202,43 @@ else:
                 globals()[name] = value
         elif re.search('^[A-Z]', attr):
             globals()[attr] = getattr(local_settings, attr)
+
+
+# Define here so we can override LOG_FILEPATH in local_settings.py
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(pathname)s %(funcName)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file':{
+            'level':'INFO',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': LOG_FILEPATH,
+            'maxBytes': 1048576, # 1 MB
+            'backupCount': 5,
+            'formatter': 'verbose'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'maitreya_van': {
+            'handlers': ['file', 'mail_admins'],
+            'level': 'INFO',
+        }
+    }
+}
