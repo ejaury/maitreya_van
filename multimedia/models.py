@@ -46,6 +46,12 @@ class EmbeddedVideo(models.Model):
     def __unicode__(self):
         return self.title
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('video_detail', (), {
+            'slug': self.slug,
+        })
+
 
 class MusicQuerySet(models.query.QuerySet):
     """Queryset for Music model to remove associated uploaded files"""

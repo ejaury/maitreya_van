@@ -103,6 +103,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.webdesign',
     'django.contrib.staticfiles',
     'grappelli',
