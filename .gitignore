@@ -2,6 +2,7 @@
 *.swp
 *~
 *.bak
+tags
 assets/gallery
 assets/music
 assets/static
