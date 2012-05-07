@@ -4,6 +4,10 @@
 {{ title }} - 
 {% endblock %}
 
+{% block meta_desc %}
+  <meta name="description" content="{{ object.content|striptags|truncatewords:75 }}"/>
+{% endblock %}
+
 {% block content %}
 <h2 id="{{ object.title|slugify }}">{{ object.title }}</h2>
 <p>
