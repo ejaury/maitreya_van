@@ -1,5 +1,7 @@
 from django import forms
+from django.contrib.admin import widgets as adminwidgets
 from django.db import transaction
+from django.utils.translation import ugettext_lazy as _
 
 from maitreya_van.add_ons.tinymce.widgets import TinyMCE
 from maitreya_van.general.models import BasePage
@@ -11,6 +13,9 @@ from treemenus.models import MenuItem
 
 class BasePageAdminForm(forms.ModelForm):
     content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+    menu_caption = forms.CharField(max_length=50,
+        widget=adminwidgets.AdminTextInputWidget(),
+        help_text=_('Caption/title to be used in the menu item for this article (only 50 characters long)'))
     parent_menu_item = forms.ModelChoiceField(queryset=MenuItem.objects.all(),
         help_text = 'Menu item that this page belongs to (e.g. Dance Class page belongs to "Classes" section)')
 
@@ -33,7 +38,7 @@ class BasePageAdminForm(forms.ModelForm):
             url = page.get_absolute_url()
             menu_kwargs = {
                 'parent': self.cleaned_data['parent_menu_item'],
-                'caption': page.title,
+                'caption': self.cleaned_data['menu_caption'],
                 'url': url,
             }
             if not self.instance.menu_item:

@@ -13,7 +13,7 @@ class BasePageAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
     class Media:
-        js = ("js/tiny_mce/tiny_mce.js",)
+        js = ("js/tiny_mce/tiny_mce.js", "js/admin/utils.js")
 
     def get_actions(self, request):
         actions = super(BasePageAdmin, self).get_actions(request)
