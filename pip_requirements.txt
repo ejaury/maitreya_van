@@ -5,3 +5,5 @@ django-photologue==2.2
 django-treemenus==0.8.6
 PIL==1.1.7
 python-dateutil==1.5
+south
+vobject==0.8.1c
