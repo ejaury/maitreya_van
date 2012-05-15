@@ -384,14 +384,13 @@ p {
   color: gray; 
 }
 
+#sidebar li.selected > a:first-child,
 #sidebar li a:hover {
   color: #227ECC;
-  font-weight: bold;
 }
 
-#sidebar li.selected > a:first-child {
-  color: #227ECC;
-  font-weight: bold;
+#sidebar li a:hover {
+  text-decoration: underline;
 }
 
 #top_menu {
