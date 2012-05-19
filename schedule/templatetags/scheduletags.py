@@ -31,6 +31,7 @@ def day_cell(context,  calendar, day, month, size="regular" ):
         'calendar' : calendar,
         'day' : day,
         'month' : month,
+        'today': datetime.datetime.now().date(),
         'size' : size
     })
     return context
