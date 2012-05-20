@@ -34,6 +34,8 @@ class CalendarGroupForm(forms.ModelForm):
         self.fields['color_hex'].choices = Color.objects.values_list('hex', 'name')
         if self.instance.pk:
             self.fields['color_hex'].initial = self.instance.color.hex
+        else:
+            self.fields['color_hex'].initial = self.fields['color_hex'].choices[0][0]
 
     def save(self, commit=True):
         group = super(CalendarGroupForm, self).save(commit=False)
