@@ -86,6 +86,7 @@ def calendar_by_periods(request, calendar_slug, periods=None,
             'weekday_names': weekday_names,
             'here':quote(request.get_full_path()),
             'title': 'Events',
+            'cal_groups': CalendarGroup.objects.all(),
         }
     context.update(extra_context)
     return render_to_response(template_name, context, context_instance=RequestContext(request))

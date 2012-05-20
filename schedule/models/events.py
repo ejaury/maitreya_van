@@ -10,7 +10,7 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 import datetime
 from dateutil import rrule
 from schedule.models.rules import Rule
-from schedule.models.calendars import Calendar
+from schedule.models.calendars import Calendar, CalendarGroup
 from schedule.utils import OccurrenceReplacer
 
 class EventManager(models.Manager):
@@ -32,6 +32,7 @@ class Event(models.Model):
     rule = models.ForeignKey(Rule, null = True, blank = True, verbose_name=_("rule"), help_text=_("Select '----' for a one time only event."))
     end_recurring_period = models.DateTimeField(_("end recurring period"), null = True, blank = True, help_text=_("This date is ignored for one time only events."))
     calendar = models.ForeignKey(Calendar, blank=True, null=True)
+    group = models.ForeignKey(CalendarGroup, blank=True, null=True)
     objects = EventManager()
 
     # extra fields

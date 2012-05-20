@@ -11,6 +11,9 @@ import datetime
 from dateutil import rrule
 from schedule.utils import EventListManager
 
+from maitreya_van.main.models import Color
+
+
 class CalendarManager(models.Manager):
     """
     >>> user1 = User(username='tony')
@@ -237,3 +240,15 @@ class CalendarRelation(models.Model):
 
     def __unicode__(self):
         return u'%s - %s' %(self.calendar, self.content_object)
+
+
+class CalendarGroup(models.Model):
+    name = models.CharField(max_length=40)
+    members = models.ManyToManyField(User)
+    color = models.ForeignKey(Color)
+
+    class Meta:
+        app_label = 'schedule'
+
+    def __unicode__(self):
+        return self.name

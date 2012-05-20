@@ -102,6 +102,18 @@ p {
   padding: 5px 0;
 }
 
+#color-legend {
+    font-size: 12px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#color-legend span {
+    border-radius: 5px;
+    margin: 0px 5px;
+    padding: 3px 10px;
+}
+
 #copyright {
   font-size: 80%;
   margin: auto;

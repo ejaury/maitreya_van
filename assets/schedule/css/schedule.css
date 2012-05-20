@@ -132,15 +132,19 @@ table.calendar td.header {
   text-align: center;
 }
 
+table.calendar td.today {
+  background-color: #CCEECC;
+}
+
 table.calendar td.today b {
   color: red;
   text-shadow: gray 0 0 5px;
 }
 
 table.calendar td.daynumber {
-	font-size: 60%;
-	vertical-align: top;
-  white-space: nowrap;
+    font-size: 60%;
+    vertical-align: top;
+    white-space: nowrap;
 }
 
 table.calendar td.noday {
@@ -183,6 +187,11 @@ td.daynumber div.eventcell {
     clear:both;
     cursor:pointer;
     overflow:auto;
+    padding:2px 0;
+}
+
+td.daynumber div.eventcell:hover {
+    opacity:0.8;
 }
 
 td.daynumber div.starttime {

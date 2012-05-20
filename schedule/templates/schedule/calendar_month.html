@@ -16,5 +16,17 @@
     </a>
   </div>
   {% month_table calendar periods.month "regular" %}
+  {% include "schedule/_color_legend.html" %}
 </div>
+{% endblock %}
+
+{% block extra_footer %}
+<script type="text/javascript">
+  {# Attach click event on event div container to direct user to event detail page #}
+  $(".eventcell a").each(function() {
+    $(this).parent().click(function() {
+      document.location.href = $(this).children("a").attr("href");
+    });
+  });
+</script>
 {% endblock %}

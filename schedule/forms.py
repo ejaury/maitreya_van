@@ -5,6 +5,9 @@ import datetime
 import time
 
 from maitreya_van.add_ons.tinymce.widgets import TinyMCE
+from maitreya_van.main.models import Color
+from maitreya_van.schedule.models import CalendarGroup
+from maitreya_van.common.widgets import ColorSelect
 
 
 class SpanForm(forms.ModelForm):
@@ -16,6 +19,31 @@ class SpanForm(forms.ModelForm):
         if self.cleaned_data['end'] <= self.cleaned_data['start']:
             raise forms.ValidationError(_("The end time must be later than start time."))
         return self.cleaned_data['end']
+
+
+class CalendarGroupForm(forms.ModelForm):
+    color_hex = forms.ChoiceField(choices=(), widget=ColorSelect,
+        label=_('Color'))
+
+    class Meta:
+        model = CalendarGroup
+        exclude = ('color',)
+
+    def __init__(self, *args, **kwargs):
+        super(CalendarGroupForm, self).__init__(*args, **kwargs)
+        self.fields['color_hex'].choices = Color.objects.values_list('hex', 'name')
+        if self.instance.pk:
+            self.fields['color_hex'].initial = self.instance.color.hex
+
+    def save(self, commit=True):
+        group = super(CalendarGroupForm, self).save(commit=False)
+        color_hex = self.cleaned_data['color_hex']
+        # TODO: Make hex unique
+        # Do reverse lookup to find color based on its HEX
+        group.color = Color.objects.filter(hex=color_hex)[0]
+        if commit:
+            group.save()
+        return group
 
 
 class EventForm(SpanForm):

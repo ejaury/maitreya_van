@@ -293,3 +293,10 @@ def _cook_slots(period, increment, width, height):
 @register.simple_tag
 def hash_occurrence(occ):
     return '%s_%s' % (occ.start.strftime('%Y%m%d%H%M%S'), occ.event.id)
+
+@register.simple_tag
+def event_group_style(occurrence):
+    group = occurrence.event.group
+    if group:
+        return 'background-color:#%s' % group.color.hex
+    return ''
