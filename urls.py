@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^$', 'maitreya_van.main.views.index'),
     (r'^about/contact/', include('contact_form.urls')),
-    (r'^events/upcoming/', include('maitreya_van.schedule.urls')),
+    (r'^events/', include('maitreya_van.schedule.urls')),
     (r'^multimedia/', include('maitreya_van.multimedia.urls')),
     (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/', include(admin.site.urls)),
