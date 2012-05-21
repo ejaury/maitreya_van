@@ -9,14 +9,15 @@
 <h1>Calendar</h1>
 {% include "schedule/_dialogs.html" %}
 <div class="tablewrapper">
-  {% prevnext "month_calendar" calendar.slug periods.month "F Y"%}
+  {# HACK: pass empty calendar slug since calendar slug is already hard-coded for this view name #}
+  {% prevnext "month_calendar_temple" "" periods.month "F Y"%}
   <div class="now">
-    <a href="{% url month_calendar calendar.slug %}">
+    <a class="cal-nav" href="{% url month_calendar_temple %}">
       This month
     </a>
   </div>
   {% month_table calendar periods.month "regular" %}
-  {% include "schedule/_color_legend.html" %}
+  {% include "schedule/_group_filter.html" %}
 </div>
 {% endblock %}
 

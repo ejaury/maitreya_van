@@ -102,16 +102,35 @@ p {
   padding: 5px 0;
 }
 
-#color-legend {
+#group-filter {
     font-size: 12px;
     margin-top: 15px;
     text-align: center;
 }
 
-#color-legend span {
+#group-filter div {
+    line-height: 30px;
+}
+
+#group-filter span {
+    border: 1px solid;
     border-radius: 5px;
     margin: 0px 5px;
     padding: 3px 10px;
+}
+
+#group-filter span:hover {
+    border-color: black !important;
+    cursor: pointer;
+    opacity: 1.0 !important;
+}
+
+#group-filter span.filter-off {
+    opacity: 0.5;
+}
+
+#group-filter p {
+    margin: 5px 0;
 }
 
 #copyright {

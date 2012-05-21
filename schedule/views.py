@@ -1,11 +1,10 @@
 from urllib import quote
+from django.db.models import Q
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.generic.create_update import delete_object
-from django.http import HttpResponseRedirect, Http404, HttpResponse
+from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 from django.views.generic.create_update import delete_object
 import datetime
 
@@ -78,6 +77,13 @@ def calendar_by_periods(request, calendar_slug, periods=None,
     else:
         date = datetime.datetime.now()
     event_list = GET_EVENTS_FUNC(request, calendar)
+
+    # Apply filter if requested (filter cannot be applied to Public events
+    # - i.e. events that do not have any group. They will always show up.)
+    groups = request.GET.getlist('group')
+    if groups:
+        event_list = event_list.filter(Q(group__isnull=True) | Q(group__pk__in=groups))
+
     period_objects = dict([(period.__name__.lower(), period(event_list, date)) for period in periods])
     context = {
             'date': date,
@@ -87,6 +93,7 @@ def calendar_by_periods(request, calendar_slug, periods=None,
             'here':quote(request.get_full_path()),
             'title': 'Events',
             'cal_groups': CalendarGroup.objects.all(),
+            'selected_groups': [int(pk) for pk in groups],
         }
     context.update(extra_context)
     return render_to_response(template_name, context, context_instance=RequestContext(request))
