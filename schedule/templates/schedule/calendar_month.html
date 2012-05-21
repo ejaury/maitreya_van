@@ -35,6 +35,7 @@
   {# Set-up a button to copy calendar link to clipboard #}
   ZeroClipboard.setMoviePath("{{ STATIC_URL }}js/zeroclipboard/ZeroClipboard10.swf");
   var clip = new ZeroClipboard.Client();
+  clip.setHandCursor(true);
   clip.setText('');
   clip.addEventListener('mouseDown', function(){
     clip.setText("{{ request.build_absolute_uri}}");
