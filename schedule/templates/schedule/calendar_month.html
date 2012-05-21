@@ -3,6 +3,7 @@
 
 {% block extra_head %}{{ block.super }}
     <script type="text/javascript" src="{{ STATIC_URL }}js/schedule.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/zeroclipboard/ZeroClipboard.js"></script>
 {% endblock extra_head %}
 
 {% block content %}
@@ -11,7 +12,8 @@
 <div class="tablewrapper">
   {# HACK: pass empty calendar slug since calendar slug is already hard-coded for this view name #}
   {% prevnext "month_calendar_temple" "" periods.month "F Y"%}
-  <div class="now">
+  <div class="now" style="position:relative">
+    <a id="copy-link" href="javascript:void(0)">[Copy calendar link]</a>
     <a class="cal-nav" href="{% url month_calendar_temple %}">
       This month
     </a>
@@ -29,5 +31,14 @@
       document.location.href = $(this).children("a").attr("href");
     });
   });
+
+  {# Set-up a button to copy calendar link to clipboard #}
+  ZeroClipboard.setMoviePath("{{ STATIC_URL }}js/zeroclipboard/ZeroClipboard10.swf");
+  var clip = new ZeroClipboard.Client();
+  clip.setText('');
+  clip.addEventListener('mouseDown', function(){
+    clip.setText("{{ request.build_absolute_uri}}");
+  });
+  clip.glue("copy-link");
 </script>
 {% endblock %}

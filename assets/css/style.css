@@ -102,6 +102,12 @@ p {
   padding: 5px 0;
 }
 
+#copy-link {
+  font-size: 11px;
+  position: absolute;
+  right: 0;
+}
+
 #group-filter {
     font-size: 12px;
     margin-top: 15px;
