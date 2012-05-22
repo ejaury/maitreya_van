@@ -186,7 +186,7 @@ td.daynumber div.eventcell {
     */
     clear:both;
     cursor:pointer;
-    overflow:auto;
+    overflow:hidden;
     padding:2px 0;
 }
 
