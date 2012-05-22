@@ -249,6 +249,7 @@ class CalendarGroup(models.Model):
 
     class Meta:
         app_label = 'schedule'
+        ordering = ('name',)
 
     def __unicode__(self):
         return self.name
