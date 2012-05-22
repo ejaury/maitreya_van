@@ -1,0 +1,20 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript">
+  (function($) {
+    $(document).ready(function() {
+      {# Re-order form rows #}
+      var $formRows = $(".row");
+      console.log($formRows);
+      var $menuCaption = $formRows.filter(".menu_caption");
+      var $parentMenu = $formRows.filter(".parent_menu_item");
+      var $content = $formRows.filter(".content");
+      $content.before($menuCaption).before($parentMenu);
+
+      {# Prepopulate menu caption #}
+      $("#id_menu_caption").prepopulate_text(["#id_title"], {{ adminform.form.menu_caption.field.max_length }});
+    });
+  }(django.jQuery));
+</script>
+{% endblock %}

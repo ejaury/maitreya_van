@@ -3,18 +3,43 @@
 
 {% block extra_head %}{{ block.super }}
     <script type="text/javascript" src="{{ STATIC_URL }}js/schedule.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/zeroclipboard/ZeroClipboard.js"></script>
 {% endblock extra_head %}
 
 {% block content %}
 <h1>Calendar</h1>
 {% include "schedule/_dialogs.html" %}
 <div class="tablewrapper">
-  {% prevnext "month_calendar" calendar.slug periods.month "F Y"%}
-  <div class="now">
-    <a href="{% url month_calendar calendar.slug %}">
+  {# HACK: pass empty calendar slug since calendar slug is already hard-coded for this view name #}
+  {% prevnext "month_calendar_temple" "" periods.month "F Y"%}
+  <div class="now" style="position:relative">
+    <a id="copy-link" href="javascript:void(0)">[Copy calendar link]</a>
+    <a class="cal-nav" href="{% url month_calendar_temple %}">
       This month
     </a>
   </div>
   {% month_table calendar periods.month "regular" %}
+  {% include "schedule/_group_filter.html" %}
 </div>
+{% endblock %}
+
+{% block extra_footer %}
+<script type="text/javascript">
+  {# Attach click event on event div container to direct user to event detail page #}
+  $(".eventcell a").each(function() {
+    $(this).parent().click(function() {
+      document.location.href = $(this).children("a").attr("href");
+    });
+  });
+
+  {# Set-up a button to copy calendar link to clipboard #}
+  ZeroClipboard.setMoviePath("{{ STATIC_URL }}js/zeroclipboard/ZeroClipboard10.swf");
+  var clip = new ZeroClipboard.Client();
+  clip.setHandCursor(true);
+  clip.setText('');
+  clip.addEventListener('mouseDown', function(){
+    clip.setText("{{ request.build_absolute_uri}}");
+  });
+  clip.glue("copy-link");
+</script>
 {% endblock %}

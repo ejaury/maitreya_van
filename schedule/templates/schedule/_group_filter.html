@@ -1,0 +1,58 @@
+<div id="group-filter">
+<p>Show only events from specific group(s):</p>
+  <div>
+  {% for group in cal_groups %}
+    <span class="{% if group.pk not in selected_groups %}filter-off{% endif %}"
+          style="background-color:#{{ group.color.hex }}; border-color:#{{ group.color.hex }};">
+      {{group.name}}
+      <input type="hidden" value="{{group.pk}}"/>
+    </span>
+  {% endfor %}
+  </div>
+<p><a id="show-all-events" href="javascript:void(0)">[Show all events]</a></p>
+</div>
+
+<script type="text/javascript">
+  {# Add filtering groups to all navigation URLs in this page (e.g. prev/next URL) #}
+  $(document).ready(function() {
+    var $calNavAnchors = $("a.cal-nav");
+    var selectedParams = $.map({{ selected_groups }}, function(n,i) {
+      return ("group=" + n);
+    }).join("&");
+
+    $calNavAnchors.each(function() {
+      var href = this.href;
+      if (href.indexOf("?") >= 0) {
+        href += "&" + selectedParams;
+      } else {
+        href += "?" + selectedParams;
+      }
+      this.href = href;
+    });
+
+    {# Enable group filtering on Calendar #}
+    $("#group-filter").find("div span").click(function() {
+      var selected = {{ selected_groups }};
+      var groupId = parseInt($(this).find("input").val());
+      var groupIndex = selected.indexOf(groupId);
+
+      if (groupIndex >= 0) {
+        // Item is already selected, so remove it
+        selected.splice(groupIndex, 1);
+      } else {
+        selected.push(groupId);
+      }
+
+      var params = $.map(selected, function(n,i) {
+        return ("group=" + n);
+      });
+
+      document.location.href = {{request.path}} + '?' + params.join("&");
+    });
+
+    {# Setup link to clear all filters #}
+    $("#show-all-events").click(function() {
+      document.location.href = {{request.path}};
+    });
+  });
+</script>

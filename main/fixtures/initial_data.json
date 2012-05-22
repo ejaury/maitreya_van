@@ -1,0 +1,66 @@
+[
+    {
+        "pk": 2,
+        "model": "main.color",
+        "fields": {
+            "hex": "46D6DB",
+            "name": "Turquoise"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "main.color",
+        "fields": {
+            "hex": "6B95EF",
+            "name": "Bold Blue"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "main.color",
+        "fields": {
+            "hex": "73C56D",
+            "name": "Bold Green"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "main.color",
+        "fields": {
+            "hex": "DBADFF",
+            "name": "Purple"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "main.color",
+        "fields": {
+            "hex": "FBD75B",
+            "name": "Yellow"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "main.color",
+        "fields": {
+            "hex": "FF5566",
+            "name": "Bold Red"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "main.color",
+        "fields": {
+            "hex": "FF887C",
+            "name": "Red"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "main.color",
+        "fields": {
+            "hex": "FF9944",
+            "name": "Orange"
+        }
+    }
+]

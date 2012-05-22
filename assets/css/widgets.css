@@ -1,0 +1,12 @@
+.color-choice {
+    border: 2px solid;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 2px;
+    height: 14px;
+    width: 14px;
+}
+
+.color-choice.selected {
+    border-color: black !important;
+}

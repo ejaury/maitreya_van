@@ -52,11 +52,28 @@ url(r'^calendar/(?P<calendar_slug>[-\w]+)/$',
     name = "calendar_home",
     ),
 
-#Event Urls
-url(r'^list/(?P<calendar_slug>[-\w]+)/$',
+# Shortcut URLs for main calendar 'temple'
+url(r'^$',
+    'schedule.views.calendar_by_periods',
+    name = "month_calendar_temple",
+    kwargs={
+        'calendar_slug': 'temple',
+        'periods': [Month],
+        'template_name': 'schedule/calendar_month.html'
+    }),
+url(r'^upcoming/$',
     'schedule.views.view_upcoming_occurrences',
     name='calendar_upcoming',
-    kwargs = { 'template_name': 'events/list.html' }),
+    kwargs = {
+        'calendar_slug': 'temple',
+        'template_name': 'events/list.html'
+    }),
+
+#Event Urls
+#url(r'^list/(?P<calendar_slug>[-\w]+)/$',
+#    'schedule.views.view_upcoming_occurrences',
+#    name='calendar_upcoming',
+#    kwargs = { 'template_name': 'events/list.html' }),
 url(r'^event/create/(?P<calendar_slug>[-\w]+)/$',
     'schedule.views.create_or_edit_event',
     name='calendar_create_event'),

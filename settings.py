@@ -109,6 +109,7 @@ INSTALLED_APPS = (
     'grappelli',
     'django.contrib.admin',
     'south',
+    'maitreya_van.authext',
     'maitreya_van.pages',
     'maitreya_van.general',
     'maitreya_van.multimedia',
