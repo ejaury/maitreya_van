@@ -244,7 +244,7 @@ class CalendarRelation(models.Model):
 
 class CalendarGroup(models.Model):
     name = models.CharField(max_length=40)
-    members = models.ManyToManyField(User)
+    members = models.ManyToManyField(User, blank=True)
     color = models.ForeignKey(Color)
 
     class Meta:
