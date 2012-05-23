@@ -1,3 +1,12 @@
+function addAppendParams(href, params) {
+    if (href.indexOf("?") >= 0) {
+        href += "&" + params;
+    } else {
+        href += "?" + params;
+    }
+    return href;
+}
+
 function show_html_overlay(container_class) {
     // if the function argument is given to overlay,
     // it is assumed to be the onBeforeLoad event listener

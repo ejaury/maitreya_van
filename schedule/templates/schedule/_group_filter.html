@@ -12,6 +12,7 @@
 <p><a id="show-all-events" href="javascript:void(0)">[Show all events]</a></p>
 </div>
 
+<script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>
 <script type="text/javascript">
   {# Add filtering groups to all navigation URLs in this page (e.g. prev/next URL) #}
   $(document).ready(function() {
@@ -21,14 +22,10 @@
     }).join("&");
 
     $calNavAnchors.each(function() {
-      var href = this.href;
-      if (href.indexOf("?") >= 0) {
-        href += "&" + selectedParams;
-      } else {
-        href += "?" + selectedParams;
-      }
-      this.href = href;
+      this.href = addAppendParams(this.href, selectedParams);
     });
+
+    var uri = document.location.protocol + "//" + document.location.host + "{{ request.path }}";
 
     {# Enable group filtering on Calendar #}
     $("#group-filter").find("div span").click(function() {
@@ -47,12 +44,20 @@
         return ("group=" + n);
       });
 
-      document.location.href = {{request.path}} + '?' + params.join("&");
+      {% if period_params %}
+        if (params.length > 0) {
+          document.location.href = addAppendParams(uri, "{{ period_params|safe }}" + "&" + params.join("&"));
+        } else {
+          document.location.href = addAppendParams(uri, "{{ period_params|safe }}");
+        }
+      {% else %}
+        document.location.href = addAppendParams(uri, params.join("&"));
+      {% endif %}
     });
 
     {# Setup link to clear all filters #}
     $("#show-all-events").click(function() {
-      document.location.href = {{request.path}};
+      document.location.href = addAppendParams(uri, "{{ period_params|safe }}");
     });
   });
 </script>

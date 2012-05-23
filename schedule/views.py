@@ -84,6 +84,13 @@ def calendar_by_periods(request, calendar_slug, periods=None,
     if groups:
         event_list = event_list.filter(Q(group__isnull=True) | Q(group__pk__in=groups))
 
+    # Discard 'group' GET param and only keep period params - easier to keep
+    # state this way for filtering to work in the front-end
+    period_params = []
+    for param in request.GET.urlencode().split('&'):
+        if not param.startswith('group='):
+            period_params.append(param)
+
     period_objects = dict([(period.__name__.lower(), period(event_list, date)) for period in periods])
     context = {
             'date': date,
@@ -94,6 +101,7 @@ def calendar_by_periods(request, calendar_slug, periods=None,
             'title': 'Events',
             'cal_groups': CalendarGroup.objects.all(),
             'selected_groups': [int(pk) for pk in groups],
+            'period_params': '&'.join(period_params),
         }
     context.update(extra_context)
     return render_to_response(template_name, context, context_instance=RequestContext(request))
