@@ -14,7 +14,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
-    (r'^$', 'maitreya_van.main.views.index'),
+    url(r'^$',
+        'maitreya_van.main.views.index',
+        name='home'),
     (r'^about/contact/', include('contact_form.urls')),
     (r'^events/', include('maitreya_van.schedule.urls')),
     (r'^multimedia/', include('maitreya_van.multimedia.urls')),
