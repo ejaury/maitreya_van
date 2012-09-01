@@ -6,12 +6,12 @@
      <a href="../../../">{% trans "Home" %}</a> &rsaquo;
      <a href="../../">{{ app_label|capfirst|escape }}</a> &rsaquo; 
      {% if has_change_permission %}<a href="../">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %} &rsaquo; 
-     {% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
+     {% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}1
 </div>
 {% endif %}{% endblock %}
 
 {% block content %}
 <div id="content-main">
-  Please add new event from <a target="_blank" href="/events/upcoming/calendar/month/temple/">here</a>.
+  Please add new event from <a target="_blank" href="{% url month_calendar_temple %}">here</a>.
 </div>
 {% endblock %}
