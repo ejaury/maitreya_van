@@ -70,7 +70,7 @@
         "fields": {
             "parent": 1,
             "level": 1,
-            "url": "/events/upcoming/calendar/month/temple/",
+            "url": "/events/",
             "menu": 1,
             "rank": 3,
             "caption": "Events",
@@ -96,7 +96,7 @@
         "fields": {
             "parent": 6,
             "level": 2,
-            "url": "/events/upcoming/calendar/month/temple/",
+            "url": "/events/",
             "menu": 1,
             "rank": 0,
             "caption": "Upcoming Events",
@@ -122,7 +122,7 @@
         "fields": {
             "parent": 20,
             "level": 3,
-            "url": "/events/upcoming/list/temple/",
+            "url": "/events/upcoming/",
             "menu": 1,
             "rank": 1,
             "caption": "Event List",
@@ -161,7 +161,7 @@
         "fields": {
             "parent": 20,
             "level": 3,
-            "url": "/events/upcoming/calendar/month/temple/",
+            "url": "/events/",
             "menu": 1,
             "rank": 0,
             "caption": "Calendar",
@@ -290,7 +290,7 @@
         "pk": 5,
         "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/upcoming/list/temple/$",
+            "selected_patterns": "^/events/upcoming/$",
             "menu_item": 22
         }
     },
@@ -298,7 +298,7 @@
         "pk": 6,
         "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/upcoming",
+            "selected_patterns": "^/events/$\r\n^/events/upcoming/$",
             "menu_item": 20
         }
     },
@@ -338,7 +338,7 @@
         "pk": 11,
         "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/upcoming/calendar/month/temple/$",
+            "selected_patterns": "^/events/$",
             "menu_item": 25
         }
     },
