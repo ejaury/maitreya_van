@@ -344,6 +344,7 @@ p {
   box-shadow: 1px 1px 5px lightgrey;
   -moz-border-radius: 2em 1em;
   -webkit-border-radius: 2em 1em;
+  border-radius: 2em 1em;
   background-color: white;
   background-color: white;
   float: left;
