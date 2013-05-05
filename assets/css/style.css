@@ -367,6 +367,19 @@ p {
   width: 980px;
 }
 
+#sbtoggle {
+  background-color: #DDDDDD;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  top: 40px;
+  width: 10px;
+}
+#sbtoggle img {
+  height: 30px;
+  width: 10px;
+}
+
 #short_summary {
     /* Fallback for browsers with RGB only */
     background: rgb(255,255,100);

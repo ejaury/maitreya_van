@@ -99,7 +99,7 @@
             "url": "/events/",
             "menu": 1,
             "rank": 0,
-            "caption": "Upcoming Events",
+            "caption": "Calendar",
             "named_url": ""
         }
     },
@@ -113,19 +113,6 @@
             "menu": 1,
             "rank": 1,
             "caption": "Past Events",
-            "named_url": ""
-        }
-    },
-    {
-        "pk": 22,
-        "model": "treemenus.menuitem",
-        "fields": {
-            "parent": 20,
-            "level": 3,
-            "url": "/events/upcoming/",
-            "menu": 1,
-            "rank": 1,
-            "caption": "Event List",
             "named_url": ""
         }
     },
@@ -152,19 +139,6 @@
             "menu": 1,
             "rank": 0,
             "caption": "Home",
-            "named_url": ""
-        }
-    },
-    {
-        "pk": 25,
-        "model": "treemenus.menuitem",
-        "fields": {
-            "parent": 20,
-            "level": 3,
-            "url": "/events/",
-            "menu": 1,
-            "rank": 0,
-            "caption": "Calendar",
             "named_url": ""
         }
     },
@@ -287,18 +261,10 @@
         }
     },
     {
-        "pk": 5,
-        "model": "navigation.menuitemextension",
-        "fields": {
-            "selected_patterns": "^/events/upcoming/$",
-            "menu_item": 22
-        }
-    },
-    {
         "pk": 6,
         "model": "navigation.menuitemextension",
         "fields": {
-            "selected_patterns": "^/events/$\r\n^/events/upcoming/$",
+            "selected_patterns": "^/events/$",
             "menu_item": 20
         }
     },
@@ -332,14 +298,6 @@
         "fields": {
             "selected_patterns": "^/maitreya/",
             "menu_item": 5
-        }
-    },
-    {
-        "pk": 11,
-        "model": "navigation.menuitemextension",
-        "fields": {
-            "selected_patterns": "^/events/$",
-            "menu_item": 25
         }
     },
     {

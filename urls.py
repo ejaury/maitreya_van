@@ -2,10 +2,10 @@ from django.conf import settings
 from django.conf.urls.defaults import *
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import TemplateView
 
 from maitreya_van.pages.models import *
-from maitreya_van.pages.views import ContactView, PageDetailView, PageListView,\
-                                     TemplateView
+from maitreya_van.pages.views import ContactView, PageDetailView, PageListView
 from maitreya_van.sitemaps import sitemaps
 
 # Uncomment the next two lines to enable the admin:
@@ -18,7 +18,9 @@ urlpatterns = patterns('',
         'maitreya_van.main.views.index',
         name='home'),
     (r'^about/contact/', include('contact_form.urls')),
-    (r'^events/', include('maitreya_van.schedule.urls')),
+    url(r'^events/$',
+        TemplateView.as_view(template_name='events/calendar.html'),
+        name='calendar_upcoming'),
     (r'^multimedia/', include('maitreya_van.multimedia.urls')),
     (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/', include(admin.site.urls)),

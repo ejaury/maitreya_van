@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+
+
+{% block extra_style %}{{ block.super }}
+<style type="text/css">
+#sbtoggle {
+  background-color: #DDDDDD;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  top: 40px;
+  width: 10px;
+}
+#sbtoggle img {
+  height: 30px;
+  width: 10px;
+}
+</style>
+{% endblock %}
+
+
+{% block pre_content %}
+<div id="sbtoggle">
+  <img class="right" title="Hide sidebar" src="{{ STATIC_URL }}css/images/icons/arrow_right.png"/>
+  <img class="left" title="Show sidebar" src="{{ STATIC_URL }}css/images/icons/arrow_left.png" style="display:none"/>
+</div>
+{% endblock %}
+
+{% block content %}
+  <iframe src="https://www.google.com/calendar/embed?title=Events&amp;height=600&amp;wkst=1&amp;bgcolor=%23FBFBEF&amp;src=n3l7dek6unnilhpjmvj8e082ec%40group.calendar.google.com&amp;color=%23A32929&amp;ctz=America%2FVancouver" style=" border-width:0 " width="660" height="600" frameborder="0" scrolling="no"></iframe>
+{% endblock content %}
+
+
+{% block extra_footer %}{{ block.super }}
+<script type="text/javascript">
+  var $ctWrapper, $iframe, $sb, $toggler, $togglerRight, $togglerLeft;
+  $ctWrapper = $("#content_wrapper");
+  $iframe = $("iframe");
+  $sb = $("#sidebar");
+  $toggler = $("#sbtoggle");
+  $togglerRight = $toggler.find("img.right");
+  $togglerLeft = $toggler.find("img.left");
+
+  $("#content_container").css("overflow", "hidden");
+
+  $toggler.toggle(function() {
+      $iframe.attr("width", "910px");
+      $sb.hide();
+      $ctWrapper.css("width", "960px");
+      $togglerLeft.show();
+      $togglerRight.hide();
+  }, function() {
+      $iframe.attr("width", "660px");
+      $sb.show();
+      $ctWrapper.css("width", "710px");
+      $togglerLeft.hide();
+      $togglerRight.show();
+  });
+</script>
+{% endblock %}

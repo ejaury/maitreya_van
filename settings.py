@@ -117,8 +117,6 @@ INSTALLED_APPS = (
     'maitreya_van.main',
     # Third-party
     # ===========
-    # django-schedule 1.0 RC-2
-    'maitreya_van.schedule',
     'maitreya_van.add_ons.tinymce',
     'captcha',
     'contact_form',
