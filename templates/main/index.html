@@ -1,4 +1,5 @@
 {% extends "base/base.html" %}
+{% load static %}
 
 {% block extra_head %}{{ block.super }}
   <script type="text/javascript" src="{{ STATIC_URL }}js/tinyfader.js"></script>
@@ -26,7 +27,9 @@
         <h2>Welcome!</h2>
         <p>
           Do you want to know more <a href="{% url about_us %}">about us</a>? Please read <a href="{% url about_principle %}">our principle</a> and <a href="{% url maitreya_index %}">teachings</a>.<br/><br/>
-          Our regular service is every Sunday at 11:00AM. Everyone is welcome to join!<br/><br/>
+          {% if eng_class_rel_path %}
+          We have public classes available if you would like to learn more about our teachings. Please view the <a href="{% get_static_prefix %}{{ eng_class_rel_path }}" target="_blank">upcoming classes here</a>. Everyone is welcome to join!<br/><br/>
+          {% endif %}
           <br/> <br/> <br/> <br/>
           To find out more about Maitreya Great Tao, please visit <a href="https://www.maitreya.org.tw" title="https://www.maitreya.org.tw" target="_blank">our headquarter website</a>.
         </p>
@@ -36,6 +39,7 @@
 </div>
 {% endblock %}
 
+{% comment %}
 {% block mp_updates %}
     <div id="mp_updates" class="clearfix">
       <div class="col" id="mp_news">
@@ -88,6 +92,7 @@
       </div>
     </div>
 {% endblock %}
+{% endcomment %}
 
 {% block content_base %}
 {% endblock %}

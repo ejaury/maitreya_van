@@ -2,6 +2,8 @@
 *.swp
 *~
 *.bak
+.ropeproject
+.vscode
 tags
 assets/gallery
 assets/music
