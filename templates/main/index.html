@@ -27,10 +27,18 @@
         <h2>Welcome!</h2>
         <p>
           Do you want to know more <a href="{% url about_us %}">about us</a>? Please read <a href="{% url about_principle %}">our principle</a> and <a href="{% url maitreya_index %}">teachings</a>.<br/><br/>
-          {% if eng_class_rel_path %}
-          We have public classes available if you would like to learn more about our teachings. Please view the <a href="{% get_static_prefix %}{{ eng_class_rel_path }}" target="_blank">upcoming classes here</a>. Everyone is welcome to join!<br/><br/>
-          {% endif %}
-          <br/> <br/> <br/> <br/>
+        </p>
+        <p>
+          If you would like to visit or have a tour of our temple facility, please contact us to schedule a welcoming orientation <a href="{% url contact_form %}">here</a>. The orientation is from 10am - 10.45am and can be scheduled on a Sunday.
+        </p>
+        <br/><br/><br/>
+        {% if eng_class_rel_path %}
+        <p>
+        We have public classes available if you would like to learn more about our teachings. Please view the <a href="{% get_static_prefix %}{{ eng_class_rel_path }}" target="_blank">upcoming classes here</a>. Everyone is welcome to join!<br/><br/>
+        </p>
+        {% endif %}
+        <!-- <br/> <br/> <br/> <br/> -->
+        <p>
           To find out more about Maitreya Great Tao, please visit <a href="https://www.maitreya.org.tw" title="https://www.maitreya.org.tw" target="_blank">our headquarter website</a>.
         </p>
       </div>
